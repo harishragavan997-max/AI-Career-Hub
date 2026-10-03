@@ -1,0 +1,1044 @@
+/* =========================================================
+   AI CAREER HUB
+   GLOBAL MOBILE RESPONSIVE FIX
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* Prevent desktop fixed widths from overflowing */
+.container,
+.assessment-container,
+.dashboard-container,
+.main-content,
+.content,
+.page-container,
+.wrapper,
+.card-container {
+    max-width: 100% !important;
+}
+
+/* Images */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+/* Tables */
+table {
+    max-width: 100%;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .container,
+    .assessment-container,
+    .dashboard-container,
+    .main-content,
+    .content,
+    .page-container,
+    .wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .grid,
+    .cards,
+    .card-grid,
+    .stats-grid,
+    .features-grid,
+    .quick-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .hero {
+        max-width: 100% !important;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        margin: 0 !important;
+    }
+
+    /* Main page containers */
+    .container,
+    .assessment-container,
+    .dashboard-container,
+    .main-content,
+    .content,
+    .page-container,
+    .wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+        padding: 14px !important;
+    }
+
+    /* Cards */
+    .card,
+    .question-card,
+    .hero,
+    .panel,
+    .section,
+    .result-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Headings */
+    h1 {
+        font-size: clamp(24px, 8vw, 34px) !important;
+        line-height: 1.2 !important;
+    }
+
+    h2 {
+        font-size: clamp(20px, 6vw, 28px) !important;
+        line-height: 1.25 !important;
+    }
+
+    h3 {
+        font-size: clamp(17px, 5vw, 22px) !important;
+        line-height: 1.3 !important;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    /* Grid → single column */
+    .grid,
+    .cards,
+    .card-grid,
+    .stats-grid,
+    .features-grid,
+    .quick-actions,
+    .dashboard-grid,
+    .charts-grid,
+    .two-column,
+    .three-column {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    /* Flex layouts */
+    .row,
+    .top-bar,
+    .actions,
+    .button-row {
+        flex-wrap: wrap !important;
+    }
+
+    /* Inputs */
+    input,
+    select,
+    textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Buttons */
+    button,
+    .btn,
+    .button {
+        max-width: 100%;
+    }
+
+    /* Prevent huge fixed-width elements */
+    [style*="width"],
+    [style*="min-width"] {
+        max-width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 22px 16px !important;
+        border-radius: 20px !important;
+    }
+
+    /* Assessment */
+    .question-card {
+        padding: 17px !important;
+        margin: 14px 0 !important;
+        border-radius: 18px !important;
+    }
+
+    .option-label {
+        width: 100% !important;
+        padding: 12px !important;
+    }
+
+    /* Tables can scroll instead of breaking page */
+    .table-wrapper,
+    .table-container {
+        width: 100% !important;
+        overflow-x: auto !important;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    /* Long text */
+    * {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .container,
+    .assessment-container,
+    .dashboard-container,
+    .main-content,
+    .content,
+    .page-container,
+    .wrapper {
+        padding: 10px !important;
+    }
+
+    h1 {
+        font-size: 25px !important;
+    }
+
+    h2 {
+        font-size: 21px !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
+    }
+
+    button {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Language dropdown: readable width on every page */
+select[id*="language" i],
+select[name*="language" i],
+#language,
+#languageSelect,
+#dashboardLanguage {
+    width: 150px !important;
+    min-width: 130px !important;
+    max-width: 100% !important;
+    min-height: 42px !important;
+    padding: 8px 30px 8px 12px !important;
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* All select boxes should stay inside their parent */
+select,
+input,
+textarea {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    html,
+    body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    select[id*="language" i],
+    select[name*="language" i],
+    #language,
+    #languageSelect,
+    #dashboardLanguage {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Course dropdown and other long select boxes */
+    select {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .container,
+    .main-content,
+    .content,
+    .page-container,
+    .wrapper,
+    .card,
+    .panel {
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 13px !important;
+  }
+
+  h1 { font-size: 23px !important; line-height: 1.2 !important; }
+  h2 { font-size: 19px !important; line-height: 1.25 !important; }
+  h3 { font-size: 16px !important; line-height: 1.3 !important; }
+
+  .container,
+  .main-content,
+  .content,
+  .page-container,
+  .wrapper {
+    padding: 9px !important;
+  }
+
+  .card,
+  .question-card,
+  .panel,
+  .section {
+    padding: 12px !important;
+    margin: 10px 0 !important;
+    border-radius: 14px !important;
+  }
+
+  p, label, button, input, select, textarea {
+    font-size: 13px !important;
+  }
+
+  select, input, textarea {
+    min-height: 38px !important;
+    padding: 7px 9px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Transition Plan language selector */
+#languageSelector {
+    width: 150px;
+    min-width: 130px;
+    max-width: 100%;
+    min-height: 42px;
+    padding: 8px 28px 8px 12px;
+    box-sizing: border-box;
+}
+
+/* Keep all select boxes within their parent */
+select {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    #languageSelector {
+        width: 130px !important;
+        min-width: 120px !important;
+        max-width: calc(100vw - 24px) !important;
+        min-height: 36px !important;
+        font-size: 12px !important;
+        padding: 6px 24px 6px 9px !important;
+    }
+
+    select {
+        width: 100%;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 13px !important;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        box-sizing: border-box;
+    }
+
+    .card {
+        max-width: 100%;
+        min-width: 0;
+        padding: 12px !important;
+        box-sizing: border-box;
+    }
+}
+
+/* =====================================
+   MOBILE FINAL SIZE FIX
+   ===================================== */
+
+@media (max-width: 600px) {
+
+    /* 1. Skill Assessment / Career Verify / Reality Check
+       Radio buttons romba perusa irundha normal size-ku */
+    input[type="radio"] {
+        width: 16px !important;
+        height: 16px !important;
+        min-width: 16px !important;
+        min-height: 16px !important;
+        max-width: 16px !important;
+        max-height: 16px !important;
+        padding: 0 !important;
+        margin: 0 8px 0 0 !important;
+        transform: none !important;
+        flex: 0 0 16px !important;
+        accent-color: #3b82f6;
+    }
+
+    /* Radio option row */
+    label:has(input[type="radio"]) {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        min-height: 38px !important;
+        padding: 9px 12px !important;
+        font-size: 13px !important;
+    }
+
+    /* 2. 100-course select box — parent-kulla fit aaganum */
+    select {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Course dropdown parent/container */
+    .card,
+    .form-group,
+    .input-group,
+    .course-container,
+    .course-section {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 3. Dashboard mobile size compact */
+    .dashboard-container,
+    .main-content,
+    .content {
+        padding: 10px !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .dashboard-card,
+    .stat-card,
+    .quick-action,
+    .chart-card,
+    .progress-card {
+        padding: 11px !important;
+        min-width: 0 !important;
+        border-radius: 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    .dashboard-container h1,
+    .main-content h1 {
+        font-size: 23px !important;
+        line-height: 1.2 !important;
+    }
+
+    .dashboard-container h2,
+    .main-content h2 {
+        font-size: 18px !important;
+        line-height: 1.25 !important;
+    }
+
+    .dashboard-container p,
+    .main-content p {
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+    }
+
+    .dashboard-container button,
+    .main-content button {
+        min-height: 36px !important;
+        padding: 8px 11px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* =====================================================
+   AI CAREER HUB - FINAL MOBILE OVERRIDE
+   Dashboard | Course dropdown | Welcome hero
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    /* ---------- COMMON MOBILE SIZE ---------- */
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box !important;
+    }
+
+    /* ---------- DASHBOARD: DECENT COMPACT SIZE ---------- */
+    .dashboard-container,
+    .main-content,
+    .content {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        padding: 10px !important;
+        margin: 0 auto !important;
+    }
+
+    .dashboard-container h1,
+    .main-content h1 {
+        font-size: 21px !important;
+        line-height: 1.25 !important;
+    }
+
+    .dashboard-container h2,
+    .main-content h2 {
+        font-size: 17px !important;
+        line-height: 1.3 !important;
+    }
+
+    .dashboard-container h3,
+    .main-content h3 {
+        font-size: 15px !important;
+        line-height: 1.3 !important;
+    }
+
+    .dashboard-container p,
+    .main-content p {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+    }
+
+    .dashboard-container .card,
+    .dashboard-container .dashboard-card,
+    .dashboard-container .stat-card,
+    .dashboard-container .chart-card,
+    .dashboard-container .progress-card,
+    .dashboard-container .quick-action,
+    .main-content .card {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 11px !important;
+        border-radius: 14px !important;
+    }
+
+    .dashboard-container button,
+    .main-content button {
+        min-height: 35px !important;
+        padding: 7px 10px !important;
+        font-size: 12px !important;
+    }
+
+    /* ---------- COURSE SELECT: KEEP INSIDE CARD ---------- */
+    .container,
+    .card,
+    .form-group,
+    .input-group,
+    .course-container,
+    .course-section,
+    .assessment-container,
+    .main-content {
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* All normal select boxes fit their parent.
+       Language boxes are excluded. */
+    select:not(#languageSelector):not(#dashboardLanguage):not(#language):not(#languageSelect) {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 38px !important;
+        padding: 7px 30px 7px 9px !important;
+        font-size: 13px !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Language selectors stay compact */
+    #languageSelector,
+    #dashboardLanguage,
+    #language,
+    #languageSelect,
+    select[id*="language" i],
+    select[name*="language" i] {
+        width: 135px !important;
+        min-width: 120px !important;
+        max-width: 100% !important;
+        min-height: 36px !important;
+        padding: 6px 25px 6px 9px !important;
+        font-size: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ---------- WELCOME HERO IMAGE ---------- */
+    .hero,
+    #welcomeHero,
+    .welcome-hero,
+    .welcome-box {
+        max-width: 100% !important;
+        min-width: 0 !important;
+        background-position: center top !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* Keep hero content compact and readable */
+    .hero,
+    #welcomeHero,
+    .welcome-hero,
+    .welcome-box {
+        padding: 14px !important;
+    }
+}
+
+/* ===== FIX: COURSE SELECT OVERFLOW ON MOBILE ===== */
+@media (max-width: 600px) {
+
+    /* These pages' form/card layouts must allow shrinking */
+    body:has(#courseSelect),
+    body:has(#courseDropdown),
+    body:has(select[id*="course" i]) {
+        overflow-x: hidden !important;
+    }
+
+    /* Course select itself */
+    #courseSelect,
+    #courseDropdown,
+    select[id*="course" i],
+    select[name*="course" i],
+    select[id*="skill" i],
+    select[name*="skill" i] {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Allow flex/grid parents to shrink */
+    #courseSelect,
+    #courseDropdown,
+    select[id*="course" i],
+    select[name*="course" i],
+    select[id*="skill" i],
+    select[name*="skill" i] {
+        flex: 1 1 0% !important;
+    }
+
+    /* Common wrappers around course controls */
+    .form-group,
+    .form-control,
+    .form-row,
+    .input-group,
+    .card,
+    .question-card,
+    .container,
+    .main-content,
+    .content,
+    .wrapper,
+    .course-container,
+    .course-section {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Keep long option text from stretching the select */
+    select option {
+        max-width: 100% !important;
+        white-space: normal !important;
+    }
+}
+/* ===== FIX: SHOW FULL WELCOME HERO IMAGE ===== */
+@media (max-width: 600px) {
+
+    .hero,
+    #welcomeHero,
+    .welcome-hero,
+    .welcome-box,
+    .hero-section,
+    .welcome-section {
+        background-size: contain !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    .hero img,
+    #welcomeHero img,
+    .welcome-hero img,
+    .welcome-box img,
+    .hero-section img,
+    .welcome-section img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        object-position: center !important;
+    }
+}
+
+/* ===== FINAL FIX: SELECT BOXES ON SKILL GAP, PRACTICE, MOCK INTERVIEW ===== */
+@media (max-width: 600px) {
+
+    /* Skill Gap, Practice, Mock Interview select controls */
+    #setupScreen select,
+    #setupScreen .field,
+    #setupScreen .form-group,
+    #setupScreen .level-row,
+    #setupScreen .setup-grid,
+    #setupScreen .main-card,
+    #skillsSection,
+    #skillsContainer,
+    #questionsContainer {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* The career list populated by JavaScript */
+    #careerSelect,
+    #levelSelect,
+    #setupScreen select,
+    #skillsContainer select,
+    #questionsContainer select {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 13px !important;
+    }
+
+    /* Prevent grid/flex children from forcing overflow */
+    #setupScreen > *,
+    #setupScreen .field,
+    #setupScreen .form-group,
+    #setupScreen .setup-grid > *,
+    #setupScreen .level-row > * {
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Course/career option text */
+    #careerSelect option,
+    #levelSelect option,
+    #setupScreen select option {
+        white-space: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    /* Page wrappers */
+    .main-card,
+    .glass-card,
+    .setup-card,
+    .container {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* ===== DASHBOARD WELCOME IMAGE: SHOW FULL IMAGE ===== */
+@media (max-width: 600px) {
+
+    /* Dashboard hero containing welcomeCareerName */
+    body:has(#welcomeCareerName) .hero,
+    body:has(#welcomeCareerName) #welcomeHero,
+    body:has(#welcomeCareerName) .welcome-hero,
+    body:has(#welcomeCareerName) .welcome-box {
+        background-size: contain !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        min-height: 190px !important;
+    }
+
+    body:has(#welcomeCareerName) .hero img,
+    body:has(#welcomeCareerName) #welcomeHero img,
+    body:has(#welcomeCareerName) .welcome-hero img,
+    body:has(#welcomeCareerName) .welcome-box img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+        object-position: center !important;
+    }
+}
+
+/* FIX: 100-course career select — mobile only */
+@media (max-width: 600px) {
+  #setupScreen,
+  #setupScreen :has(#careerSelect) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #careerSelect {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+  }
+}
+
+/* 100 COURSE LIST — MOBILE FIX */
+@media (max-width: 600px) {
+  #careerSelect {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #careerSelect option {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+  }
+
+  #setupScreen {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* MOBILE: Career course select only */
+@media screen and (max-width: 600px) {
+  #careerSelect {
+    display: block !important;
+    width: 100% !important;
+    max-width: calc(100vw - 48px) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+    padding: 8px 28px 8px 10px !important;
+  }
+}
+
+/* Scrollable 100-course dropdown — only careerSelect */
+.cs-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.cs-btn {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  background: #0f172a;
+  color: white;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.cs-btn::after {
+  content: "▾";
+  position: absolute;
+  right: 12px;
+}
+
+.cs-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  z-index: 99999;
+  background: #0f172a;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cs-wrap.open .cs-panel {
+  display: block;
+}
+
+.cs-list {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cs-list li {
+  min-height: 36px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  color: white;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.cs-list li:hover,
+.cs-list li.sel {
+  background: #2563eb;
+}
+
+/* Career dropdown: compact + scrollable */
+.cs-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.cs-btn {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #fff;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  cursor: pointer;
+}
+
+.cs-btn::after {
+  content: "▾";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cs-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  z-index: 99999;
+  background: #0f172a;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cs-wrap.open .cs-panel {
+  display: block;
+}
+
+.cs-list {
+  max-height: 360px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cs-list li {
+  padding: 9px 12px;
+  color: #fff;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.cs-list li:hover,
+.cs-list li.sel {
+  background: #2563eb;
+}

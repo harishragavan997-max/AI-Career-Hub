@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Hub - Career Discovery</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-responsive.css">
+    <script src="./language.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1 id="title">🚀 AI Career Hub</h1>
+
+        <h2 id="heading">🎯 Discover Your Career</h2>
+
+        <p id="description">
+            Select your interest and current skill level to discover the best career path for you.
+        </p>
+
+        <label id="interestLabel">Select Your Interest</label>
+
+        <select id="interest">
+            <option value="AI">Artificial Intelligence</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Software Development">Software Development</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="Cloud">Cloud Computing</option>
+        </select>
+
+        <label id="levelLabel">Select Your Level</label>
+
+        <select id="level">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+
+        <br>
+
+        <button id="discoverBtn" onclick="discoverCareer()">
+            🔍 Discover My Career
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const careerTranslations = {
+
+    English: {
+        title: "🚀 AI Career Hub",
+        heading: "🎯 Discover Your Career",
+        description:
+        "Select your interest and current skill level to discover the best career path for you.",
+
+        interest: "Select Your Interest",
+        level: "Select Your Level",
+
+        ai: "Artificial Intelligence",
+        dataScience: "Data Science",
+        web: "Web Development",
+        software: "Software Development",
+        cyber: "Cyber Security",
+        cloud: "Cloud Computing",
+
+        beginner: "Beginner",
+        intermediate: "Intermediate",
+        advanced: "Advanced",
+
+        discover: "🔍 Discover My Career",
+
+        thinking: "⏳ Finding your best career...",
+        recommended: "🎯 Recommended Career",
+        next: "Continue to Skill Assessment ➡️"
+    },
+
+    Tamil: {
+        title: "🚀 AI Career Hub",
+        heading: "🎯 உங்கள் தொழிலை கண்டறியுங்கள்",
+        description:
+        "உங்கள் ஆர்வம் மற்றும் தற்போதைய திறன் நிலையை தேர்வு செய்து உங்களுக்கு ஏற்ற தொழில் பாதையை கண்டறியுங்கள்.",
+
+        interest: "உங்கள் ஆர்வத்தை தேர்வு செய்யவும்",
+        level: "உங்கள் திறன் நிலையை தேர்வு செய்யவும்",
+
+        ai: "செயற்கை நுண்ணறிவு",
+        dataScience: "தரவு அறிவியல்",
+        web: "வலைத்தள மேம்பாடு",
+        software: "மென்பொருள் மேம்பாடு",
+        cyber: "சைபர் பாதுகாப்பு",
+        cloud: "கிளவுட் கம்ப்யூட்டிங்",
+
+        beginner: "தொடக்கநிலை",
+        intermediate: "இடைநிலை",
+        advanced: "மேம்பட்ட நிலை",
+
+        discover: "🔍 என் தொழிலை கண்டறியுங்கள்",
+
+        thinking: "⏳ உங்களுக்கு சிறந்த தொழிலை கண்டறிகிறது...",
+        recommended: "🎯 பரிந்துரைக்கப்படும் தொழில்",
+        next: "திறன் மதிப்பீட்டிற்கு தொடரவும் ➡️"
+    },
+
+    Hindi: {
+        title: "🚀 AI Career Hub",
+        heading: "🎯 अपना करियर खोजें",
+        description:
+        "अपनी रुचि और वर्तमान कौशल स्तर चुनें और अपने लिए सही करियर पथ खोजें।",
+
+        interest: "अपनी रुचि चुनें",
+        level: "अपना कौशल स्तर चुनें",
+
+        ai: "आर्टिफिशियल इंटेलिजेंस",
+        dataScience: "डेटा साइंस",
+        web: "वेब डेवलपमेंट",
+        software: "सॉफ्टवेयर डेवलपमेंट",
+        cyber: "साइबर सिक्योरिटी",
+        cloud: "क्लाउड कंप्यूटिंग",
+
+        beginner: "शुरुआती",
+        intermediate: "मध्यवर्ती",
+        advanced: "उन्नत",
+
+        discover: "🔍 मेरा करियर खोजें",
+
+        thinking: "⏳ आपके लिए सबसे अच्छा करियर खोज रहे हैं...",
+        recommended: "🎯 अनुशंसित करियर",
+        next: "स्किल असेसमेंट पर जाएं ➡️"
+    },
+
+    Thanglish: {
+        title: "🚀 AI Career Hub",
+        heading: "🎯 Un Career-ah Discover Pannu",
+        description:
+        "Un interest and current skill level-ah select panni unakku suitable-aana career path-ah kandupidikka.",
+
+        interest: "Un Interest-ah Select Pannu",
+        level: "Un Skill Level-ah Select Pannu",
+
+        ai: "Artificial Intelligence",
+        dataScience: "Data Science",
+        web: "Web Development",
+        software: "Software Development",
+        cyber: "Cyber Security",
+        cloud: "Cloud Computing",
+
+        beginner: "Beginner",
+        intermediate: "Intermediate",
+        advanced: "Advanced",
+
+        discover: "🔍 En Career-ah Discover Pannu",
+
+        thinking: "⏳ Unakku best career-ah find pannitu irukku...",
+        recommended: "🎯 Recommended Career",
+        next: "Skill Assessment-ku Continue Pannu ➡️"
+    },
+
+    Kannada: {
+        title: "🚀 AI Career Hub",
+        heading: "🎯 ನಿಮ್ಮ ವೃತ್ತಿಯನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ",
+        description:
+        "ನಿಮ್ಮ ಆಸಕ್ತಿ ಮತ್ತು ಪ್ರಸ್ತುತ ಕೌಶಲ್ಯ ಮಟ್ಟವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ನಿಮಗೆ ಸೂಕ್ತವಾದ ವೃತ್ತಿ ಮಾರ್ಗವನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ.",
+
+        interest: "ನಿಮ್ಮ ಆಸಕ್ತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+        level: "ನಿಮ್ಮ ಕೌಶಲ್ಯ ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+
+        ai: "ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ",
+        dataScience: "ಡೇಟಾ ಸೈನ್ಸ್",
+        web: "ವೆಬ್ ಡೆವಲಪ್‌ಮೆಂಟ್",
+        software: "ಸಾಫ್ಟ್‌ವೇರ್ ಡೆವಲಪ್‌ಮೆಂಟ್",
+        cyber: "ಸೈಬರ್ ಸೆಕ್ಯುರಿಟಿ",
+        cloud: "ಕ್ಲೌಡ್ ಕಂಪ್ಯೂಟಿಂಗ್",
+
+        beginner: "ಆರಂಭಿಕ",
+        intermediate: "ಮಧ್ಯಮ",
+        advanced: "ಮುಂದುವರಿದ",
+
+        discover: "🔍 ನನ್ನ ವೃತ್ತಿಯನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ",
+
+        thinking: "⏳ ನಿಮಗೆ ಉತ್ತಮ ವೃತ್ತಿಯನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ...",
+        recommended: "🎯 ಶಿಫಾರಸು ಮಾಡಿದ ವೃತ್ತಿ",
+        next: "ಸ್ಕಿಲ್ ಅಸೆಸ್ಮೆಂಟ್‌ಗೆ ಮುಂದುವರಿಯಿರಿ ➡️"
+    },
+
+    Malayalam: {
+        title: "🚀 AI Career Hub",
+        heading: "🎯 നിങ്ങളുടെ കരിയർ കണ്ടെത്തുക",
+        description:
+        "നിങ്ങളുടെ താൽപ്പര്യവും നിലവിലെ കഴിവ് നിലയും തിരഞ്ഞെടുത്ത് നിങ്ങൾക്ക് അനുയോജ്യമായ കരിയർ കണ്ടെത്തുക.",
+
+        interest: "നിങ്ങളുടെ താൽപ്പര്യം തിരഞ്ഞെടുക്കുക",
+        level: "നിങ്ങളുടെ കഴിവ് നില തിരഞ്ഞെടുക്കുക",
+
+        ai: "ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ്",
+        dataScience: "ഡാറ്റാ സയൻസ്",
+        web: "വെബ് ഡെവലപ്മെന്റ്",
+        software: "സോഫ്റ്റ്‌വെയർ ഡെവലപ്മെന്റ്",
+        cyber: "സൈബർ സെക്യൂരിറ്റി",
+        cloud: "ക്ലൗഡ് കമ്പ്യൂട്ടിംഗ്",
+
+        beginner: "തുടക്കക്കാരൻ",
+        intermediate: "ഇടത്തരം",
+        advanced: "മുൻനിര",
+
+        discover: "🔍 എന്റെ കരിയർ കണ്ടെത്തുക",
+
+        thinking: "⏳ നിങ്ങൾക്കുള്ള മികച്ച കരിയർ കണ്ടെത്തുന്നു...",
+        recommended: "🎯 ശുപാർശ ചെയ്യുന്ന കരിയർ",
+        next: "സ്കിൽ അസസ്മെന്റിലേക്ക് തുടരുക ➡️"
+    }
+};
+
+
+function translateCareerPage(language) {
+
+    const t = careerTranslations[language] ||
+              careerTranslations.English;
+
+    document.getElementById("title").innerText = t.title;
+
+    document.getElementById("heading").innerText = t.heading;
+
+    document.getElementById("description").innerText =
+        t.description;
+
+    document.getElementById("interestLabel").innerText =
+        t.interest;
+
+    document.getElementById("levelLabel").innerText =
+        t.level;
+
+    document.getElementById("discoverBtn").innerText =
+        t.discover;
+
+
+    const interest = document.getElementById("interest");
+
+    interest.options[0].text = t.ai;
+    interest.options[1].text = t.dataScience;
+    interest.options[2].text = t.web;
+    interest.options[3].text = t.software;
+    interest.options[4].text = t.cyber;
+    interest.options[5].text = t.cloud;
+
+
+    const level = document.getElementById("level");
+
+    level.options[0].text = t.beginner;
+    level.options[1].text = t.intermediate;
+    level.options[2].text = t.advanced;
+}
+
+
+function updateCareerLanguage() {
+
+    const language =
+        localStorage.getItem("selectedLanguage") || "English";
+
+    translateCareerPage(language);
+}
+
+
+async function discoverCareer() {
+
+    const interest =
+        document.getElementById("interest").value;
+
+    const level =
+        document.getElementById("level").value;
+
+    const result =
+        document.getElementById("result");
+
+    const language =
+        localStorage.getItem("selectedLanguage") || "English";
+
+    const t =
+        careerTranslations[language] ||
+        careerTranslations.English;
+
+
+    result.innerText = t.thinking;
+
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/career-discovery",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    interest: interest,
+                    level: level
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if (!response.ok) {
+
+            result.innerText =
+                "❌ " +
+                (data.detail || "Career discovery failed.");
+
+            return;
+        }
+
+
+        localStorage.setItem(
+            "user_career",
+            data.recommended_career
+        );
+
+        localStorage.setItem(
+            "user_level",
+            level
+        );
+
+
+        result.innerHTML = `
+
+            <h3>${t.recommended}</h3>
+
+            <h2>🎯 ${data.recommended_career}</h2>
+
+            <p>
+                Current Level:
+                <strong>${level}</strong>
+            </p>
+
+            <br>
+
+            <button onclick="goToAssessment()">
+                ${t.next}
+            </button>
+
+        `;
+
+    } catch (error) {
+
+        console.log(error);
+
+        result.innerText =
+            "❌ Server connection error. Please start FastAPI.";
+    }
+}
+
+function goToAssessment() {
+
+    const career = localStorage.getItem("user_career") || "";
+    const level = localStorage.getItem("user_level") || "Beginner";
+
+    if (!career) {
+        alert("Please discover your career first.");
+        return;
+    }
+
+    // Save career using all common keys
+    localStorage.setItem("user_career", career);
+
+    localStorage.setItem("selected_course", career);
+    localStorage.setItem("selectedCourse", career);
+
+    localStorage.setItem("selected_career", career);
+    localStorage.setItem("selectedCareer", career);
+
+    localStorage.setItem("career", career);
+    localStorage.setItem("target_career", career);
+    localStorage.setItem("targetCareer", career);
+
+    // Save selected level
+    localStorage.setItem("user_level", level);
+    localStorage.setItem("selected_level", level);
+    localStorage.setItem("selectedLevel", level);
+
+    // Send career directly to assessment page too
+    window.location.href =
+        "assessment.html?course=" +
+        encodeURIComponent(career) +
+        "&level=" +
+        encodeURIComponent(level);
+}
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateCareerLanguage();
+
+        const selector =
+            document.getElementById("languageSelector");
+
+        if (selector) {
+
+            selector.addEventListener(
+                "change",
+                function() {
+
+                    translateCareerPage(
+                        this.value
+                    );
+
+                }
+            );
+        }
+    }
+);
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("page-loaded");
+});
+</script>
+<div class="dashboard-back">
+    <button onclick="window.location.href='dashboard.html'">
+        ← Go Back to Dashboard
+    </button>
+</div>
+
+</body>
+</html>

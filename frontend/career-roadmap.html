@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile-responsive.css">
+<title>AI Career Hub - Career Roadmap</title>
+
+</head>
+
+<body class="roadmap-page">
+
+<select id="languageSelector" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="ta">தமிழ்</option>
+    <option value="hi">हिन्दी</option>
+    <option value="th">Thanglish</option>
+    <option value="kn">ಕನ್ನಡ</option>
+    <option value="ml">മലയാളം</option>
+</select>
+
+<div class="container">
+
+<h1 id="title">Personalized Career Roadmap</h1>
+
+<p class="subtitle" id="subtitle">
+Your step-by-step journey from learning to becoming job ready
+</p>
+
+<div class="card">
+
+<h2 id="overviewTitle">Career Overview</h2>
+
+<div class="info-grid">
+
+<div class="info-box">
+<strong id="targetLabel">Target Career</strong>
+<span id="targetCareer">-</span>
+</div>
+
+<div class="info-box">
+<strong id="levelLabel">Current Level</strong>
+<span id="currentLevel">-</span>
+</div>
+
+<div class="info-box">
+<strong id="readinessLabel">Readiness</strong>
+<span id="readiness">-</span>
+</div>
+
+<div class="info-box">
+<strong id="statusLabel">Status</strong>
+<span id="status">In Progress</span>
+</div>
+
+</div>
+
+</div>
+<div class="card">
+
+<h2 id="roadmapTitle">Your Career Roadmap</h2>
+
+<div class="roadmap">
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">1</span>
+<span id="step1Title">Programming Foundation</span>
+</h3>
+
+<p id="step1Text">
+Build strong programming fundamentals required for your career.
+</p>
+
+<div id="step1Skills">
+<span class="skill">Python</span>
+<span class="skill">Problem Solving</span>
+<span class="skill">Programming Basics</span>
+</div>
+
+</div>
+
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">2</span>
+<span id="step2Title">Core Technical Skills</span>
+</h3>
+
+<p id="step2Text">
+Learn the important technical skills required for your selected career.
+</p>
+
+<div id="step2Skills">
+</div>
+
+</div>
+
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">3</span>
+<span id="step3Title">Projects</span>
+</h3>
+
+<p id="step3Text">
+Build practical projects to demonstrate your knowledge.
+</p>
+
+<ul class="check-list">
+<li id="project1">Beginner Project</li>
+<li id="project2">Intermediate Project</li>
+<li id="project3">Real-World AI Project</li>
+<li id="project4">Major Portfolio Project</li>
+</ul>
+
+</div>
+
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">4</span>
+<span id="step4Title">Practice & Assessment</span>
+</h3>
+
+<p id="step4Text">
+Practice technical questions and continuously test your skills.
+</p>
+
+<ul class="check-list">
+<li id="practice1">Coding Practice</li>
+<li id="practice2">Technical Questions</li>
+<li id="practice3">Model Evaluation</li>
+<li id="practice4">Mock Tests</li>
+</ul>
+
+</div>
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">5</span>
+<span id="step5Title">AI Mock Interview</span>
+</h3>
+
+<p id="step5Text">
+Practice interview questions and improve your communication.
+</p>
+
+<ul class="check-list">
+<li id="interview1">Technical Interview</li>
+<li id="interview2">HR Interview</li>
+<li id="interview3">Project Explanation</li>
+<li id="interview4">Communication Practice</li>
+</ul>
+
+</div>
+
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">6</span>
+<span id="step6Title">Resume Preparation</span>
+</h3>
+
+<p id="step6Text">
+Create an ATS-friendly resume that highlights your skills and projects.
+</p>
+
+<ul class="check-list">
+<li id="resume1">Professional Summary</li>
+<li id="resume2">Technical Skills</li>
+<li id="resume3">Projects</li>
+<li id="resume4">Certifications</li>
+</ul>
+
+</div>
+
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">7</span>
+<span id="step7Title">Job Search</span>
+</h3>
+
+<p id="step7Text">
+Find suitable jobs and apply according to your career profile.
+</p>
+
+<ul class="check-list">
+<li id="job1">Search Jobs</li>
+<li id="job2">Check Required Skills</li>
+<li id="job3">Apply for Jobs</li>
+<li id="job4">Track Applications</li>
+</ul>
+
+</div>
+
+
+<div class="roadmap-step">
+
+<h3>
+<span class="step-number">8</span>
+<span id="step8Title">Job Ready</span>
+</h3>
+
+<p id="step8Text">
+Complete your learning, practice and job preparation to become job ready.
+</p>
+
+<div class="progress">
+<div class="progress-bar" id="finalProgress"></div>
+</div>
+
+<p>
+<strong id="jobReadyLabel">Career Readiness:</strong>
+<span class="badge" id="finalReadiness">0%</span>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2 id="actionTitle">Next Steps</h2>
+
+<p id="actionText">
+Continue practicing and complete the remaining stages of your roadmap.
+</p>
+
+<div style="text-align:center;">
+
+<button onclick="goPractice()" id="practiceBtn">
+Go to Practice
+</button>
+
+<button onclick="goInterview()" id="interviewBtn">
+AI Mock Interview
+</button>
+
+<button onclick="goResume()" id="resumeBtn">
+Resume AI
+</button>
+
+<button onclick="goDashboard()" id="dashboardBtn">
+Dashboard
+</button>
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+const roadmapSkills = {
+
+    "Data Scientist": [
+        "Python",
+        "SQL",
+        "Statistics",
+        "Pandas",
+        "NumPy",
+        "Machine Learning",
+        "Data Visualization"
+    ],
+
+    "AI Engineer": [
+        "Python",
+        "Mathematics",
+        "Machine Learning",
+        "Deep Learning",
+        "TensorFlow",
+        "PyTorch"
+    ],
+
+    "Web Developer": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Backend Development",
+        "Database"
+    ]
+
+};
+
+
+const roadmapTranslations = {
+
+    en: {
+        title: "Personalized Career Roadmap",
+        subtitle: "Your step-by-step journey from learning to becoming job ready",
+        overviewTitle: "Career Overview",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        statusLabel: "Status",
+        roadmapTitle: "Your Career Roadmap",
+
+        step1Title: "Programming Foundation",
+        step1Text: "Build strong programming fundamentals required for your career.",
+
+        step2Title: "Core Technical Skills",
+        step2Text: "Learn the important technical skills required for your selected career.",
+
+        step3Title: "Projects",
+        step3Text: "Build practical projects to demonstrate your knowledge.",
+
+        step4Title: "Practice & Assessment",
+        step4Text: "Practice technical questions and continuously test your skills.",
+
+        step5Title: "AI Mock Interview",
+        step5Text: "Practice interview questions and improve your communication.",
+
+        step6Title: "Resume Preparation",
+        step6Text: "Create an ATS-friendly resume that highlights your skills and projects.",
+
+        step7Title: "Job Search",
+        step7Text: "Find suitable jobs and apply according to your career profile.",
+
+        step8Title: "Job Ready",
+        step8Text: "Complete your learning, practice and job preparation to become job ready.",
+
+        project1: "Beginner Project",
+        project2: "Intermediate Project",
+        project3: "Real-World AI Project",
+        project4: "Major Portfolio Project",
+
+        practice1: "Coding Practice",
+        practice2: "Technical Questions",
+        practice3: "Model Evaluation",
+        practice4: "Mock Tests",
+
+        interview1: "Technical Interview",
+        interview2: "HR Interview",
+        interview3: "Project Explanation",
+        interview4: "Communication Practice",
+
+        resume1: "Professional Summary",
+        resume2: "Technical Skills",
+        resume3: "Projects",
+        resume4: "Certifications",
+
+        job1: "Search Jobs",
+        job2: "Check Required Skills",
+        job3: "Apply for Jobs",
+        job4: "Track Applications",
+
+        jobReadyLabel: "Career Readiness:",
+        actionTitle: "Next Steps",
+        actionText: "Continue practicing and complete the remaining stages of your roadmap.",
+        practiceBtn: "Go to Practice",
+        interviewBtn: "AI Mock Interview",
+        resumeBtn: "Resume AI",
+        dashboardBtn: "Dashboard"
+    },
+
+
+    ta: {
+        title: "Personalized Career Roadmap",
+        subtitle: "Learning-la irundhu job ready aagura varaikkum step-by-step journey",
+        overviewTitle: "Career Overview",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        statusLabel: "Status",
+        roadmapTitle: "Ungal Career Roadmap",
+
+        step1Title: "Programming Foundation",
+        step1Text: "Career-ku thevaiyana strong programming basics-ai develop pannunga.",
+
+        step2Title: "Core Technical Skills",
+        step2Text: "Selected career-ku thevaiyana mukkiya technical skills-ai kathukkonga.",
+
+        step3Title: "Projects",
+        step3Text: "Ungal knowledge-ai prove panna practical projects build pannunga.",
+
+        step4Title: "Practice & Assessment",
+        step4Text: "Technical questions practice panni skills-ai test pannunga.",
+
+        step5Title: "AI Mock Interview",
+        step5Text: "Interview questions practice panni communication improve pannunga.",
+
+        step6Title: "Resume Preparation",
+        step6Text: "Skills matrum projects-ai highlight seyyum professional resume create pannunga.",
+
+        step7Title: "Job Search",
+        step7Text: "Ungal career profile-ku suitable jobs-ai search panni apply pannunga.",
+
+        step8Title: "Job Ready",
+        step8Text: "Learning, practice matrum job preparation complete panni job ready aagunga.",
+
+        project1: "Beginner Project",
+        project2: "Intermediate Project",
+        project3: "Real-World AI Project",
+        project4: "Major Portfolio Project",
+
+        practice1: "Coding Practice",
+        practice2: "Technical Questions",
+        practice3: "Model Evaluation",
+        practice4: "Mock Tests",
+
+        interview1: "Technical Interview",
+        interview2: "HR Interview",
+        interview3: "Project Explanation",
+        interview4: "Communication Practice",
+
+        resume1: "Professional Summary",
+        resume2: "Technical Skills",
+        resume3: "Projects",
+        resume4: "Certifications",
+
+        job1: "Search Jobs",
+        job2: "Required Skills Check",
+        job3: "Jobs-ku Apply Pannu",
+        job4: "Applications Track Pannu",
+
+        jobReadyLabel: "Career Readiness:",
+        actionTitle: "Next Steps",
+        actionText: "Practice continue panni roadmap-la remaining stages complete pannunga.",
+        practiceBtn: "Practice-ku Pogu",
+        interviewBtn: "AI Mock Interview",
+        resumeBtn: "Resume AI",
+        dashboardBtn: "Dashboard"
+    },
+
+
+    th: {
+        title: "Personalized Career Roadmap",
+        subtitle: "Learning-la irundhu job ready aagura varaikkum step-by-step journey",
+        overviewTitle: "Career Overview",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        statusLabel: "Status",
+        roadmapTitle: "Un Career Roadmap",
+
+        step1Title: "Programming Foundation",
+        step1Text: "Career-ku thevaiyana programming basics strong-ah kathuko.",
+
+        step2Title: "Core Technical Skills",
+        step2Text: "Target career-ku thevaiyana technical skills kathuko.",
+
+        step3Title: "Projects",
+        step3Text: "Knowledge prove panna practical projects build pannu.",
+
+        step4Title: "Practice & Assessment",
+        step4Text: "Technical questions practice panni skills test pannu.",
+
+        step5Title: "AI Mock Interview",
+        step5Text: "Interview questions practice panni communication improve pannu.",
+
+        step6Title: "Resume Preparation",
+        step6Text: "Skills and projects highlight panna professional resume create pannu.",
+
+        step7Title: "Job Search",
+        step7Text: "Suitable jobs search panni apply pannu.",
+
+        step8Title: "Job Ready",
+        step8Text: "Learning, practice, preparation complete panni job ready aagu.",
+
+        project1: "Beginner Project",
+        project2: "Intermediate Project",
+        project3: "Real-World AI Project",
+        project4: "Major Portfolio Project",
+
+        practice1: "Coding Practice",
+        practice2: "Technical Questions",
+        practice3: "Model Evaluation",
+        practice4: "Mock Tests",
+
+        interview1: "Technical Interview",
+        interview2: "HR Interview",
+        interview3: "Project Explanation",
+        interview4: "Communication Practice",
+
+        resume1: "Professional Summary",
+        resume2: "Technical Skills",
+        resume3: "Projects",
+        resume4: "Certifications",
+
+        job1: "Search Jobs",
+        job2: "Required Skills Check",
+        job3: "Job-ku Apply Pannu",
+        job4: "Application Track Pannu",
+
+        jobReadyLabel: "Career Readiness:",
+        actionTitle: "Next Steps",
+        actionText: "Practice continue panni roadmap-la remaining stages complete pannu.",
+        practiceBtn: "Practice-ku Pogu",
+        interviewBtn: "AI Mock Interview",
+        resumeBtn: "Resume AI",
+        dashboardBtn: "Dashboard"
+    },
+
+
+    hi: {
+        title: "Personalized Career Roadmap",
+        subtitle: "सीखने से नौकरी के लिए तैयार होने तक आपकी चरण-दर-चरण यात्रा",
+        overviewTitle: "करियर अवलोकन",
+        targetLabel: "लक्षित करियर",
+        levelLabel: "वर्तमान स्तर",
+        readinessLabel: "तैयारी",
+        statusLabel: "स्थिति",
+        roadmapTitle: "आपका करियर रोडमैप",
+
+        step1Title: "प्रोग्रामिंग फाउंडेशन",
+        step1Text: "अपने करियर के लिए मजबूत प्रोग्रामिंग आधार बनाएं.",
+
+        step2Title: "मुख्य तकनीकी कौशल",
+        step2Text: "अपने लक्षित करियर के लिए आवश्यक तकनीकी कौशल सीखें.",
+
+        step3Title: "प्रोजेक्ट्स",
+        step3Text: "अपने ज्ञान को दिखाने के लिए प्रैक्टिकल प्रोजेक्ट्स बनाएं.",
+
+        step4Title: "प्रैक्टिस और असेसमेंट",
+        step4Text: "तकनीकी प्रश्नों का अभ्यास करें और अपनी skills को test करें.",
+
+        step5Title: "AI मॉक इंटरव्यू",
+        step5Text: "इंटरव्यू प्रश्नों का अभ्यास करें और communication सुधारें.",
+
+        step6Title: "Resume तैयारी",
+        step6Text: "अपनी skills और projects को highlight करने वाला resume बनाएं.",
+
+        step7Title: "Job Search",
+        step7Text: "अपने career profile के अनुसार suitable jobs खोजें और apply करें.",
+
+        step8Title: "Job Ready",
+        step8Text: "Learning और preparation पूरा करके job ready बनें.",
+
+        project1: "Beginner Project",
+        project2: "Intermediate Project",
+        project3: "Real-World AI Project",
+        project4: "Major Portfolio Project",
+
+        practice1: "Coding Practice",
+        practice2: "Technical Questions",
+        practice3: "Model Evaluation",
+        practice4: "Mock Tests",
+
+        interview1: "Technical Interview",
+        interview2: "HR Interview",
+        interview3: "Project Explanation",
+        interview4: "Communication Practice",
+
+        resume1: "Professional Summary",
+        resume2: "Technical Skills",
+        resume3: "Projects",
+        resume4: "Certifications",
+
+        job1: "Search Jobs",
+        job2: "Required Skills Check",
+        job3: "Apply for Jobs",
+        job4: "Track Applications",
+
+        jobReadyLabel: "Career Readiness:",
+        actionTitle: "Next Steps",
+        actionText: "Practice continue करके roadmap के बाकी stages complete करें.",
+        practiceBtn: "Practice पर जाएँ",
+        interviewBtn: "AI Mock Interview",
+        resumeBtn: "Resume AI",
+        dashboardBtn: "Dashboard"
+    },
+
+
+    kn: {
+        title: "Personalized Career Roadmap",
+        subtitle: "Learning inda job ready aaguvavaregina step-by-step journey",
+        overviewTitle: "Career Overview",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        statusLabel: "Status",
+        roadmapTitle: "Nimma Career Roadmap",
+
+        step1Title: "Programming Foundation",
+        step1Text: "Career-ge bekada strong programming basics develop maadi.",
+
+        step2Title: "Core Technical Skills",
+        step2Text: "Target career-ge bekada technical skills kaliyi.",
+
+        step3Title: "Projects",
+        step3Text: "Nimma knowledge torisalu practical projects build maadi.",
+
+        step4Title: "Practice & Assessment",
+        step4Text: "Technical questions practice maadi skills test maadi.",
+
+        step5Title: "AI Mock Interview",
+        step5Text: "Interview questions practice maadi communication improve maadi.",
+
+        step6Title: "Resume Preparation",
+        step6Text: "Skills mattu projects highlight maduva professional resume create maadi.",
+
+        step7Title: "Job Search",
+        step7Text: "Suitable jobs search maadi apply maadi.",
+
+        step8Title: "Job Ready",
+        step8Text: "Learning mattu preparation complete maadi job ready aagi.",
+
+        project1: "Beginner Project",
+        project2: "Intermediate Project",
+        project3: "Real-World AI Project",
+        project4: "Major Portfolio Project",
+
+        practice1: "Coding Practice",
+        practice2: "Technical Questions",
+        practice3: "Model Evaluation",
+        practice4: "Mock Tests",
+
+        interview1: "Technical Interview",
+        interview2: "HR Interview",
+        interview3: "Project Explanation",
+        interview4: "Communication Practice",
+
+        resume1: "Professional Summary",
+        resume2: "Technical Skills",
+        resume3: "Projects",
+        resume4: "Certifications",
+
+        job1: "Search Jobs",
+        job2: "Required Skills Check",
+        job3: "Job-ge Apply Maadi",
+        job4: "Applications Track Maadi",
+
+        jobReadyLabel: "Career Readiness:",
+        actionTitle: "Next Steps",
+        actionText: "Practice continue maadi roadmap remaining stages complete maadi.",
+        practiceBtn: "Practice-ge Hogi",
+        interviewBtn: "AI Mock Interview",
+        resumeBtn: "Resume AI",
+        dashboardBtn: "Dashboard"
+    },
+
+
+    ml: {
+        title: "Personalized Career Roadmap",
+        subtitle: "Learning muthal job ready aakunnath vare step-by-step journey",
+        overviewTitle: "Career Overview",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        statusLabel: "Status",
+        roadmapTitle: "Ningalude Career Roadmap",
+
+        step1Title: "Programming Foundation",
+        step1Text: "Career-inu aavashyamaya strong programming basics develop cheyyuka.",
+
+        step2Title: "Core Technical Skills",
+        step2Text: "Target career-inu aavashyamaya technical skills padikkuka.",
+
+        step3Title: "Projects",
+        step3Text: "Ningalude knowledge kaanikkaan practical projects build cheyyuka.",
+
+        step4Title: "Practice & Assessment",
+        step4Text: "Technical questions practice cheythu skills test cheyyuka.",
+
+        step5Title: "AI Mock Interview",
+        step5Text: "Interview questions practice cheythu communication improve cheyyuka.",
+
+        step6Title: "Resume Preparation",
+        step6Text: "Skills-um projects-um highlight cheyyunna professional resume undakkuka.",
+
+        step7Title: "Job Search",
+        step7Text: "Suitable jobs search cheythu apply cheyyuka.",
+
+        step8Title: "Job Ready",
+        step8Text: "Learningum preparationum complete cheythu job ready aakuka.",
+
+        project1: "Beginner Project",
+        project2: "Intermediate Project",
+        project3: "Real-World AI Project",
+        project4: "Major Portfolio Project",
+
+        practice1: "Coding Practice",
+        practice2: "Technical Questions",
+        practice3: "Model Evaluation",
+        practice4: "Mock Tests",
+
+        interview1: "Technical Interview",
+        interview2: "HR Interview",
+        interview3: "Project Explanation",
+        interview4: "Communication Practice",
+
+        resume1: "Professional Summary",
+        resume2: "Technical Skills",
+        resume3: "Projects",
+        resume4: "Certifications",
+
+        job1: "Search Jobs",
+        job2: "Required Skills Check",
+        job3: "Job Apply Cheyyuka",
+        job4: "Applications Track Cheyyuka",
+
+        jobReadyLabel: "Career Readiness:",
+        actionTitle: "Next Steps",
+        actionText: "Practice continue cheythu roadmap remaining stages complete cheyyuka.",
+        practiceBtn: "Practice-lekku Poku",
+        interviewBtn: "AI Mock Interview",
+        resumeBtn: "Resume AI",
+        dashboardBtn: "Dashboard"
+    }
+
+};
+
+function changeLanguage() {
+
+    const lang =
+        document.getElementById("languageSelector").value;
+
+    const t =
+        roadmapTranslations[lang];
+
+    Object.keys(t).forEach(key => {
+
+        const element =
+            document.getElementById(key);
+
+        if (element) {
+
+            element.innerText =
+                t[key];
+
+        }
+
+    });
+
+    localStorage.setItem(
+        "selectedLanguage",
+        lang
+    );
+}
+
+
+function loadRoadmap() {
+
+    const targetCareer =
+        localStorage.getItem("whatif_target_career") ||
+        localStorage.getItem("selected_career") ||
+        "Data Scientist";
+
+    const level =
+        localStorage.getItem("whatif_level") ||
+        localStorage.getItem("selected_level") ||
+        "Beginner";
+
+    const readiness =
+        localStorage.getItem("whatif_readiness") ||
+        "0";
+
+    document.getElementById("targetCareer").innerText =
+        targetCareer;
+
+    document.getElementById("currentLevel").innerText =
+        level;
+
+    document.getElementById("readiness").innerText =
+        readiness + "%";
+
+    document.getElementById("finalReadiness").innerText =
+        readiness + "%";
+
+    document.getElementById("finalProgress").style.width =
+        readiness + "%";
+
+
+    const skills =
+        roadmapSkills[targetCareer] ||
+        roadmapSkills["Data Scientist"];
+
+    const skillContainer =
+        document.getElementById("step2Skills");
+
+    skillContainer.innerHTML = "";
+
+    skills.forEach(skill => {
+
+        skillContainer.innerHTML +=
+            `<span class="skill">${skill}</span>`;
+
+    });
+
+
+    if (Number(readiness) >= 80) {
+
+        document.getElementById("status").innerText =
+            "Job Ready";
+
+    } else if (Number(readiness) >= 50) {
+
+        document.getElementById("status").innerText =
+            "Almost Ready";
+
+    } else {
+
+        document.getElementById("status").innerText =
+            "Learning In Progress";
+
+    }
+}
+
+
+function goPractice() {
+
+    window.location.href =
+        "practice.html";
+}
+
+
+function goInterview() {
+
+    window.location.href =
+        "mock-interview.html";
+}
+
+
+function goResume() {
+
+    window.location.href =
+        "resume-ai.html";
+}
+
+
+function goDashboard() {
+
+    window.location.href =
+        "dashboard.html";
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedLanguage =
+            localStorage.getItem("selectedLanguage") || "en";
+
+        document.getElementById(
+            "languageSelector"
+        ).value = savedLanguage;
+
+        changeLanguage();
+
+        loadRoadmap();
+
+    }
+);
+
+</script>
+<div class="dashboard-back">
+    <button onclick="window.location.href='dashboard.html'">
+        ← Go Back to Dashboard
+    </button>
+
+    <script>
+(function fixRoadmapCareerData() {
+
+    function getStorage(keys, fallback = "") {
+        for (const key of keys) {
+            const value = localStorage.getItem(key);
+            if (value !== null && String(value).trim() !== "") {
+                return String(value).trim();
+            }
+        }
+        return fallback;
+    }
+
+    function setFirst(ids, value) {
+        for (const id of ids) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.textContent = value;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Target Career
+    const targetCareer = getStorage(
+        [
+            "target_career",
+            "targetCareer",
+            "selected_career",
+            "selectedCareer",
+            "career"
+        ],
+        "Not Selected"
+    );
+
+    // Current Career
+    const currentCareer = getStorage(
+        [
+            "current_career",
+            "currentCareer",
+            "currentCareerName",
+            "current_career_name",
+            "career"
+        ],
+        targetCareer
+    );
+
+    // Readiness
+    let readiness = getStorage(
+        [
+            "readiness",
+            "readiness_score",
+            "job_readiness",
+            "jobReadiness",
+            "mission_readiness",
+            "missionReadiness"
+        ],
+        "0"
+    );
+
+    readiness = parseFloat(String(readiness).replace("%", "")) || 0;
+    readiness = Math.max(0, Math.min(100, readiness));
+
+    // Status
+    let status = "Not Started";
+
+    if (readiness >= 75) {
+        status = "Ready";
+    } else if (readiness >= 40) {
+        status = "In Progress";
+    } else if (readiness > 0) {
+        status = "Getting Started";
+    }
+
+    // Fill Roadmap cards
+    setFirst(
+        [
+            "roadmapTargetCareer",
+            "targetCareer",
+            "targetCareerName",
+            "roadmapTarget"
+        ],
+        targetCareer
+    );
+
+    setFirst(
+        [
+            "roadmapCurrentCareer",
+            "currentCareer",
+            "currentCareerName",
+            "roadmapCurrent"
+        ],
+        currentCareer
+    );
+
+    setFirst(
+        [
+            "roadmapReadiness",
+            "readiness",
+            "readinessScore",
+            "jobReadiness",
+            "roadmapReadinessScore"
+        ],
+        Math.round(readiness) + "%"
+    );
+
+    setFirst(
+        [
+            "roadmapStatus",
+            "status",
+            "careerStatus",
+            "roadmapCareerStatus"
+        ],
+        status
+    );
+
+})();
+</script>
+</div>
+
+<script>
+(function fixCareerRoadmapData() {
+
+    function getValue(keys, fallback = "") {
+
+        for (const key of keys) {
+
+            const value = localStorage.getItem(key);
+
+            if (
+                value !== null &&
+                String(value).trim() !== ""
+            ) {
+                return String(value).trim();
+            }
+        }
+
+        return fallback;
+    }
+
+    const targetCareer = getValue(
+        [
+            "target_career",
+            "targetCareer",
+            "selected_career",
+            "selectedCareer",
+            "user_career",
+            "career"
+        ],
+        "Not Selected"
+    );
+
+    const currentCareer = getValue(
+        [
+            "current_career",
+            "currentCareer",
+            "currentCareerName",
+            "current_career_name"
+        ],
+        "-"
+    );
+
+    const level = getValue(
+        [
+            "selected_level",
+            "selectedLevel",
+            "user_level",
+            "level"
+        ],
+        "Beginner"
+    );
+
+    let readiness = getValue(
+        [
+            "readiness",
+            "readiness_score",
+            "job_readiness",
+            "jobReadiness",
+            "mission_readiness",
+            "missionReadiness"
+        ],
+        "0"
+    );
+
+    readiness =
+        parseFloat(
+            String(readiness).replace("%", "")
+        ) || 0;
+
+    readiness =
+        Math.max(0, Math.min(100, readiness));
+
+    let status = "Not Started";
+
+    if (readiness >= 75) {
+        status = "Ready";
+    }
+    else if (readiness >= 40) {
+        status = "In Progress";
+    }
+    else if (readiness > 0) {
+        status = "Getting Started";
+    }
+
+    function setFirst(ids, value) {
+
+        for (const id of ids) {
+
+            const element =
+                document.getElementById(id);
+
+            if (element) {
+
+                element.textContent = value;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    setFirst(
+        [
+            "roadmapTargetCareer",
+            "targetCareer",
+            "targetCareerName",
+            "roadmapTarget"
+        ],
+        targetCareer
+    );
+
+    setFirst(
+        [
+            "roadmapCurrentCareer",
+            "currentCareer",
+            "currentCareerName",
+            "roadmapCurrent"
+        ],
+        currentCareer
+    );
+
+    setFirst(
+        [
+            "roadmapLevel",
+            "currentLevel",
+            "selectedLevel",
+            "level"
+        ],
+        level
+    );
+
+    setFirst(
+        [
+            "roadmapReadiness",
+            "readiness",
+            "readinessScore",
+            "jobReadiness",
+            "roadmapReadinessScore"
+        ],
+        Math.round(readiness) + "%"
+    );
+
+    setFirst(
+        [
+            "roadmapStatus",
+            "status",
+            "careerStatus",
+            "roadmapCareerStatus"
+        ],
+        status
+    );
+
+})();
+</script>
+
+
+<script>
+(function useLatestCareerJourney() {
+    function read(keys, fallback) {
+        for (const key of keys) {
+            const value = localStorage.getItem(key);
+            if (value !== null && String(value).trim() !== "") {
+                return String(value).trim();
+            }
+        }
+        return fallback;
+    }
+
+    const currentCareer = read(
+        ["current_career", "currentCareer", "currentCareerName"],
+        "-"
+    );
+
+    const targetCareer = read(
+        ["target_career", "targetCareer", "selected_career", "selectedCareer"],
+        "Not Selected"
+    );
+
+    const level = read(
+        ["selected_level", "selectedLevel", "user_level", "level"],
+        "Beginner"
+    );
+
+    let readiness = parseFloat(read(
+        ["readiness", "readiness_score", "job_readiness", "jobReadiness",
+         "mission_readiness", "missionReadiness"],
+        "0"
+    ).replace("%", ""));
+
+    if (Number.isNaN(readiness)) readiness = 0;
+    readiness = Math.max(0, Math.min(100, readiness));
+
+    // Keep all aliases consistent for the Roadmap page.
+    [
+        "current_career", "currentCareer", "currentCareerName"
+    ].forEach(key => localStorage.setItem(key, currentCareer));
+
+    [
+        "target_career", "targetCareer", "selected_career", "selectedCareer"
+    ].forEach(key => localStorage.setItem(key, targetCareer));
+
+    [
+        "selected_level", "selectedLevel", "user_level"
+    ].forEach(key => localStorage.setItem(key, level));
+
+    [
+        "readiness", "readiness_score", "job_readiness", "jobReadiness",
+        "mission_readiness", "missionReadiness"
+    ].forEach(key => localStorage.setItem(key, String(readiness)));
+})();
+</script>
+
+
+</body>
+</html>

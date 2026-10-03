@@ -1,0 +1,2742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Career Hub - Skill Gap</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile-responsive.css">
+
+<script src="course-data.js"></script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(59,130,246,.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(139,92,246,.18),
+            transparent 35%
+        ),
+        #020617;
+
+    color: #f8fafc;
+}
+
+.skillgap-page {
+    min-height: 100vh;
+    padding: 25px;
+}
+
+.top-bar {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.language-box select {
+    background: #0f172a;
+    color: #ffffff;
+
+    border: 1px solid
+        rgba(96,165,250,.45);
+
+    border-radius: 12px;
+
+    padding: 10px 14px;
+
+    outline: none;
+}
+
+.main-card {
+    max-width: 1050px;
+    margin: auto;
+
+    background:
+        rgba(15,23,42,.90);
+
+    border:
+        1px solid
+        rgba(96,165,250,.25);
+
+    border-radius: 28px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 25px 80px
+        rgba(0,0,0,.45);
+
+    backdrop-filter: blur(18px);
+}
+
+.hero {
+    text-align: center;
+
+    background:
+        rgba(15,23,42,.96);
+
+    border:
+        1px solid
+        rgba(96,165,250,.25);
+
+    border-radius: 22px;
+
+    padding: 28px;
+
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    margin: 0 0 10px;
+
+    font-size: 38px;
+
+    color: #ffffff !important;
+
+    background: none !important;
+
+    -webkit-text-fill-color:
+        #ffffff !important;
+
+    text-shadow:
+        0 3px 15px
+        rgba(0,0,0,.45);
+}
+
+.hero p {
+    margin: 0;
+
+    color: #cbd5e1 !important;
+
+    line-height: 1.6;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.field label {
+    color: #cbd5e1;
+    font-weight: 700;
+}
+
+.field select {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(148,163,184,.25);
+
+    background: #020617;
+
+    color: #ffffff;
+
+    outline: none;
+}
+
+.field select:focus {
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(96,165,250,.12);
+}
+
+.level-row {
+    max-width: 500px;
+    margin: 0 auto 25px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="skillgap-page">
+
+    <div class="top-bar">
+
+        <div class="logo">
+            AI <span>Career Hub</span>
+        </div>
+
+        <div class="language-box">
+
+            <select id="languageSelect">
+
+                <option value="English">
+                    English
+                </option>
+
+                <option value="Tamil">
+                    தமிழ்
+                </option>
+
+                <option value="Hindi">
+                    हिन्दी
+                </option>
+
+                <option value="Thanglish">
+                    Thanglish
+                </option>
+
+                <option value="Kannada">
+                    ಕನ್ನಡ
+                </option>
+
+                <option value="Malayalam">
+                    മലയാളം
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div class="main-card">
+
+        <!-- SETUP -->
+
+        <section id="setupScreen">
+
+            <div class="hero">
+
+                <h1 id="pageTitle">
+                    Skill Gap Analysis
+                </h1>
+
+                <p id="pageSubtitle">
+                    Select your career and identify the skills you need to develop.
+                </p>
+
+            </div>
+
+
+            <div class="field">
+
+                <label id="careerLabel">
+                    Select Your Career
+                </label>
+
+                <select id="careerSelect">
+
+                    <option value="">
+                        Select a career
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="level-row">
+
+                <div class="field">
+
+                    <label id="levelLabel">
+                        Select Your Level
+                    </label>
+
+                    <select id="levelSelect">
+
+                        <option value="">
+                            Select level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div id="skillsSection"
+                 class="skills-section hidden">
+
+                <h2 id="skillsTitle">
+                    Select Skills You Already Know
+                </h2>
+
+                <p id="skillsSubtitle">
+                    Select the skills you already know for your chosen career.
+                </p>
+
+                <div
+                    id="skillsContainer"
+                    class="skills-grid">
+                </div>
+
+            </div>
+
+
+            <div
+                id="statusMessage"
+                class="status-message">
+            </div>
+
+
+            <div class="action-area">
+
+                <button
+                    id="analyseButton"
+                    class="primary-btn"
+                    type="button">
+
+                    Analyse Skill Gap
+
+                </button>
+
+            </div>
+
+
+            <button
+                id="dashboardButton"
+                class="dashboard-btn"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+
+
+        <!-- RESULT -->
+
+        <section
+            id="resultScreen"
+            class="hidden">
+
+            <div class="hero">
+
+                <h1 id="resultTitle">
+                    Skill Gap Result
+                </h1>
+
+                <p id="resultSubtitle">
+                    Your career skill analysis
+                </p>
+
+            </div>
+
+
+            <div class="result-grid">
+
+                <div class="result-box">
+
+                    <span id="requiredLabel">
+                        Required Skills
+                    </span>
+
+                    <strong id="requiredValue">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="matchedLabel">
+                        Matched Skills
+                    </span>
+
+                    <strong id="matchedValue">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="missingLabel">
+                        Missing Skills
+                    </span>
+
+                    <strong id="missingValue">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="gapLabel">
+                        Skill Gap
+                    </span>
+
+                    <strong id="gapValue">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="skills-result-card">
+
+                <h2 id="matchedTitle">
+                    Skills You Already Know
+                </h2>
+
+                <div
+                    id="matchedSkills"
+                    class="skill-tags">
+                </div>
+
+            </div>
+
+
+            <div class="skills-result-card">
+
+                <h2 id="missingTitle">
+                    Skills You Need to Learn
+                </h2>
+
+                <div
+                    id="missingSkills"
+                    class="skill-tags">
+                </div>
+
+            </div>
+
+
+            <div
+                id="resultMessage"
+                class="result-message">
+            </div>
+
+
+            <div class="result-actions">
+
+                <button
+                    id="whatIfButton"
+                    class="primary-btn"
+                    type="button">
+
+                    Continue to What-If
+
+                </button>
+
+                <button
+                    id="newAnalysisButton"
+                    class="secondary-btn"
+                    type="button">
+
+                    New Analysis
+
+                </button>
+
+            </div>
+
+
+            <button
+                id="dashboardButton2"
+                class="dashboard-btn"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+    </div>
+
+</div>
+<style>
+
+.skills-section {
+    margin-top: 28px;
+}
+
+.skills-section h2 {
+    color: #ffffff;
+
+    margin-bottom: 8px;
+}
+
+.skills-section p {
+    color: #94a3b8;
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+}
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    max-height: 430px;
+
+    overflow-y: auto;
+
+    padding: 5px;
+}
+
+.skill-option {
+    position: relative;
+}
+
+.skill-option input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.skill-option label {
+    display: block;
+
+    padding: 14px 15px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(30,41,59,.75);
+
+    border:
+        1px solid
+        rgba(148,163,184,.20);
+
+    color: #cbd5e1;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.skill-option label:hover {
+    border-color: #60a5fa;
+
+    transform:
+        translateY(-1px);
+}
+
+.skill-option input:checked + label {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,99,235,.40),
+            rgba(124,58,237,.40)
+        );
+
+    border-color: #60a5fa;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 6px 20px
+        rgba(37,99,235,.18);
+}
+
+.action-area {
+    text-align: center;
+
+    margin-top: 28px;
+}
+
+.primary-btn,
+.secondary-btn,
+.dashboard-btn {
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 14px 24px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.primary-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: #ffffff;
+}
+
+.primary-btn:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(59,130,246,.30);
+}
+
+.secondary-btn {
+    background:
+        rgba(30,41,59,.95);
+
+    color: #ffffff;
+
+    border:
+        1px solid
+        rgba(148,163,184,.25);
+}
+
+.dashboard-btn {
+    display: block;
+
+    margin: 28px auto 0;
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+.dashboard-btn:hover {
+    background: #1d4ed8;
+
+    transform:
+        translateY(-2px);
+}
+
+.status-message {
+    min-height: 24px;
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    color: #93c5fd;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-top: 25px;
+}
+
+.result-box {
+    background:
+        rgba(15,23,42,.98) !important;
+
+    border:
+        1px solid
+        rgba(96,165,250,.28) !important;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
+}
+
+.result-box span {
+    display: block;
+
+    color: #94a3b8 !important;
+
+    margin-bottom: 10px;
+}
+
+.result-box strong {
+    display: block;
+
+    color: #ffffff !important;
+
+    font-size: 30px;
+}
+
+.skills-result-card {
+    margin-top: 22px;
+
+    padding: 24px;
+
+    background:
+        rgba(15,23,42,.96);
+
+    border:
+        1px solid
+        rgba(96,165,250,.20);
+
+    border-radius: 20px;
+}
+
+.skills-result-card h2 {
+    margin-top: 0;
+
+    color: #ffffff;
+}
+
+.skill-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.skill-tag {
+    padding: 9px 14px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(37,99,235,.20);
+
+    border:
+        1px solid
+        rgba(96,165,250,.35);
+
+    color: #bfdbfe;
+}
+
+.missing-tag {
+    background:
+        rgba(124,58,237,.20);
+
+    border-color:
+        rgba(167,139,250,.35);
+
+    color: #ddd6fe;
+}
+
+.result-message {
+    margin-top: 24px;
+
+    padding: 22px;
+
+    background:
+        rgba(15,23,42,.98) !important;
+
+    border:
+        1px solid
+        rgba(139,92,246,.30);
+
+    border-radius: 20px;
+
+    color: #ffffff !important;
+
+    text-align: center;
+
+    line-height: 1.7;
+}
+
+.result-actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+@media(max-width: 800px) {
+
+    .skills-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .result-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 600px) {
+
+    .skillgap-page {
+        padding: 14px;
+    }
+
+    .main-card {
+        padding: 22px;
+
+        border-radius: 20px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .result-actions button {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+let currentLanguage = "English";
+
+let selectedCareer = "";
+
+let selectedLevel = "";
+
+let requiredSkills = [];
+
+
+const translations = {
+
+English: {
+
+    title:
+        "Skill Gap Analysis",
+
+    subtitle:
+        "Select your career and identify the skills you need to develop.",
+
+    career:
+        "Select Your Career",
+
+    level:
+        "Select Your Level",
+
+    careerPlaceholder:
+        "Select a career",
+
+    levelPlaceholder:
+        "Select level",
+
+    skillsTitle:
+        "Select Skills You Already Know",
+
+    skillsSubtitle:
+        "Select the skills you already know for your chosen career.",
+
+    analyse:
+        "Analyse Skill Gap",
+
+    resultTitle:
+        "Skill Gap Result",
+
+    resultSubtitle:
+        "Your career skill analysis",
+
+    required:
+        "Required Skills",
+
+    matched:
+        "Matched Skills",
+
+    missing:
+        "Missing Skills",
+
+    gap:
+        "Skill Gap",
+
+    matchedTitle:
+        "Skills You Already Know",
+
+    missingTitle:
+        "Skills You Need to Learn",
+
+    whatif:
+        "Continue to What-If",
+
+    newAnalysis:
+        "New Analysis",
+
+    dashboard:
+        "Go Back Dashboard",
+
+    selectCareer:
+        "Please select a career.",
+
+    selectLevel:
+        "Please select your level.",
+
+    selectSkills:
+        "Please select at least one skill.",
+
+    noSkills:
+        "No skills were found for this career.",
+
+    resultReady:
+        "Your skill gap analysis is ready."
+
+},
+
+Tamil: {
+
+    title:
+        "திறன் இடைவெளி பகுப்பாய்வு",
+
+    subtitle:
+        "உங்கள் தொழிலை தேர்ந்தெடுத்து மேம்படுத்த வேண்டிய திறன்களை கண்டறியுங்கள்.",
+
+    career:
+        "உங்கள் தொழிலை தேர்ந்தெடுக்கவும்",
+
+    level:
+        "உங்கள் நிலையை தேர்ந்தெடுக்கவும்",
+
+    careerPlaceholder:
+        "தொழிலை தேர்ந்தெடுக்கவும்",
+
+    levelPlaceholder:
+        "நிலையை தேர்ந்தெடுக்கவும்",
+
+    skillsTitle:
+        "உங்களுக்கு ஏற்கனவே தெரிந்த திறன்களை தேர்ந்தெடுக்கவும்",
+
+    skillsSubtitle:
+        "நீங்கள் தேர்ந்தெடுத்த தொழிலுக்கான உங்களுக்கு தெரிந்த திறன்களை தேர்ந்தெடுக்கவும்.",
+
+    analyse:
+        "திறன் இடைவெளியை பகுப்பாய்வு செய்",
+
+    resultTitle:
+        "திறன் இடைவெளி முடிவு",
+
+    resultSubtitle:
+        "உங்கள் தொழில் திறன் பகுப்பாய்வு",
+
+    required:
+        "தேவையான திறன்கள்",
+
+    matched:
+        "பொருந்திய திறன்கள்",
+
+    missing:
+        "காணாமல் போன திறன்கள்",
+
+    gap:
+        "திறன் இடைவெளி",
+
+    matchedTitle:
+        "உங்களுக்கு தெரிந்த திறன்கள்",
+
+    missingTitle:
+        "நீங்கள் கற்றுக்கொள்ள வேண்டிய திறன்கள்",
+
+    whatif:
+        "What-If க்கு தொடரவும்",
+
+    newAnalysis:
+        "புதிய பகுப்பாய்வு",
+
+    dashboard:
+        "டாஷ்போர்டுக்கு திரும்பு",
+
+    selectCareer:
+        "தொழிலை தேர்ந்தெடுக்கவும்.",
+
+    selectLevel:
+        "உங்கள் நிலையை தேர்ந்தெடுக்கவும்.",
+
+    selectSkills:
+        "குறைந்தது ஒரு திறனை தேர்ந்தெடுக்கவும்.",
+
+    noSkills:
+        "இந்த தொழிலுக்கு திறன்கள் கிடைக்கவில்லை.",
+
+    resultReady:
+        "உங்கள் திறன் இடைவெளி பகுப்பாய்வு தயாராக உள்ளது."
+
+},
+
+Hindi: {
+
+    title:
+        "स्किल गैप विश्लेषण",
+
+    subtitle:
+        "अपना करियर चुनें और उन कौशलों को पहचानें जिन्हें आपको विकसित करना है।",
+
+    career:
+        "अपना करियर चुनें",
+
+    level:
+        "अपना स्तर चुनें",
+
+    careerPlaceholder:
+        "करियर चुनें",
+
+    levelPlaceholder:
+        "स्तर चुनें",
+
+    skillsTitle:
+        "जो कौशल आपको आते हैं उन्हें चुनें",
+
+    skillsSubtitle:
+        "अपने चुने हुए करियर से संबंधित ज्ञात कौशल चुनें।",
+
+    analyse:
+        "स्किल गैप विश्लेषण करें",
+
+    resultTitle:
+        "स्किल गैप परिणाम",
+
+    resultSubtitle:
+        "आपका करियर कौशल विश्लेषण",
+
+    required:
+        "आवश्यक कौशल",
+
+    matched:
+        "मिलते हुए कौशल",
+
+    missing:
+        "कमी वाले कौशल",
+
+    gap:
+        "स्किल गैप",
+
+    matchedTitle:
+        "आपको आने वाले कौशल",
+
+    missingTitle:
+        "सीखने वाले कौशल",
+
+    whatif:
+        "What-If पर जाएं",
+
+    newAnalysis:
+        "नया विश्लेषण",
+
+    dashboard:
+        "डैशबोर्ड पर वापस जाएं",
+
+    selectCareer:
+        "कृपया करियर चुनें।",
+
+    selectLevel:
+        "कृपया अपना स्तर चुनें।",
+
+    selectSkills:
+        "कृपया कम से कम एक कौशल चुनें।",
+
+    noSkills:
+        "इस करियर के लिए कोई कौशल नहीं मिला।",
+
+    resultReady:
+        "आपका स्किल गैप विश्लेषण तैयार है।"
+
+},
+
+Thanglish: {
+
+    title:
+        "Skill Gap Analysis",
+
+    subtitle:
+        "Un career select panni improve panna vendiya skills-a identify pannunga.",
+
+    career:
+        "Un Career Select Pannu",
+
+    level:
+        "Un Level Select Pannu",
+
+    careerPlaceholder:
+        "Career select pannu",
+
+    levelPlaceholder:
+        "Level select pannu",
+
+    skillsTitle:
+        "Unakku Therinja Skills-a Select Pannu",
+
+    skillsSubtitle:
+        "Nee select panna career-ku related ah unakku therinja skills select pannu.",
+
+    analyse:
+        "Analyse Skill Gap",
+
+    resultTitle:
+        "Skill Gap Result",
+
+    resultSubtitle:
+        "Un career skill analysis",
+
+    required:
+        "Required Skills",
+
+    matched:
+        "Matched Skills",
+
+    missing:
+        "Missing Skills",
+
+    gap:
+        "Skill Gap",
+
+    matchedTitle:
+        "Unakku Therinja Skills",
+
+    missingTitle:
+        "Nee Kathukka Vendiya Skills",
+
+    whatif:
+        "What-If-ku Continue Pannu",
+
+    newAnalysis:
+        "New Analysis",
+
+    dashboard:
+        "Dashboard-ku Thirumbi Po",
+
+    selectCareer:
+        "Career select pannu.",
+
+    selectLevel:
+        "Level select pannu.",
+
+    selectSkills:
+        "At least one skill select pannu.",
+
+    noSkills:
+        "Indha career-ku skills kidaikkala.",
+
+    resultReady:
+        "Un Skill Gap Analysis ready."
+
+},
+
+Kannada: {
+
+    title:
+        "ಕೌಶಲ್ಯ ಅಂತರ ವಿಶ್ಲೇಷಣೆ",
+
+    subtitle:
+        "ನಿಮ್ಮ ವೃತ್ತಿಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಮತ್ತು ಅಭಿವೃದ್ಧಿಪಡಿಸಬೇಕಾದ ಕೌಶಲ್ಯಗಳನ್ನು ಗುರುತಿಸಿ.",
+
+    career:
+        "ನಿಮ್ಮ ವೃತ್ತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+
+    level:
+        "ನಿಮ್ಮ ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+
+    careerPlaceholder:
+        "ವೃತ್ತಿ ಆಯ್ಕೆಮಾಡಿ",
+
+    levelPlaceholder:
+        "ಮಟ್ಟ ಆಯ್ಕೆಮಾಡಿ",
+
+    skillsTitle:
+        "ನಿಮಗೆ ತಿಳಿದಿರುವ ಕೌಶಲ್ಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+
+    skillsSubtitle:
+        "ಆಯ್ಕೆ ಮಾಡಿದ ವೃತ್ತಿಗೆ ಸಂಬಂಧಿಸಿದ ನಿಮಗೆ ತಿಳಿದಿರುವ ಕೌಶಲ್ಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+    analyse:
+        "ಕೌಶಲ್ಯ ಅಂತರ ವಿಶ್ಲೇಷಿಸಿ",
+
+    resultTitle:
+        "ಕೌಶಲ್ಯ ಅಂತರ ಫಲಿತಾಂಶ",
+
+    resultSubtitle:
+        "ನಿಮ್ಮ ವೃತ್ತಿ ಕೌಶಲ್ಯ ವಿಶ್ಲೇಷಣೆ",
+
+    required:
+        "ಅಗತ್ಯ ಕೌಶಲ್ಯಗಳು",
+
+    matched:
+        "ಹೊಂದಾಣಿಕೆಯ ಕೌಶಲ್ಯಗಳು",
+
+    missing:
+        "ಕಾಣೆಯಾದ ಕೌಶಲ್ಯಗಳು",
+
+    gap:
+        "ಕೌಶಲ್ಯ ಅಂತರ",
+
+    matchedTitle:
+        "ನಿಮಗೆ ತಿಳಿದಿರುವ ಕೌಶಲ್ಯಗಳು",
+
+    missingTitle:
+        "ನೀವು ಕಲಿಯಬೇಕಾದ ಕೌಶಲ್ಯಗಳು",
+
+    whatif:
+        "What-If ಗೆ ಮುಂದುವರಿಯಿರಿ",
+
+    newAnalysis:
+        "ಹೊಸ ವಿಶ್ಲೇಷಣೆ",
+
+    dashboard:
+        "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ",
+
+    selectCareer:
+        "ದಯವಿಟ್ಟು ವೃತ್ತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+    selectLevel:
+        "ದಯವಿಟ್ಟು ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+    selectSkills:
+        "ಕನಿಷ್ಠ ಒಂದು ಕೌಶಲ್ಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+    noSkills:
+        "ಈ ವೃತ್ತಿಗೆ ಕೌಶಲ್ಯಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+
+    resultReady:
+        "ನಿಮ್ಮ ಕೌಶಲ್ಯ ಅಂತರ ವಿಶ್ಲೇಷಣೆ ಸಿದ್ಧವಾಗಿದೆ."
+
+},
+
+Malayalam: {
+
+    title:
+        "സ്കിൽ ഗ്യാപ് വിശകലനം",
+
+    subtitle:
+        "നിങ്ങളുടെ കരിയർ തിരഞ്ഞെടുക്കുകയും വികസിപ്പിക്കേണ്ട സ്കില്ലുകൾ കണ്ടെത്തുകയും ചെയ്യുക.",
+
+    career:
+        "നിങ്ങളുടെ കരിയർ തിരഞ്ഞെടുക്കുക",
+
+    level:
+        "നിങ്ങളുടെ ലെവൽ തിരഞ്ഞെടുക്കുക",
+
+    careerPlaceholder:
+        "കരിയർ തിരഞ്ഞെടുക്കുക",
+
+    levelPlaceholder:
+        "ലെവൽ തിരഞ്ഞെടുക്കുക",
+
+    skillsTitle:
+        "നിങ്ങൾക്ക് അറിയാവുന്ന സ്കില്ലുകൾ തിരഞ്ഞെടുക്കുക",
+
+    skillsSubtitle:
+        "തിരഞ്ഞെടുത്ത കരിയറുമായി ബന്ധപ്പെട്ട നിങ്ങൾക്ക് അറിയാവുന്ന സ്കില്ലുകൾ തിരഞ്ഞെടുക്കുക.",
+
+    analyse:
+        "സ്കിൽ ഗ്യാപ് വിശകലനം ചെയ്യുക",
+
+    resultTitle:
+        "സ്കിൽ ഗ്യാപ് ഫലം",
+
+    resultSubtitle:
+        "നിങ്ങളുടെ കരിയർ സ്കിൽ വിശകലനം",
+
+    required:
+        "ആവശ്യമായ സ്കില്ലുകൾ",
+
+    matched:
+        "പൊരുത്തപ്പെട്ട സ്കില്ലുകൾ",
+
+    missing:
+        "കാണാത്ത സ്കില്ലുകൾ",
+
+    gap:
+        "സ്കിൽ ഗ്യാപ്",
+
+    matchedTitle:
+        "നിങ്ങൾക്ക് അറിയാവുന്ന സ്കില്ലുകൾ",
+
+    missingTitle:
+        "നിങ്ങൾ പഠിക്കേണ്ട സ്കില്ലുകൾ",
+
+    whatif:
+        "What-If ലേക്ക് തുടരുക",
+
+    newAnalysis:
+        "പുതിയ വിശകലനം",
+
+    dashboard:
+        "ഡാഷ്ബോർഡിലേക്ക് മടങ്ങുക",
+
+    selectCareer:
+        "കരിയർ തിരഞ്ഞെടുക്കുക.",
+
+    selectLevel:
+        "ലെവൽ തിരഞ്ഞെടുക്കുക.",
+
+    selectSkills:
+        "കുറഞ്ഞത് ഒരു സ്കിൽ തിരഞ്ഞെടുക്കുക.",
+
+    noSkills:
+        "ഈ കരിയറിന് സ്കില്ലുകൾ ലഭ്യമല്ല.",
+
+    resultReady:
+        "നിങ്ങളുടെ സ്കിൽ ഗ്യാപ് വിശകലനം തയ്യാറാണ്."
+
+}
+
+};
+
+</script>
+<script>
+
+/* -----------------------------------------
+   COURSE SKILLS
+----------------------------------------- */
+
+function getCourseSkills(career) {
+
+    if (
+        typeof courseCatalog === "undefined" ||
+        !courseCatalog
+    ) {
+        return [];
+    }
+
+    const course =
+        courseCatalog[career];
+
+    if (!course) {
+        return [];
+    }
+
+    if (Array.isArray(course)) {
+        return course;
+    }
+
+    if (Array.isArray(course.skills)) {
+        return course.skills;
+    }
+
+    if (Array.isArray(course.requiredSkills)) {
+        return course.requiredSkills;
+    }
+
+    if (Array.isArray(course.required_skills)) {
+        return course.required_skills;
+    }
+
+    return [];
+}
+
+
+/* -----------------------------------------
+   POPULATE 100 COURSES
+----------------------------------------- */
+
+function populateCareerDropdown() {
+
+    const select =
+        document.getElementById(
+            "careerSelect"
+        );
+
+    if (!select) {
+        return;
+    }
+
+
+    const oldValue =
+        localStorage.getItem(
+            "selected_career"
+        ) || select.value;
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    select.innerHTML = "";
+
+
+    const placeholder =
+        document.createElement("option");
+
+    placeholder.value = "";
+
+    placeholder.innerText =
+        t.careerPlaceholder;
+
+    select.appendChild(
+        placeholder
+    );
+
+
+    if (
+        typeof courseCatalog === "undefined" ||
+        !courseCatalog
+    ) {
+
+        return;
+
+    }
+
+
+    Object.keys(courseCatalog)
+        .forEach(career => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                career;
+
+            option.innerText =
+                career;
+
+            select.appendChild(
+                option
+            );
+
+        });
+
+
+    if (
+        Object.keys(courseCatalog)
+            .includes(oldValue)
+    ) {
+
+        select.value =
+            oldValue;
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   RENDER SKILLS
+----------------------------------------- */
+
+function renderSkills(career) {
+
+    const container =
+        document.getElementById(
+            "skillsContainer"
+        );
+
+
+    const section =
+        document.getElementById(
+            "skillsSection"
+        );
+
+
+    container.innerHTML = "";
+
+
+    requiredSkills =
+        getCourseSkills(career);
+
+
+    if (!requiredSkills.length) {
+
+        section.classList.add(
+            "hidden"
+        );
+
+        return;
+
+    }
+
+
+    section.classList.remove(
+        "hidden"
+    );
+
+
+    const oldKnown =
+        JSON.parse(
+            localStorage.getItem(
+                `known_skills_${career}`
+            ) || "[]"
+        );
+
+
+    requiredSkills.forEach(
+        (skill, index) => {
+
+            const cleanSkill =
+                String(skill).trim();
+
+
+            const id =
+                `skill_${index}`;
+
+
+            const wrapper =
+                document.createElement(
+                    "div"
+                );
+
+            wrapper.className =
+                "skill-option";
+
+
+            const input =
+                document.createElement(
+                    "input"
+                );
+
+            input.type =
+                "checkbox";
+
+            input.id =
+                id;
+
+            input.value =
+                cleanSkill;
+
+
+            if (
+                oldKnown.includes(
+                    cleanSkill
+                )
+            ) {
+
+                input.checked =
+                    true;
+
+            }
+
+
+            const label =
+                document.createElement(
+                    "label"
+                );
+
+            label.htmlFor =
+                id;
+
+            label.innerText =
+                cleanSkill;
+
+
+            wrapper.appendChild(
+                input
+            );
+
+            wrapper.appendChild(
+                label
+            );
+
+
+            container.appendChild(
+                wrapper
+            );
+
+        }
+    );
+
+}
+
+
+/* -----------------------------------------
+   GET SELECTED SKILLS
+----------------------------------------- */
+
+function getSelectedSkills() {
+
+    const inputs =
+        document.querySelectorAll(
+            "#skillsContainer input[type='checkbox']:checked"
+        );
+
+
+    return Array.from(inputs)
+        .map(
+            input =>
+                input.value
+        );
+
+}
+
+
+/* -----------------------------------------
+   ANALYSE
+----------------------------------------- */
+
+function analyseSkillGap() {
+
+    const career =
+        document.getElementById(
+            "careerSelect"
+        ).value;
+
+
+    const level =
+        document.getElementById(
+            "levelSelect"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "statusMessage"
+        );
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    if (!career) {
+
+        status.innerText =
+            t.selectCareer;
+
+        return;
+
+    }
+
+
+    if (!level) {
+
+        status.innerText =
+            t.selectLevel;
+
+        return;
+
+    }
+
+
+    const skills =
+        getCourseSkills(career);
+
+
+    if (!skills.length) {
+
+        status.innerText =
+            t.noSkills;
+
+        return;
+
+    }
+
+
+    const knownSkills =
+        getSelectedSkills();
+
+
+    if (!knownSkills.length) {
+
+        status.innerText =
+            t.selectSkills;
+
+        return;
+
+    }
+
+
+    const knownSet =
+        new Set(
+            knownSkills.map(
+                skill =>
+                    normalizeSkill(skill)
+            )
+        );
+
+
+    const matched =
+        skills.filter(
+            skill =>
+                knownSet.has(
+                    normalizeSkill(skill)
+                )
+        );
+
+
+    const missing =
+        skills.filter(
+            skill =>
+                !knownSet.has(
+                    normalizeSkill(skill)
+                )
+        );
+
+
+    const gap =
+        Math.round(
+            (
+                missing.length /
+                skills.length
+            ) * 100
+        );
+
+
+    localStorage.setItem(
+        "selected_career",
+        career
+    );
+
+    localStorage.setItem(
+        "selected_level",
+        level
+    );
+
+    localStorage.setItem(
+        "known_skills",
+        JSON.stringify(
+            knownSkills
+        )
+    );
+
+    localStorage.setItem(
+        `known_skills_${career}`,
+        JSON.stringify(
+            knownSkills
+        )
+    );
+
+    localStorage.setItem(
+        "skill_gap",
+        gap
+    );
+
+    localStorage.setItem(
+        "skill_gap_missing",
+        JSON.stringify(
+            missing
+        )
+    );
+
+    localStorage.setItem(
+        "skill_gap_matched",
+        JSON.stringify(
+            matched
+        )
+    );
+
+    localStorage.setItem(
+        "skill_gap_required",
+        skills.length
+    );
+
+
+    showResult(
+        skills,
+        matched,
+        missing,
+        gap,
+        career,
+        level
+    );
+
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   SHOW RESULT
+----------------------------------------- */
+
+function showResult(
+    skills,
+    matched,
+    missing,
+    gap,
+    career,
+    level
+) {
+
+    document.getElementById(
+        "requiredValue"
+    ).innerText =
+        skills.length;
+
+
+    document.getElementById(
+        "matchedValue"
+    ).innerText =
+        matched.length;
+
+
+    document.getElementById(
+        "missingValue"
+    ).innerText =
+        missing.length;
+
+
+    document.getElementById(
+        "gapValue"
+    ).innerText =
+        `${gap}%`;
+
+
+    const matchedContainer =
+        document.getElementById(
+            "matchedSkills"
+        );
+
+
+    matchedContainer.innerHTML = "";
+
+
+    matched.forEach(skill => {
+
+        const tag =
+            document.createElement(
+                "span"
+            );
+
+        tag.className =
+            "skill-tag";
+
+        tag.innerText =
+            skill;
+
+        matchedContainer.appendChild(
+            tag
+        );
+
+    });
+
+
+    if (!matched.length) {
+
+        matchedContainer.innerHTML =
+            `<span class="skill-tag">
+                No matched skills
+            </span>`;
+
+    }
+
+
+    const missingContainer =
+        document.getElementById(
+            "missingSkills"
+        );
+
+
+    missingContainer.innerHTML = "";
+
+
+    missing.forEach(skill => {
+
+        const tag =
+            document.createElement(
+                "span"
+            );
+
+        tag.className =
+            "skill-tag missing-tag";
+
+        tag.innerText =
+            skill;
+
+        missingContainer.appendChild(
+            tag
+        );
+
+    });
+
+
+    if (!missing.length) {
+
+        missingContainer.innerHTML =
+            `<span class="skill-tag">
+                All required skills matched
+            </span>`;
+
+    }
+
+
+    const message =
+        createResultMessage(
+            career,
+            level,
+            gap,
+            missing.length
+        );
+
+
+    document.getElementById(
+        "resultMessage"
+    ).innerHTML =
+        message;
+
+
+    document.getElementById(
+        "setupScreen"
+    ).classList.add(
+        "hidden"
+    );
+
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.remove(
+        "hidden"
+    );
+
+}
+
+
+/* -----------------------------------------
+   RESULT MESSAGE
+----------------------------------------- */
+
+function createResultMessage(
+    career,
+    level,
+    gap,
+    missingCount
+) {
+
+    const safeCareer =
+        escapeHTML(career);
+
+
+    let text = "";
+
+
+    if (gap === 0) {
+
+        text = `
+            <strong style="color:#86efac;">
+                Excellent!
+            </strong>
+            <br>
+            Your current skills match all
+            required skills for
+            ${safeCareer}.
+        `;
+
+    } else if (gap <= 30) {
+
+        text = `
+            <strong style="color:#60a5fa;">
+                Low Skill Gap
+            </strong>
+            <br>
+            You are relatively close to
+            your ${safeCareer} career goal.
+            Focus on the missing skills.
+        `;
+
+    } else if (gap <= 60) {
+
+        text = `
+            <strong style="color:#fbbf24;">
+                Moderate Skill Gap
+            </strong>
+            <br>
+            You have a good starting point,
+            but ${missingCount}
+            skills need improvement.
+        `;
+
+    } else {
+
+        text = `
+            <strong style="color:#f87171;">
+                High Skill Gap
+            </strong>
+            <br>
+            Build the missing skills step by
+            step before moving toward
+            ${safeCareer}.
+        `;
+
+    }
+
+
+    return `
+        <div>
+            ${text}
+        </div>
+
+        <div style="
+            margin-top:12px;
+            color:#94a3b8;
+        ">
+            Current Level:
+            <strong style="color:#ffffff;">
+                ${escapeHTML(level)}
+            </strong>
+        </div>
+    `;
+
+}
+
+
+/* -----------------------------------------
+   NORMALIZE
+----------------------------------------- */
+
+function normalizeSkill(skill) {
+
+    return String(skill || "")
+        .trim()
+        .toLowerCase();
+
+}
+
+
+/* -----------------------------------------
+   ESCAPE
+----------------------------------------- */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* -----------------------------------------
+   LANGUAGE
+----------------------------------------- */
+
+function changeLanguage() {
+
+    currentLanguage =
+        document.getElementById(
+            "languageSelect"
+        ).value;
+
+
+    localStorage.setItem(
+        "selected_language",
+        currentLanguage
+    );
+
+
+    applyLanguage();
+
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   APPLY LANGUAGE
+----------------------------------------- */
+
+function applyLanguage() {
+
+    const t =
+        translations[currentLanguage];
+
+
+    document.getElementById(
+        "pageTitle"
+    ).innerText =
+        t.title;
+
+
+    document.getElementById(
+        "pageSubtitle"
+    ).innerText =
+        t.subtitle;
+
+
+    document.getElementById(
+        "careerLabel"
+    ).innerText =
+        t.career;
+
+
+    document.getElementById(
+        "levelLabel"
+    ).innerText =
+        t.level;
+
+
+    document.getElementById(
+        "skillsTitle"
+    ).innerText =
+        t.skillsTitle;
+
+
+    document.getElementById(
+        "skillsSubtitle"
+    ).innerText =
+        t.skillsSubtitle;
+
+
+    document.getElementById(
+        "analyseButton"
+    ).innerText =
+        t.analyse;
+
+
+    document.getElementById(
+        "resultTitle"
+    ).innerText =
+        t.resultTitle;
+
+
+    document.getElementById(
+        "resultSubtitle"
+    ).innerText =
+        t.resultSubtitle;
+
+
+    document.getElementById(
+        "requiredLabel"
+    ).innerText =
+        t.required;
+
+
+    document.getElementById(
+        "matchedLabel"
+    ).innerText =
+        t.matched;
+
+
+    document.getElementById(
+        "missingLabel"
+    ).innerText =
+        t.missing;
+
+
+    document.getElementById(
+        "gapLabel"
+    ).innerText =
+        t.gap;
+
+
+    document.getElementById(
+        "matchedTitle"
+    ).innerText =
+        t.matchedTitle;
+
+
+    document.getElementById(
+        "missingTitle"
+    ).innerText =
+        t.missingTitle;
+
+
+    document.getElementById(
+        "whatIfButton"
+    ).innerText =
+        t.whatif;
+
+
+    document.getElementById(
+        "newAnalysisButton"
+    ).innerText =
+        t.newAnalysis;
+
+
+    document.getElementById(
+        "dashboardButton"
+    ).innerText =
+        t.dashboard;
+
+
+    document.getElementById(
+        "dashboardButton2"
+    ).innerText =
+        t.dashboard;
+
+
+    populateCareerDropdown();
+
+
+    document.getElementById(
+        "levelSelect"
+    ).options[0]
+        .innerText =
+            t.levelPlaceholder;
+
+}
+
+
+/* -----------------------------------------
+   NEW ANALYSIS
+----------------------------------------- */
+
+function newAnalysis() {
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.add(
+        "hidden"
+    );
+
+
+    document.getElementById(
+        "setupScreen"
+    ).classList.remove(
+        "hidden"
+    );
+
+
+    document.getElementById(
+        "statusMessage"
+    ).innerText = "";
+
+
+    const career =
+        document.getElementById(
+            "careerSelect"
+        ).value;
+
+
+    if (career) {
+
+        renderSkills(
+            career
+        );
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   WHAT-IF
+----------------------------------------- */
+
+function openWhatIf() {
+
+    const career =
+        localStorage.getItem(
+            "selected_career"
+        );
+
+
+    const level =
+        localStorage.getItem(
+            "selected_level"
+        );
+
+
+    if (career) {
+
+        localStorage.setItem(
+            "whatif_target_career",
+            career
+        );
+
+    }
+
+
+    if (level) {
+
+        localStorage.setItem(
+            "whatif_level",
+            level
+        );
+
+    }
+
+
+    window.location.href =
+        "what-if.html";
+
+}
+
+
+/* -----------------------------------------
+   DASHBOARD
+----------------------------------------- */
+
+function goDashboard() {
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+
+/* -----------------------------------------
+   EVENT LISTENERS
+----------------------------------------- */
+
+document
+    .getElementById(
+        "languageSelect"
+    )
+    .addEventListener(
+        "change",
+        changeLanguage
+    );
+
+
+document
+    .getElementById(
+        "careerSelect"
+    )
+    .addEventListener(
+        "change",
+        function() {
+
+            const career =
+                this.value;
+
+
+            if (career) {
+
+                localStorage.setItem(
+                    "selected_career",
+                    career
+                );
+
+
+                renderSkills(
+                    career
+                );
+
+            } else {
+
+                document.getElementById(
+                    "skillsSection"
+                ).classList.add(
+                    "hidden"
+                );
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById(
+        "analyseButton"
+    )
+    .addEventListener(
+        "click",
+        analyseSkillGap
+    );
+
+
+document
+    .getElementById(
+        "whatIfButton"
+    )
+    .addEventListener(
+        "click",
+        openWhatIf
+    );
+
+
+document
+    .getElementById(
+        "newAnalysisButton"
+    )
+    .addEventListener(
+        "click",
+        newAnalysis
+    );
+
+
+document
+    .getElementById(
+        "dashboardButton"
+    )
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+
+document
+    .getElementById(
+        "dashboardButton2"
+    )
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+</script>
+<script>
+
+/* -----------------------------------------
+   PAGE LOAD
+----------------------------------------- */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selected_language"
+            );
+
+
+        if (
+            savedLanguage &&
+            translations[savedLanguage]
+        ) {
+
+            currentLanguage =
+                savedLanguage;
+
+            document.getElementById(
+                "languageSelect"
+            ).value =
+                savedLanguage;
+
+        }
+
+
+        populateCareerDropdown();
+
+        applyLanguage();
+
+
+        const savedCareer =
+            localStorage.getItem(
+                "selected_career"
+            );
+
+
+        const savedLevel =
+            localStorage.getItem(
+                "selected_level"
+            );
+
+
+        if (savedCareer) {
+
+            const careerSelect =
+                document.getElementById(
+                    "careerSelect"
+                );
+
+
+            if (
+                Array.from(
+                    careerSelect.options
+                ).some(
+                    option =>
+                        option.value ===
+                        savedCareer
+                )
+            ) {
+
+                careerSelect.value =
+                    savedCareer;
+
+
+                renderSkills(
+                    savedCareer
+                );
+
+            }
+
+        }
+
+
+        if (savedLevel) {
+
+            document.getElementById(
+                "levelSelect"
+            ).value =
+                savedLevel;
+
+        }
+
+
+        /*
+           IMPORTANT:
+           Result must NEVER appear
+           automatically on page load.
+        */
+
+        document.getElementById(
+            "resultScreen"
+        ).classList.add(
+            "hidden"
+        );
+
+
+        document.getElementById(
+            "setupScreen"
+        ).classList.remove(
+            "hidden"
+        );
+
+    }
+);
+
+
+/* -----------------------------------------
+   FINAL SAFETY
+----------------------------------------- */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        populateCareerDropdown();
+
+        /*
+           Keep result hidden until
+           Analyse Skill Gap is clicked.
+        */
+
+        document.getElementById(
+            "resultScreen"
+        ).classList.add(
+            "hidden"
+        );
+
+        document.getElementById(
+            "setupScreen"
+        ).classList.remove(
+            "hidden"
+        );
+
+    }
+);
+
+</script>
+
+<script>
+(function () {
+  function setupCareerDropdown() {
+    const sel = document.getElementById("careerSelect");
+    if (!sel || sel.dataset.customDropdown === "yes") return;
+
+    sel.dataset.customDropdown = "yes";
+
+    const wrap = document.createElement("div");
+    wrap.className = "cs-wrap";
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel);
+
+    /* Keep the real select for existing project JavaScript */
+    sel.style.setProperty("display", "none", "important");
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cs-btn";
+
+    const panel = document.createElement("div");
+    panel.className = "cs-panel";
+
+    const list = document.createElement("ul");
+    list.className = "cs-list";
+    panel.appendChild(list);
+
+    wrap.append(btn, panel);
+
+    function updateLabel() {
+      btn.textContent =
+        sel.options[sel.selectedIndex]?.text || "Select Career";
+    }
+
+    function renderCourses() {
+      list.replaceChildren();
+
+      Array.from(sel.options).forEach((option, index) => {
+        const item = document.createElement("li");
+        item.textContent = option.text;
+        if (index === sel.selectedIndex) item.classList.add("sel");
+
+        item.addEventListener("click", function () {
+          sel.selectedIndex = index;
+          sel.dispatchEvent(new Event("change", { bubbles: true }));
+          updateLabel();
+          wrap.classList.remove("open");
+        });
+
+        list.appendChild(item);
+      });
+
+      updateLabel();
+    }
+
+    btn.addEventListener("click", function () {
+      wrap.classList.toggle("open");
+      if (wrap.classList.contains("open")) renderCourses();
+    });
+
+    sel.addEventListener("change", updateLabel);
+
+    document.addEventListener("click", function (event) {
+      if (!wrap.contains(event.target)) {
+        wrap.classList.remove("open");
+      }
+    });
+
+    /* Handles courses added later by existing JavaScript */
+    const observer = new MutationObserver(renderCourses);
+    observer.observe(sel, { childList: true, subtree: true });
+
+    renderCourses();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCareerDropdown);
+  } else {
+    setupCareerDropdown();
+  }
+})();
+</script>
+
+<script>
+(function () {
+  function installCareerDropdown() {
+    const sel = document.getElementById("careerSelect");
+    if (!sel || sel.dataset.customDropdown === "yes") return;
+
+    sel.dataset.customDropdown = "yes";
+
+    const wrap = document.createElement("div");
+    wrap.className = "cs-wrap";
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel);
+
+    /* Keep original select hidden, so existing app logic still uses it */
+    sel.style.display = "none";
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cs-btn";
+
+    const panel = document.createElement("div");
+    panel.className = "cs-panel";
+
+    const list = document.createElement("ul");
+    list.className = "cs-list";
+    panel.appendChild(list);
+
+    wrap.append(btn, panel);
+
+    function updateLabel() {
+      btn.textContent =
+        sel.options[sel.selectedIndex]?.text || "Select a career";
+    }
+
+    function render() {
+      list.replaceChildren();
+
+      Array.from(sel.options).forEach((opt, index) => {
+        const item = document.createElement("li");
+        item.textContent = opt.text;
+        if (index === sel.selectedIndex) item.classList.add("sel");
+
+        item.addEventListener("click", () => {
+          sel.selectedIndex = index;
+          sel.dispatchEvent(new Event("change", { bubbles: true }));
+          updateLabel();
+          wrap.classList.remove("open");
+        });
+
+        list.appendChild(item);
+      });
+
+      updateLabel();
+    }
+
+    btn.addEventListener("click", () => {
+      wrap.classList.toggle("open");
+      if (wrap.classList.contains("open")) render();
+    });
+
+    sel.addEventListener("change", updateLabel);
+
+    document.addEventListener("click", event => {
+      if (!wrap.contains(event.target)) wrap.classList.remove("open");
+    });
+
+    new MutationObserver(render).observe(sel, {
+      childList: true,
+      subtree: true
+    });
+
+    render();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installCareerDropdown);
+  } else {
+    installCareerDropdown();
+  }
+})();
+</script>
+
+
+</body>
+</html>

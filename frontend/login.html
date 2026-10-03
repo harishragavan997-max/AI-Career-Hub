@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Hub - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="./language.js"></script>
+</head>
+
+<body>
+    
+<!-- PREMIUM AI WELCOME -->
+
+<div id="robotWelcome" class="robot-welcome">
+
+    <div class="welcome-orbit orbit-one"></div>
+    <div class="welcome-orbit orbit-two"></div>
+
+    <div class="welcome-icon icon-cap">🎓</div>
+    <div class="welcome-icon icon-chart">📈</div>
+    <div class="welcome-icon icon-target">🎯</div>
+    <div class="welcome-icon icon-job">💼</div>
+
+    <div class="welcome-card">
+
+        <div class="welcome-bubble">
+            Hi there!<br>
+            <strong>Welcome back!</strong> 😊
+        </div>
+
+        <div class="welcome-robot">
+
+            <div class="robot-head">
+                <div class="robot-screen">
+                    <span class="robot-eye"></span>
+                    <span class="robot-eye"></span>
+                </div>
+            </div>
+
+            <div class="robot-body">
+                <div class="robot-ai">AI</div>
+            </div>
+
+            <div class="robot-hand robot-left">
+                👋
+            </div>
+
+        </div>
+
+        <div class="welcome-content">
+
+            <div class="welcome-small">
+                Welcome to
+            </div>
+
+            <div class="welcome-title">
+                <span>AI Career Hub!</span>
+            </div>
+
+            <p>
+                Let’s discover your strengths, build your skills
+                and reach your dream career.
+            </p>
+
+        </div>
+
+        <div class="welcome-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <h1 id="title">🚀 AI Career Hub</h1>
+
+        <h2 id="heading">🔐 Login to Your Account</h2>
+
+        <label id="emailLabel">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+
+        <label id="passwordLabel">Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+
+        <br>
+
+        <button id="loginBtn" onclick="loginUser()">
+            🔐 Login
+        </button>
+
+        <p id="registerText">
+            Don't have an account?
+            <a href="register.html" id="registerLink">Register</a>
+        </p>
+
+        <p id="message"></p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+// ===== LOGIN TRANSLATIONS =====
+
+const loginTranslations = {
+
+    English: {
+        title: "🚀 AI Career Hub",
+        heading: "🔐 Login to Your Account",
+        email: "Email",
+        emailPlaceholder: "Enter your email",
+        password: "Password",
+        passwordPlaceholder: "Enter your password",
+        login: "🔐 Login",
+        registerText: "Don't have an account?",
+        register: "Register"
+    },
+
+    Tamil: {
+        title: "🚀 AI Career Hub",
+        heading: "🔐 உங்கள் கணக்கில் உள்நுழையவும்",
+        email: "மின்னஞ்சல்",
+        emailPlaceholder: "உங்கள் மின்னஞ்சலை உள்ளிடவும்",
+        password: "கடவுச்சொல்",
+        passwordPlaceholder: "உங்கள் கடவுச்சொல்லை உள்ளிடவும்",
+        login: "🔐 உள்நுழைய",
+        registerText: "கணக்கு இல்லையா?",
+        register: "பதிவு செய்யவும்"
+    },
+
+    Hindi: {
+        title: "🚀 AI Career Hub",
+        heading: "🔐 अपने खाते में लॉगिन करें",
+        email: "ईमेल",
+        emailPlaceholder: "अपना ईमेल दर्ज करें",
+        password: "पासवर्ड",
+        passwordPlaceholder: "अपना पासवर्ड दर्ज करें",
+        login: "🔐 लॉगिन",
+        registerText: "खाता नहीं है?",
+        register: "पंजीकरण"
+    },
+
+    Thanglish: {
+        title: "🚀 AI Career Hub",
+        heading: "🔐 Un Account-la Login Pannu",
+        email: "Email",
+        emailPlaceholder: "Un email-ah enter pannu",
+        password: "Password",
+        passwordPlaceholder: "Un password-ah enter pannu",
+        login: "🔐 Login Pannu",
+        registerText: "Account illaya?",
+        register: "Register Pannu"
+    },
+
+    Kannada: {
+        title: "🚀 AI Career Hub",
+        heading: "🔐 ನಿಮ್ಮ ಖಾತೆಗೆ ಲಾಗಿನ್ ಮಾಡಿ",
+        email: "ಇಮೇಲ್",
+        emailPlaceholder: "ನಿಮ್ಮ ಇಮೇಲ್ ನಮೂದಿಸಿ",
+        password: "ಪಾಸ್‌ವರ್ಡ್",
+        passwordPlaceholder: "ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ",
+        login: "🔐 ಲಾಗಿನ್",
+        registerText: "ಖಾತೆ ಇಲ್ಲವೇ?",
+        register: "ನೋಂದಣಿ"
+    },
+
+    Malayalam: {
+        title: "🚀 AI Career Hub",
+        heading: "🔐 നിങ്ങളുടെ അക്കൗണ്ടിലേക്ക് ലോഗിൻ ചെയ്യുക",
+        email: "ഇമെയിൽ",
+        emailPlaceholder: "നിങ്ങളുടെ ഇമെയിൽ നൽകുക",
+        password: "പാസ്‌വേഡ്",
+        passwordPlaceholder: "നിങ്ങളുടെ പാസ്‌വേഡ് നൽകുക",
+        login: "🔐 ലോഗിൻ",
+        registerText: "അക്കൗണ്ട് ഇല്ലേ?",
+        register: "രജിസ്റ്റർ ചെയ്യുക"
+    }
+
+};
+
+
+// ===== APPLY TRANSLATION =====
+
+function translateLoginPage(language) {
+
+    const t =
+        loginTranslations[language] ||
+        loginTranslations.English;
+
+    document.getElementById("title").innerText =
+        t.title;
+
+    document.getElementById("heading").innerText =
+        t.heading;
+
+    document.getElementById("emailLabel").innerText =
+        t.email;
+
+    document.getElementById("email").placeholder =
+        t.emailPlaceholder;
+
+    document.getElementById("passwordLabel").innerText =
+        t.password;
+
+    document.getElementById("password").placeholder =
+        t.passwordPlaceholder;
+
+    document.getElementById("loginBtn").innerText =
+        t.login;
+
+    document.getElementById("registerText").innerHTML =
+        t.registerText +
+        ' <a href="register.html" id="registerLink">' +
+        t.register +
+        '</a>';
+}
+
+
+// ===== LANGUAGE =====
+
+function updateLoginLanguage() {
+
+    const language =
+        localStorage.getItem("selectedLanguage") ||
+        "English";
+
+    translateLoginPage(language);
+}
+
+
+// ===== LOGIN FUNCTION =====
+
+async function loginUser() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const message =
+        document.getElementById("message");
+
+
+    if (!email || !password) {
+
+        message.innerText =
+            "❌ Please enter email and password.";
+
+        return;
+    }
+
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/login",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            message.innerText =
+                "❌ " +
+                (data.detail ||
+                "Invalid email or password.");
+
+            return;
+        }
+
+
+        localStorage.setItem(
+            "user_id",
+            data.user_id
+        );
+
+        localStorage.setItem("user_email", data.email || email);
+
+        
+
+        localStorage.setItem(
+            "user_name",
+            data.name
+        );
+
+        localStorage.setItem("user_email", data.email || email);
+        localStorage.setItem("user_career", data.career || "");
+        localStorage.setItem("user_level", data.level || "");
+        localStorage.setItem(
+       "user_skills",
+        JSON.stringify(data.skills || data.known_skills || [])
+      );
+
+
+        message.innerText =
+    "🎉 Login successful!";
+
+const robotWelcome =
+    document.getElementById("robotWelcome");
+
+if (robotWelcome) {
+    robotWelcome.style.display = "flex";
+}
+
+setTimeout(function() {
+
+    window.location.href =
+        "dashboard.html";
+
+}, 3500);
+
+
+    } catch (error) {
+
+        console.log(error);
+
+        message.innerText =
+            "❌ Server connection error.";
+
+    }
+
+}
+
+
+// ===== PAGE LOAD =====
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        updateLoginLanguage();
+
+        const selector =
+            document.getElementById("languageSelector");
+
+        if (selector) {
+
+            selector.addEventListener(
+                "change",
+                function() {
+
+                    translateLoginPage(
+                        this.value
+                    );
+
+                }
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

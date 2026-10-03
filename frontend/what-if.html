@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Career Hub - What-If Simulator</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile-responsive.css">
+
+<script src="course-data.js"></script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(59,130,246,.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(139,92,246,.18),
+            transparent 35%
+        ),
+        #020617;
+
+    color: #f8fafc;
+}
+
+.whatif-page {
+    min-height: 100vh;
+    padding: 25px;
+}
+
+.top-bar {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.language-box select {
+    background: #0f172a;
+    color: #ffffff;
+
+    border: 1px solid rgba(96,165,250,.45);
+
+    border-radius: 12px;
+
+    padding: 10px 14px;
+
+    outline: none;
+}
+
+.main-card {
+    max-width: 1000px;
+    margin: auto;
+
+    background: rgba(15,23,42,.90);
+
+    border:
+        1px solid rgba(96,165,250,.25);
+
+    border-radius: 28px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    backdrop-filter: blur(18px);
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+
+    background:
+        rgba(15,23,42,.96);
+
+    border:
+        1px solid rgba(96,165,250,.25);
+
+    border-radius: 22px;
+
+    padding: 28px;
+}
+
+.hero h1 {
+    margin: 0 0 10px;
+
+    font-size: 38px;
+
+    color: #ffffff !important;
+
+    background: none !important;
+
+    -webkit-text-fill-color:
+        #ffffff !important;
+
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.45);
+}
+
+.hero p {
+    margin: 0;
+
+    color: #cbd5e1 !important;
+
+    font-size: 16px;
+}
+
+.simulator-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.field label {
+    color: #cbd5e1;
+
+    font-weight: 700;
+}
+
+.field select {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid rgba(148,163,184,.25);
+
+    background: #020617;
+
+    color: #ffffff;
+
+    outline: none;
+}
+
+.field select:focus {
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(96,165,250,.12);
+}
+
+.action-area {
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+.primary-btn,
+.secondary-btn,
+.dashboard-btn {
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 14px 24px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.primary-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: #ffffff;
+}
+
+.primary-btn:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(59,130,246,.30);
+}
+
+.secondary-btn {
+    background:
+        rgba(30,41,59,.95);
+
+    color: #ffffff;
+
+    border:
+        1px solid
+        rgba(148,163,184,.25);
+}
+
+.dashboard-btn {
+    display: block;
+
+    margin: 28px auto 0;
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+.dashboard-btn:hover {
+    background: #1d4ed8;
+
+    transform:
+        translateY(-2px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="whatif-page">
+
+    <div class="top-bar">
+
+        <div class="logo">
+            AI <span>Career Hub</span>
+        </div>
+
+        <div class="language-box">
+
+            <select id="languageSelect">
+
+                <option value="English">
+                    English
+                </option>
+
+                <option value="Tamil">
+                    தமிழ்
+                </option>
+
+                <option value="Hindi">
+                    हिन्दी
+                </option>
+
+                <option value="Thanglish">
+                    Thanglish
+                </option>
+
+                <option value="Kannada">
+                    ಕನ್ನಡ
+                </option>
+
+                <option value="Malayalam">
+                    മലയാളം
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <div class="main-card">
+
+        <!-- SIMULATOR SETUP -->
+
+        <section id="setupScreen">
+
+            <div class="hero">
+
+                <h1 id="pageTitle">
+                    What-If Career Simulator
+                </h1>
+
+                <p id="pageSubtitle">
+                    Explore what happens if you move from your current career to another career.
+                </p>
+
+            </div>
+
+
+            <div class="simulator-grid">
+
+                <div class="field">
+
+                    <label id="currentCareerLabel">
+                        Current Career
+                    </label>
+
+                    <select id="currentCareer">
+
+                        <option value="">
+                            Select current career
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label id="targetCareerLabel">
+                        Target Career
+                    </label>
+
+                    <select id="targetCareer">
+
+                        <option value="">
+                            Select target career
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label id="levelLabel">
+                        Current Level
+                    </label>
+
+                    <select id="level">
+
+                        <option value="">
+                            Select level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="action-area">
+
+                <button
+                    class="primary-btn"
+                    id="simulateButton"
+                    type="button">
+
+                    Simulate Career
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="statusMessage"
+                class="status-message">
+            </div>
+
+
+            <button
+                class="dashboard-btn"
+                id="dashboardButton"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+
+
+        <!-- RESULT -->
+
+        <section
+            id="resultScreen"
+            class="hidden">
+
+            <div class="hero">
+
+                <h1 id="resultTitle">
+                    Simulation Result
+                </h1>
+
+                <p id="resultSubtitle">
+                    Your career transition analysis
+                </p>
+
+            </div>
+
+
+            <div class="result-grid">
+
+                <div class="result-box">
+
+                    <span id="readinessLabel">
+                        Career Readiness
+                    </span>
+
+                    <strong id="readinessValue">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="missingLabel">
+                        Missing Skills
+                    </span>
+
+                    <strong id="missingValue">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="difficultyLabel">
+                        Transition Difficulty
+                    </span>
+
+                    <strong id="difficultyValue">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="result-message"
+                id="resultMessage">
+            </div>
+
+
+            <div class="result-actions">
+
+                <button
+                    class="primary-btn"
+                    id="skillGapButton"
+                    type="button">
+
+                    Analyse Skill Gap
+
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    id="newSimulationButton"
+                    type="button">
+
+                    New Simulation
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="dashboard-btn"
+                id="dashboardButton2"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+    </div>
+
+</div>
+<style>
+
+.status-message {
+    min-height: 24px;
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #93c5fd;
+}
+
+.result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-top: 25px;
+}
+
+.result-box {
+    background:
+        rgba(15,23,42,.96) !important;
+
+    border:
+        1px solid
+        rgba(96,165,250,.28) !important;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
+}
+
+.result-box span {
+    display: block;
+
+    color: #94a3b8 !important;
+
+    margin-bottom: 12px;
+}
+
+.result-box strong {
+    display: block;
+
+    color: #ffffff !important;
+
+    font-size: 30px;
+}
+
+.result-message {
+    margin-top: 25px;
+
+    padding: 24px;
+
+    background:
+        rgba(15,23,42,.98) !important;
+
+    border:
+        1px solid
+        rgba(139,92,246,.30) !important;
+
+    border-radius: 20px;
+
+    color: #ffffff !important;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.25);
+}
+
+.result-message strong,
+.result-message span,
+.result-message * {
+    color: #ffffff !important;
+}
+
+.result-actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 25px;
+
+    flex-wrap: wrap;
+}
+
+@media(max-width: 750px) {
+
+    .whatif-page {
+        padding: 14px;
+    }
+
+    .main-card {
+        padding: 22px;
+
+        border-radius: 20px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .simulator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .result-actions button {
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 450px) {
+
+    .top-bar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .language-box select {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+let currentLanguage = "English";
+
+
+const translations = {
+
+English: {
+
+    title:
+        "What-If Career Simulator",
+
+    subtitle:
+        "Explore what happens if you move from your current career to another career.",
+
+    current:
+        "Current Career",
+
+    target:
+        "Target Career",
+
+    level:
+        "Current Level",
+
+    currentPlaceholder:
+        "Select current career",
+
+    targetPlaceholder:
+        "Select target career",
+
+    levelPlaceholder:
+        "Select level",
+
+    simulate:
+        "Simulate Career",
+
+    resultTitle:
+        "Simulation Result",
+
+    resultSubtitle:
+        "Your career transition analysis",
+
+    readiness:
+        "Career Readiness",
+
+    missing:
+        "Missing Skills",
+
+    difficulty:
+        "Transition Difficulty",
+
+    skillGap:
+        "Analyse Skill Gap",
+
+    newSimulation:
+        "New Simulation",
+
+    dashboard:
+        "Go Back Dashboard",
+
+    selectAll:
+        "Please select current career, target career and level.",
+
+    sameCareer:
+        "Current career and target career should be different.",
+
+    resultMessage:
+        "Your simulation result is ready."
+
+},
+
+Tamil: {
+
+    title:
+        "என்ன ஆகும் தொழில் சிமுலேட்டர்",
+
+    subtitle:
+        "உங்கள் தற்போதைய தொழிலிலிருந்து வேறு தொழிலுக்கு சென்றால் என்ன ஆகும் என்பதை அறியுங்கள்.",
+
+    current:
+        "தற்போதைய தொழில்",
+
+    target:
+        "இலக்கு தொழில்",
+
+    level:
+        "தற்போதைய நிலை",
+
+    currentPlaceholder:
+        "தற்போதைய தொழிலை தேர்ந்தெடுக்கவும்",
+
+    targetPlaceholder:
+        "இலக்கு தொழிலை தேர்ந்தெடுக்கவும்",
+
+    levelPlaceholder:
+        "நிலையை தேர்ந்தெடுக்கவும்",
+
+    simulate:
+        "தொழிலை சிமுலேட் செய்",
+
+    resultTitle:
+        "சிமுலேஷன் முடிவு",
+
+    resultSubtitle:
+        "உங்கள் தொழில் மாற்ற பகுப்பாய்வு",
+
+    readiness:
+        "தொழில் தயார்நிலை",
+
+    missing:
+        "காணாமல் போன திறன்கள்",
+
+    difficulty:
+        "மாற்றத்தின் சிரமம்",
+
+    skillGap:
+        "திறன் இடைவெளியை பகுப்பாய்வு செய்",
+
+    newSimulation:
+        "புதிய சிமுலேஷன்",
+
+    dashboard:
+        "டாஷ்போர்டுக்கு திரும்பு",
+
+    selectAll:
+        "தற்போதைய தொழில், இலக்கு தொழில் மற்றும் நிலையை தேர்ந்தெடுக்கவும்.",
+
+    sameCareer:
+        "தற்போதைய தொழிலும் இலக்கு தொழிலும் வேறுபட்டதாக இருக்க வேண்டும்.",
+
+    resultMessage:
+        "உங்கள் சிமுலேஷன் முடிவு தயாராக உள்ளது."
+
+},
+
+Hindi: {
+
+    title:
+        "क्या होगा करियर सिमुलेटर",
+
+    subtitle:
+        "अपने वर्तमान करियर से दूसरे करियर में जाने पर क्या होगा, यह देखें।",
+
+    current:
+        "वर्तमान करियर",
+
+    target:
+        "लक्षित करियर",
+
+    level:
+        "वर्तमान स्तर",
+
+    currentPlaceholder:
+        "वर्तमान करियर चुनें",
+
+    targetPlaceholder:
+        "लक्षित करियर चुनें",
+
+    levelPlaceholder:
+        "स्तर चुनें",
+
+    simulate:
+        "करियर सिमुलेट करें",
+
+    resultTitle:
+        "सिमुलेशन परिणाम",
+
+    resultSubtitle:
+        "आपका करियर ट्रांजिशन विश्लेषण",
+
+    readiness:
+        "करियर तैयारी",
+
+    missing:
+        "कमी वाले कौशल",
+
+    difficulty:
+        "ट्रांजिशन कठिनाई",
+
+    skillGap:
+        "स्किल गैप विश्लेषण",
+
+    newSimulation:
+        "नया सिमुलेशन",
+
+    dashboard:
+        "डैशबोर्ड पर वापस जाएं",
+
+    selectAll:
+        "कृपया वर्तमान करियर, लक्षित करियर और स्तर चुनें।",
+
+    sameCareer:
+        "वर्तमान और लक्षित करियर अलग होने चाहिए।",
+
+    resultMessage:
+        "आपका सिमुलेशन परिणाम तैयार है।"
+
+},
+
+Thanglish: {
+
+    title:
+        "What-If Career Simulator",
+
+    subtitle:
+        "Current career-la irundhu vera career-ku pona enna nadakkum nu check pannunga.",
+
+    current:
+        "Current Career",
+
+    target:
+        "Target Career",
+
+    level:
+        "Current Level",
+
+    currentPlaceholder:
+        "Current career select pannu",
+
+    targetPlaceholder:
+        "Target career select pannu",
+
+    levelPlaceholder:
+        "Level select pannu",
+
+    simulate:
+        "Simulate Career",
+
+    resultTitle:
+        "Simulation Result",
+
+    resultSubtitle:
+        "Un career transition analysis",
+
+    readiness:
+        "Career Readiness",
+
+    missing:
+        "Missing Skills",
+
+    difficulty:
+        "Transition Difficulty",
+
+    skillGap:
+        "Analyse Skill Gap",
+
+    newSimulation:
+        "New Simulation",
+
+    dashboard:
+        "Dashboard-ku Thirumbi Po",
+
+    selectAll:
+        "Current career, target career and level select pannu.",
+
+    sameCareer:
+        "Current career and target career different-ah irukkanum.",
+
+    resultMessage:
+        "Un simulation result ready."
+
+},
+
+Kannada: {
+
+    title:
+        "ಏನಾಗುತ್ತದೆ ವೃತ್ತಿ ಸಿಮ್ಯುಲೇಟರ್",
+
+    subtitle:
+        "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ವೃತ್ತಿಯಿಂದ ಬೇರೆ ವೃತ್ತಿಗೆ ಹೋದರೆ ಏನಾಗುತ್ತದೆ ಎಂಬುದನ್ನು ಪರಿಶೀಲಿಸಿ.",
+
+    current:
+        "ಪ್ರಸ್ತುತ ವೃತ್ತಿ",
+
+    target:
+        "ಗುರಿ ವೃತ್ತಿ",
+
+    level:
+        "ಪ್ರಸ್ತುತ ಮಟ್ಟ",
+
+    currentPlaceholder:
+        "ಪ್ರಸ್ತುತ ವೃತ್ತಿ ಆಯ್ಕೆಮಾಡಿ",
+
+    targetPlaceholder:
+        "ಗುರಿ ವೃತ್ತಿ ಆಯ್ಕೆಮಾಡಿ",
+
+    levelPlaceholder:
+        "ಮಟ್ಟ ಆಯ್ಕೆಮಾಡಿ",
+
+    simulate:
+        "ವೃತ್ತಿಯನ್ನು ಸಿಮ್ಯುಲೇಟ್ ಮಾಡಿ",
+
+    resultTitle:
+        "ಸಿಮ್ಯುಲೇಶನ್ ಫಲಿತಾಂಶ",
+
+    resultSubtitle:
+        "ನಿಮ್ಮ ವೃತ್ತಿ ಬದಲಾವಣೆ ವಿಶ್ಲೇಷಣೆ",
+
+    readiness:
+        "ವೃತ್ತಿ ಸಿದ್ಧತೆ",
+
+    missing:
+        "ಕಾಣೆಯಾದ ಕೌಶಲ್ಯಗಳು",
+
+    difficulty:
+        "ಬದಲಾವಣೆಯ ಕಷ್ಟ",
+
+    skillGap:
+        "ಕೌಶಲ್ಯ ಅಂತರ ವಿಶ್ಲೇಷಿಸಿ",
+
+    newSimulation:
+        "ಹೊಸ ಸಿಮ್ಯುಲೇಶನ್",
+
+    dashboard:
+        "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ",
+
+    selectAll:
+        "ಪ್ರಸ್ತುತ ವೃತ್ತಿ, ಗುರಿ ವೃತ್ತಿ ಮತ್ತು ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+
+    sameCareer:
+        "ಪ್ರಸ್ತುತ ಮತ್ತು ಗುರಿ ವೃತ್ತಿಗಳು ವಿಭಿನ್ನವಾಗಿರಬೇಕು.",
+
+    resultMessage:
+        "ನಿಮ್ಮ ಸಿಮ್ಯುಲೇಶನ್ ಫಲಿತಾಂಶ ಸಿದ್ಧವಾಗಿದೆ."
+
+},
+
+Malayalam: {
+
+    title:
+        "What-If കരിയർ സിമുലേറ്റർ",
+
+    subtitle:
+        "നിലവിലെ കരിയറിൽ നിന്ന് മറ്റൊരു കരിയറിലേക്ക് മാറിയാൽ എന്ത് സംഭവിക്കും എന്ന് പരിശോധിക്കുക.",
+
+    current:
+        "നിലവിലെ കരിയർ",
+
+    target:
+        "ലക്ഷ്യ കരിയർ",
+
+    level:
+        "നിലവിലെ ലെവൽ",
+
+    currentPlaceholder:
+        "നിലവിലെ കരിയർ തിരഞ്ഞെടുക്കുക",
+
+    targetPlaceholder:
+        "ലക്ഷ്യ കരിയർ തിരഞ്ഞെടുക്കുക",
+
+    levelPlaceholder:
+        "ലെവൽ തിരഞ്ഞെടുക്കുക",
+
+    simulate:
+        "കരിയർ സിമുലേറ്റ് ചെയ്യുക",
+
+    resultTitle:
+        "സിമുലേഷൻ ഫലം",
+
+    resultSubtitle:
+        "നിങ്ങളുടെ കരിയർ ട്രാൻസിഷൻ വിശകലനം",
+
+    readiness:
+        "കരിയർ തയ്യാറെടുപ്പ്",
+
+    missing:
+        "കാണാത്ത സ്കില്ലുകൾ",
+
+    difficulty:
+        "ട്രാൻസിഷൻ ബുദ്ധിമുട്ട്",
+
+    skillGap:
+        "സ്കിൽ ഗ്യാപ് വിശകലനം",
+
+    newSimulation:
+        "പുതിയ സിമുലേഷൻ",
+
+    dashboard:
+        "ഡാഷ്ബോർഡിലേക്ക് മടങ്ങുക",
+
+    selectAll:
+        "നിലവിലെ കരിയർ, ലക്ഷ്യ കരിയർ, ലെവൽ തിരഞ്ഞെടുക്കുക.",
+
+    sameCareer:
+        "നിലവിലെ കരിയറും ലക്ഷ്യ കരിയറും വ്യത്യസ്തമായിരിക്കണം.",
+
+    resultMessage:
+        "നിങ്ങളുടെ സിമുലേഷൻ ഫലം തയ്യാറാണ്."
+
+}
+
+};
+
+</script>
+<script>
+
+/* -----------------------------------------
+   GET COURSE SKILLS
+----------------------------------------- */
+
+function getCourseSkills(career) {
+
+    if (
+        typeof courseCatalog === "undefined" ||
+        !courseCatalog
+    ) {
+        return [];
+    }
+
+    const course =
+        courseCatalog[career];
+
+    if (!course) {
+        return [];
+    }
+
+    if (Array.isArray(course)) {
+        return course;
+    }
+
+    if (Array.isArray(course.skills)) {
+        return course.skills;
+    }
+
+    if (Array.isArray(course.requiredSkills)) {
+        return course.requiredSkills;
+    }
+
+    if (Array.isArray(course.required_skills)) {
+        return course.required_skills;
+    }
+
+    return [];
+}
+
+
+/* -----------------------------------------
+   NORMALIZE
+----------------------------------------- */
+
+function normalizeSkill(skill) {
+
+    return String(skill || "")
+        .trim()
+        .toLowerCase();
+
+}
+
+
+/* -----------------------------------------
+   CAREER DROPDOWN
+----------------------------------------- */
+
+function populateCareerDropdowns() {
+
+    const current =
+        document.getElementById(
+            "currentCareer"
+        );
+
+    const target =
+        document.getElementById(
+            "targetCareer"
+        );
+
+    if (!current || !target) {
+        return;
+    }
+
+
+    const oldCurrent =
+        current.value;
+
+    const oldTarget =
+        target.value;
+
+
+    current.innerHTML = "";
+
+    target.innerHTML = "";
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    const currentPlaceholder =
+        document.createElement("option");
+
+    currentPlaceholder.value = "";
+
+    currentPlaceholder.innerText =
+        t.currentPlaceholder;
+
+    current.appendChild(
+        currentPlaceholder
+    );
+
+
+    const targetPlaceholder =
+        document.createElement("option");
+
+    targetPlaceholder.value = "";
+
+    targetPlaceholder.innerText =
+        t.targetPlaceholder;
+
+    target.appendChild(
+        targetPlaceholder
+    );
+
+
+    if (
+        typeof courseCatalog === "undefined" ||
+        !courseCatalog
+    ) {
+        return;
+    }
+
+
+    const careers =
+        Object.keys(courseCatalog);
+
+
+    careers.forEach(career => {
+
+        const option1 =
+            document.createElement("option");
+
+        option1.value = career;
+
+        option1.innerText = career;
+
+        current.appendChild(option1);
+
+
+        const option2 =
+            document.createElement("option");
+
+        option2.value = career;
+
+        option2.innerText = career;
+
+        target.appendChild(option2);
+
+    });
+
+
+    if (
+        careers.includes(oldCurrent)
+    ) {
+        current.value =
+            oldCurrent;
+    }
+
+
+    if (
+        careers.includes(oldTarget)
+    ) {
+        target.value =
+            oldTarget;
+    }
+
+}
+
+
+/* -----------------------------------------
+   APPLY LANGUAGE
+----------------------------------------- */
+
+function applyLanguage() {
+
+    const t =
+        translations[currentLanguage];
+
+
+    document.getElementById(
+        "pageTitle"
+    ).innerText =
+        t.title;
+
+
+    document.getElementById(
+        "pageSubtitle"
+    ).innerText =
+        t.subtitle;
+
+
+    document.getElementById(
+        "currentCareerLabel"
+    ).innerText =
+        t.current;
+
+
+    document.getElementById(
+        "targetCareerLabel"
+    ).innerText =
+        t.target;
+
+
+    document.getElementById(
+        "levelLabel"
+    ).innerText =
+        t.level;
+
+
+    document.getElementById(
+        "simulateButton"
+    ).innerText =
+        t.simulate;
+
+
+    document.getElementById(
+        "resultTitle"
+    ).innerText =
+        t.resultTitle;
+
+
+    document.getElementById(
+        "resultSubtitle"
+    ).innerText =
+        t.resultSubtitle;
+
+
+    document.getElementById(
+        "readinessLabel"
+    ).innerText =
+        t.readiness;
+
+
+    document.getElementById(
+        "missingLabel"
+    ).innerText =
+        t.missing;
+
+
+    document.getElementById(
+        "difficultyLabel"
+    ).innerText =
+        t.difficulty;
+
+
+    document.getElementById(
+        "skillGapButton"
+    ).innerText =
+        t.skillGap;
+
+
+    document.getElementById(
+        "newSimulationButton"
+    ).innerText =
+        t.newSimulation;
+
+
+    document.getElementById(
+        "dashboardButton"
+    ).innerText =
+        t.dashboard;
+
+
+    document.getElementById(
+        "dashboardButton2"
+    ).innerText =
+        t.dashboard;
+
+
+    populateCareerDropdowns();
+
+
+    document
+        .getElementById("level")
+        .options[0]
+        .innerText =
+            t.levelPlaceholder;
+
+}
+
+
+/* -----------------------------------------
+   SIMULATE CAREER
+----------------------------------------- */
+
+function simulateCareer() {
+
+    const currentCareer =
+        document.getElementById(
+            "currentCareer"
+        ).value;
+
+
+    const targetCareer =
+        document.getElementById(
+            "targetCareer"
+        ).value;
+
+
+    const level =
+        document.getElementById(
+            "level"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "statusMessage"
+        );
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    if (
+        !currentCareer ||
+        !targetCareer ||
+        !level
+    ) {
+
+        status.innerText =
+            t.selectAll;
+
+        return;
+    }
+
+
+    if (
+        currentCareer ===
+        targetCareer
+    ) {
+
+        status.innerText =
+            t.sameCareer;
+
+        return;
+    }
+
+
+    status.innerText = "";
+
+
+    const currentSkills =
+        getCourseSkills(
+            currentCareer
+        ).map(normalizeSkill);
+
+
+    const targetSkills =
+        getCourseSkills(
+            targetCareer
+        ).map(normalizeSkill);
+
+
+    const currentSet =
+        new Set(currentSkills);
+
+
+    const missingSkills =
+        targetSkills.filter(
+            skill =>
+                !currentSet.has(skill)
+        );
+
+
+    const matchedSkills =
+        targetSkills.filter(
+            skill =>
+                currentSet.has(skill)
+        );
+
+
+    let readiness = 0;
+
+
+    if (targetSkills.length > 0) {
+
+        readiness =
+            Math.round(
+                (
+                    matchedSkills.length /
+                    targetSkills.length
+                ) * 100
+            );
+
+    }
+
+
+    /*
+       Level adjustment.
+       This keeps the simulator meaningful
+       without making readiness random.
+    */
+
+    if (level === "Advanced") {
+
+        readiness =
+            Math.min(
+                100,
+                readiness + 10
+            );
+
+    }
+
+    if (level === "Beginner") {
+
+        readiness =
+            Math.max(
+                0,
+                readiness - 10
+            );
+
+    }
+
+
+    let difficulty =
+        "Medium";
+
+
+    if (readiness >= 75) {
+
+        difficulty =
+            "Low";
+
+    } else if (readiness < 40) {
+
+        difficulty =
+            "High";
+
+    }
+
+
+    const missingCount =
+        missingSkills.length;
+
+
+    const message =
+        createResultMessage(
+            currentCareer,
+            targetCareer,
+            readiness,
+            missingSkills,
+            difficulty
+        );
+
+
+    document.getElementById(
+        "readinessValue"
+    ).innerText =
+        `${readiness}%`;
+
+
+    document.getElementById(
+        "missingValue"
+    ).innerText =
+        missingCount;
+
+
+    document.getElementById(
+        "difficultyValue"
+    ).innerText =
+        difficulty;
+
+
+    document.getElementById(
+        "resultMessage"
+    ).innerHTML =
+        message;
+
+
+    /*
+       IMPORTANT:
+       Result was hidden initially.
+       Only now we reveal it.
+    */
+
+    document.getElementById(
+        "setupScreen"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.remove("hidden");
+
+
+    localStorage.setItem(
+        "selected_career",
+        targetCareer
+    );
+
+    localStorage.setItem(
+        "selected_level",
+        level
+    );
+
+    localStorage.setItem(
+        "whatif_target_career",
+        targetCareer
+    );
+
+    localStorage.setItem(
+        "whatif_current_career",
+        currentCareer
+    );
+
+    localStorage.setItem(
+        "whatif_level",
+        level
+    );
+
+    localStorage.setItem(
+        "whatif_readiness",
+        readiness
+    );
+
+    localStorage.setItem(
+        "whatif_missing_count",
+        missingCount
+    );
+
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   RESULT MESSAGE
+----------------------------------------- */
+
+function createResultMessage(
+    currentCareer,
+    targetCareer,
+    readiness,
+    missingSkills,
+    difficulty
+) {
+
+    const safeCurrent =
+        escapeHTML(currentCareer);
+
+    const safeTarget =
+        escapeHTML(targetCareer);
+
+
+    let html = `
+
+        <div style="
+            color:#ffffff;
+            font-size:17px;
+            font-weight:700;
+            margin-bottom:12px;
+        ">
+
+            ${safeCurrent}
+            →
+            ${safeTarget}
+
+        </div>
+
+        <div style="
+            color:#cbd5e1;
+            margin-bottom:14px;
+        ">
+
+            Career readiness:
+            <strong style="color:#60a5fa;">
+                ${readiness}%
+            </strong>
+
+        </div>
+
+        <div style="
+            color:#cbd5e1;
+            margin-bottom:14px;
+        ">
+
+            Transition difficulty:
+            <strong style="color:#a78bfa;">
+                ${difficulty}
+            </strong>
+
+        </div>
+    `;
+
+
+    if (missingSkills.length > 0) {
+
+        html += `
+
+            <div style="
+                color:#f8fafc;
+                margin-bottom:8px;
+                font-weight:700;
+            ">
+
+                Skills to improve:
+
+            </div>
+
+            <div style="
+                color:#93c5fd;
+                line-height:1.8;
+            ">
+
+                ${missingSkills
+                    .map(
+                        skill =>
+                            escapeHTML(skill)
+                    )
+                    .join(" • ")
+                }
+
+            </div>
+
+        `;
+
+    } else {
+
+        html += `
+
+            <div style="
+                color:#86efac;
+                font-weight:700;
+            ">
+
+                Your current skills cover
+                the required skills for this
+                target career.
+
+            </div>
+
+        `;
+
+    }
+
+
+    return html;
+}
+
+
+/* -----------------------------------------
+   ESCAPE HTML
+----------------------------------------- */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* -----------------------------------------
+   LANGUAGE CHANGE
+----------------------------------------- */
+
+function changeLanguage() {
+
+    currentLanguage =
+        document.getElementById(
+            "languageSelect"
+        ).value;
+
+
+    localStorage.setItem(
+        "selected_language",
+        currentLanguage
+    );
+
+
+    applyLanguage();
+
+}
+
+
+/* -----------------------------------------
+   NEW SIMULATION
+----------------------------------------- */
+
+function newSimulation() {
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "setupScreen"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "statusMessage"
+    ).innerText = "";
+
+
+    populateCareerDropdowns();
+
+}
+
+
+/* -----------------------------------------
+   SKILL GAP
+----------------------------------------- */
+
+function openSkillGap() {
+
+    const targetCareer =
+        localStorage.getItem(
+            "whatif_target_career"
+        );
+
+
+    const level =
+        localStorage.getItem(
+            "whatif_level"
+        );
+
+
+    if (targetCareer) {
+
+        localStorage.setItem(
+            "selected_career",
+            targetCareer
+        );
+
+    }
+
+
+    if (level) {
+
+        localStorage.setItem(
+            "selected_level",
+            level
+        );
+
+    }
+
+
+    window.location.href =
+        "skill-gap.html";
+
+}
+
+
+/* -----------------------------------------
+   DASHBOARD
+----------------------------------------- */
+
+function goDashboard() {
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   EVENT LISTENERS
+----------------------------------------- */
+
+document
+    .getElementById("languageSelect")
+    .addEventListener(
+        "change",
+        changeLanguage
+    );
+
+
+document
+    .getElementById("simulateButton")
+    .addEventListener(
+        "click",
+        simulateCareer
+    );
+
+
+document
+    .getElementById("skillGapButton")
+    .addEventListener(
+        "click",
+        openSkillGap
+    );
+
+
+document
+    .getElementById("newSimulationButton")
+    .addEventListener(
+        "click",
+        newSimulation
+    );
+
+
+document
+    .getElementById("dashboardButton")
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+
+document
+    .getElementById("dashboardButton2")
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+
+/* -----------------------------------------
+   PAGE LOAD
+----------------------------------------- */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selected_language"
+            );
+
+
+        if (
+            savedLanguage &&
+            translations[savedLanguage]
+        ) {
+
+            currentLanguage =
+                savedLanguage;
+
+            document.getElementById(
+                "languageSelect"
+            ).value =
+                savedLanguage;
+
+        }
+
+
+        populateCareerDropdowns();
+
+        applyLanguage();
+
+
+        /*
+           Load saved values only into
+           setup dropdowns.
+        */
+
+        const savedCurrent =
+            localStorage.getItem(
+                "whatif_current_career"
+            );
+
+
+        const savedTarget =
+            localStorage.getItem(
+                "whatif_target_career"
+            );
+
+
+        const savedLevel =
+            localStorage.getItem(
+                "whatif_level"
+            );
+
+
+        if (savedCurrent) {
+
+            document.getElementById(
+                "currentCareer"
+            ).value =
+                savedCurrent;
+
+        }
+
+
+        if (savedTarget) {
+
+            document.getElementById(
+                "targetCareer"
+            ).value =
+                savedTarget;
+
+        }
+
+
+        if (savedLevel) {
+
+            document.getElementById(
+                "level"
+            ).value =
+                savedLevel;
+
+        }
+
+
+        /*
+           IMPORTANT:
+           Result screen remains hidden
+           after page refresh.
+
+           User must click
+           Simulate Career again.
+        */
+
+        document.getElementById(
+            "resultScreen"
+        ).classList.add("hidden");
+
+
+        document.getElementById(
+            "setupScreen"
+        ).classList.remove("hidden");
+
+    }
+);
+
+</script>
+<script>
+
+/* -----------------------------------------
+   FINAL SAFETY CHECK
+----------------------------------------- */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        /*
+           Make sure result never appears
+           automatically.
+        */
+
+        const result =
+            document.getElementById(
+                "resultScreen"
+            );
+
+        const setup =
+            document.getElementById(
+                "setupScreen"
+            );
+
+
+        if (result) {
+
+            result.classList.add(
+                "hidden"
+            );
+
+        }
+
+
+        if (setup) {
+
+            setup.classList.remove(
+                "hidden"
+            );
+
+        }
+
+
+        /*
+           Make sure career dropdown
+           has all available courses.
+        */
+
+        populateCareerDropdowns();
+
+    }
+);
+
+</script>
+
+<script>
+(function () {
+  function installDropdown(id) {
+    const sel = document.getElementById(id);
+    if (!sel || sel.dataset.customDropdown === "yes") return;
+
+    sel.dataset.customDropdown = "yes";
+
+    const wrap = document.createElement("div");
+    wrap.className = "cs-wrap";
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel);
+
+    sel.style.setProperty("display", "none", "important");
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cs-btn";
+
+    const panel = document.createElement("div");
+    panel.className = "cs-panel";
+
+    const list = document.createElement("ul");
+    list.className = "cs-list";
+    panel.appendChild(list);
+
+    wrap.append(btn, panel);
+
+    function updateLabel() {
+      btn.textContent = sel.options[sel.selectedIndex]?.text || "Select career";
+    }
+
+    function render() {
+      list.replaceChildren();
+
+      Array.from(sel.options).forEach((opt, index) => {
+        const item = document.createElement("li");
+        item.textContent = opt.text;
+        if (index === sel.selectedIndex) item.classList.add("sel");
+
+        item.addEventListener("click", () => {
+          sel.selectedIndex = index;
+          sel.dispatchEvent(new Event("change", { bubbles: true }));
+          updateLabel();
+          wrap.classList.remove("open");
+        });
+
+        list.appendChild(item);
+      });
+
+      updateLabel();
+    }
+
+    btn.addEventListener("click", () => {
+      wrap.classList.toggle("open");
+      if (wrap.classList.contains("open")) render();
+    });
+
+    sel.addEventListener("change", updateLabel);
+
+    document.addEventListener("click", event => {
+      if (!wrap.contains(event.target)) wrap.classList.remove("open");
+    });
+
+    new MutationObserver(render).observe(sel, {
+      childList: true,
+      subtree: true
+    });
+
+    render();
+  }
+
+  function start() {
+    installDropdown("currentCareer");
+    installDropdown("targetCareer");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+</script>
+
+</body>
+</html>

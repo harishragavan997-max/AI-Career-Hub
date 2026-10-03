@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Verification</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+          <link rel="stylesheet" href="mobile-responsive.css">
+
+    <style>
+
+        .verify-container {
+            max-width: 900px;
+            width: 92%;
+            margin: 40px auto;
+            padding: 30px;
+        }
+
+        .verify-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .verify-header h1 {
+            margin-bottom: 10px;
+        }
+
+        .verify-header p {
+            font-size: 17px;
+            color: #64748b;
+        }
+
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(15,23,42,.08);
+        }
+
+        .question-card h3 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .option:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+        }
+
+        .option input {
+            width: auto;
+            margin: 0;
+        }
+
+        .verify-button {
+            display: block;
+            margin: 30px auto;
+        }
+
+        #result {
+            display: none;
+            text-align: center;
+        }
+
+        #scoreText,
+        #statusText {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="verify-page">
+
+    <select id="languageSelector">
+
+        <option value="English">English</option>
+
+        <option value="Tamil">தமிழ்</option>
+
+        <option value="Hindi">हिन्दी</option>
+
+        <option value="Thanglish">Thanglish</option>
+
+        <option value="Kannada">ಕನ್ನಡ</option>
+
+        <option value="Malayalam">മലയാളം</option>
+
+    </select>
+
+
+    <div class="verify-container">
+
+
+        <div class="verify-header">
+
+            <h1 id="pageTitle">
+                Career Verification
+            </h1>
+
+            <p id="pageDescription">
+                Let's check whether your selected career matches your interests and strengths.
+            </p>
+
+        </div>
+
+
+        <!-- Question 1 -->
+
+        <div class="question-card">
+
+            <h3 id="q1">
+                1. Do you enjoy solving problems?
+            </h3>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="yes"
+                >
+
+                <span id="q1yes">
+                    Yes
+                </span>
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q1"
+                    value="no"
+                >
+
+                <span id="q1no">
+                    No
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Question 2 -->
+
+        <div class="question-card">
+
+            <h3 id="q2">
+                2. Do you enjoy coding or programming?
+            </h3>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="yes"
+                >
+
+                <span id="q2yes">
+                    Yes
+                </span>
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q2"
+                    value="no"
+                >
+
+                <span id="q2no">
+                    No
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- Question 3 -->
+
+        <div class="question-card">
+
+            <h3 id="q3">
+                3. Are you interested in learning new technologies?
+            </h3>
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="yes"
+                >
+
+                <span id="q3yes">
+                    Yes
+                </span>
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="q3"
+                    value="no"
+                >
+
+                <span id="q3no">
+                    No
+                </span>
+
+            </label>
+
+        </div>
+        <!-- Question 4 -->
+
+<div class="question-card">
+
+    <h3 id="q4">
+        4. Are you comfortable facing new challenges?
+    </h3>
+
+    <label class="option">
+
+        <input
+            type="radio"
+            name="q4"
+            value="yes"
+        >
+
+        <span id="q4yes">
+            Yes
+        </span>
+
+    </label>
+
+
+    <label class="option">
+
+        <input
+            type="radio"
+            name="q4"
+            value="no"
+        >
+
+        <span id="q4no">
+            No
+        </span>
+
+    </label>
+
+</div>
+
+
+<!-- Question 5 -->
+
+<div class="question-card">
+
+    <h3 id="q5">
+        5. Are you willing to continuously improve your skills?
+    </h3>
+
+    <label class="option">
+
+        <input
+            type="radio"
+            name="q5"
+            value="yes"
+        >
+
+        <span id="q5yes">
+            Yes
+        </span>
+
+    </label>
+
+
+    <label class="option">
+
+        <input
+            type="radio"
+            name="q5"
+            value="no"
+        >
+
+        <span id="q5no">
+            No
+        </span>
+
+    </label>
+
+</div>
+<button
+    id="verifyBtn"
+    class="verify-button"
+    onclick="verifyCareer()"
+>
+    Verify Career
+</button>
+
+
+<div
+    id="result"
+    class="question-card"
+>
+
+    <h2 id="resultTitle">
+        Career Verification Result
+    </h2>
+
+
+    <p id="scoreText">
+        Score: 0 / 100
+    </p>
+
+
+    <p id="statusText">
+        Status
+    </p>
+
+
+    <div class="progress">
+
+        <div
+            id="scoreBar"
+            class="progress-bar"
+            style="width:0%"
+        ></div>
+
+    </div>
+
+
+    <p id="messageText">
+    </p>
+
+
+    <button
+        id="continueBtn"
+        onclick="continueToReality()"
+    >
+        Continue
+    </button>
+
+</div>
+<script>
+
+const careerVerifyTranslations = {
+
+    English: {
+
+        pageTitle: "Career Verification",
+
+        pageDescription:
+            "Let's check whether your selected career matches your interests and strengths.",
+
+        q1:
+            "1. Do you enjoy solving problems?",
+
+        q2:
+            "2. Do you enjoy coding or programming?",
+
+        q3:
+            "3. Are you interested in learning new technologies?",
+
+        q4:
+            "4. Are you comfortable facing new challenges?",
+
+        q5:
+            "5. Are you willing to continuously improve your skills?",
+
+        yes: "Yes",
+
+        no: "No",
+
+        verify: "Verify Career",
+
+        resultTitle:
+            "Career Verification Result",
+
+        score: "Score",
+
+        highlySuitable:
+            "Highly Suitable",
+
+        partiallySuitable:
+            "Partially Suitable",
+
+        needsImprovement:
+            "Needs Improvement",
+
+        highlyMessage:
+            "Your interests and strengths strongly match the selected career.",
+
+        partiallyMessage:
+            "Your career match is good, but you need to improve some areas.",
+
+        improvementMessage:
+            "You need to develop your skills and explore the career in more detail.",
+
+        continue: "Continue"
+
+    },
+
+
+    Tamil: {
+
+        pageTitle:
+            "Career Verification",
+
+        pageDescription:
+            "Neenga select panna career unga interest-um strength-um match aagutha nu check pannalam.",
+
+        q1:
+            "1. Problems solve panna ungalukku pidikkuma?",
+
+        q2:
+            "2. Coding illa programming panna ungalukku pidikkuma?",
+
+        q3:
+            "3. Pudhiya technologies kathukka interest irukka?",
+
+        q4:
+            "4. Pudhiya challenges-ai face panna comfortable-ah irukkeengala?",
+
+        q5:
+            "5. Ungaloda skills-ai continuously improve panna ready-ah irukkeengala?",
+
+        yes:
+            "ஆம்",
+
+        no:
+            "இல்லை",
+
+        verify:
+            "Career-ai Verify Pannu",
+
+        resultTitle:
+            "Career Verification Result",
+
+        score:
+            "Score",
+
+        highlySuitable:
+            "மிகவும் பொருத்தமான Career",
+
+        partiallySuitable:
+            "ஓரளவு பொருத்தமான Career",
+
+        needsImprovement:
+            "மேம்படுத்த வேண்டும்",
+
+        highlyMessage:
+            "Ungaloda interest-um strength-um indha career-ku romba nalla match aaguthu.",
+
+        partiallyMessage:
+            "Ungaloda career match nalla irukku, aana sila areas-la improve pannanum.",
+
+        improvementMessage:
+            "Skills-ai improve pannitu indha career path-ai innum explore pannanum.",
+
+        continue:
+            "தொடரவும்"
+
+    },
+
+
+    Thanglish: {
+
+        pageTitle:
+            "Career Verification",
+
+        pageDescription:
+            "Neenga select panna career unga interest-um strength-um match aagutha nu check pannalam.",
+
+        q1:
+            "1. Problem solve panna ungalukku interest irukka?",
+
+        q2:
+            "2. Coding illa programming panna ungalukku pidikkuma?",
+
+        q3:
+            "3. New technologies kathukka interest irukka?",
+
+        q4:
+            "4. New challenges face panna comfortable-ah irukkeengala?",
+
+        q5:
+            "5. Unga skills-ai continuously improve panna ready-ah irukkeengala?",
+
+        yes:
+            "Yes",
+
+        no:
+            "No",
+
+        verify:
+            "Career Verify Pannu",
+
+        resultTitle:
+            "Career Verification Result",
+
+        score:
+            "Score",
+
+        highlySuitable:
+            "Highly Suitable",
+
+        partiallySuitable:
+            "Partially Suitable",
+
+        needsImprovement:
+            "Needs Improvement",
+
+        highlyMessage:
+            "Unga interest-um strength-um indha career-ku romba nalla match aaguthu.",
+
+        partiallyMessage:
+            "Career match okay, aana konjam areas-la improve pannanum.",
+
+        improvementMessage:
+            "Skills improve pannitu career path-ai innum explore pannanum.",
+
+        continue:
+            "Continue"
+
+    },
+
+
+    Hindi: {
+
+        pageTitle:
+            "करियर सत्यापन",
+
+        pageDescription:
+            "आइए जांचते हैं कि आपका चुना हुआ करियर आपकी रुचि और क्षमताओं से मेल खाता है या नहीं।",
+
+        q1:
+            "1. क्या आपको समस्याओं को हल करना पसंद है?",
+
+        q2:
+            "2. क्या आपको कोडिंग या प्रोग्रामिंग पसंद है?",
+
+        q3:
+            "3. क्या आपको नई तकनीक सीखने में रुचि है?",
+
+        q4:
+            "4. क्या आप नई चुनौतियों का सामना करने में सहज हैं?",
+
+        q5:
+            "5. क्या आप लगातार अपने कौशल को बेहतर बनाने के लिए तैयार हैं?",
+
+        yes:
+            "हाँ",
+
+        no:
+            "नहीं",
+
+        verify:
+            "करियर सत्यापित करें",
+
+        resultTitle:
+            "करियर सत्यापन परिणाम",
+
+        score:
+            "स्कोर",
+
+        highlySuitable:
+            "बहुत उपयुक्त",
+
+        partiallySuitable:
+            "आंशिक रूप से उपयुक्त",
+
+        needsImprovement:
+            "सुधार की आवश्यकता है",
+
+        highlyMessage:
+            "आपकी रुचि और क्षमताएं इस करियर से बहुत अच्छी तरह मेल खाती हैं।",
+
+        partiallyMessage:
+            "आपका करियर मैच अच्छा है, लेकिन कुछ क्षेत्रों में सुधार की आवश्यकता है।",
+
+        improvementMessage:
+            "आपको अपने कौशल विकसित करने और इस करियर के बारे में और जानने की आवश्यकता है।",
+
+        continue:
+            "जारी रखें"
+
+    },
+
+
+    Kannada: {
+
+        pageTitle:
+            "Career Verification",
+
+        pageDescription:
+            "Neevu select maadida career nimma interest mattu strengths-ge match aaguttadeye endu check maadona.",
+
+        q1:
+            "1. Nimge problems solve maadalu ishtave?",
+
+        q2:
+            "2. Nimge coding athava programming ishtave?",
+
+        q3:
+            "3. Hosa technologies kaleyalu interest ideya?",
+
+        q4:
+            "4. Hosa challenges face maadalu comfortable aagiddira?",
+
+        q5:
+            "5. Nimma skills-na continuously improve maadalu ready iddira?",
+
+        yes:
+            "ಹೌದು",
+
+        no:
+            "ಇಲ್ಲ",
+
+        verify:
+            "Career Verify Maadi",
+
+        resultTitle:
+            "Career Verification Result",
+
+        score:
+            "Score",
+
+        highlySuitable:
+            "Highly Suitable",
+
+        partiallySuitable:
+            "Partially Suitable",
+
+        needsImprovement:
+            "Needs Improvement",
+
+        highlyMessage:
+            "Nimma interest mattu strengths ee career-ge tumba chennagi match aaguttave.",
+
+        partiallyMessage:
+            "Career match chennagide, aadare kelavu areas improve maadbeku.",
+
+        improvementMessage:
+            "Skills improve maadi career path-na innu explore maadbeku.",
+
+        continue:
+            "Mundhuvarisi"
+
+    },
+
+
+    Malayalam: {
+
+        pageTitle:
+            "Career Verification",
+
+        pageDescription:
+            "Ningal select cheytha career ningalude interest-um strengths-umayi match aakunnundo ennu check cheyyam.",
+
+        q1:
+            "1. Ningalkku problems solve cheyyan ishtamano?",
+
+        q2:
+            "2. Ningalkku coding allenkil programming ishtamano?",
+
+        q3:
+            "3. Puthiya technologies padikkan interest undo?",
+
+        q4:
+            "4. Puthiya challenges face cheyyan comfortable aano?",
+
+        q5:
+            "5. Ningalude skills continuously improve cheyyan ready aano?",
+
+        yes:
+            "അതെ",
+
+        no:
+            "ഇല്ല",
+
+        verify:
+            "Career Verify Cheyyuka",
+
+        resultTitle:
+            "Career Verification Result",
+
+        score:
+            "Score",
+
+        highlySuitable:
+            "Highly Suitable",
+
+        partiallySuitable:
+            "Partially Suitable",
+
+        needsImprovement:
+            "Needs Improvement",
+
+        highlyMessage:
+            "Ningalude interest-um strengths-um ee career-umayi valare nannayi match aakunnu.",
+
+        partiallyMessage:
+            "Career match nallathaanu, pakse chila areas improve cheyyanam.",
+
+        improvementMessage:
+            "Skills improve cheythu career path kooduthal explore cheyyanam.",
+
+        continue:
+            "Continue"
+
+    }
+
+};
+
+</script>
+<script>
+
+function getCareerVerifyLanguage() {
+
+    return localStorage.getItem("selectedLanguage")
+        || "English";
+
+}
+
+
+function translateCareerVerifyPage() {
+
+    const language =
+        getCareerVerifyLanguage();
+
+    const t =
+        careerVerifyTranslations[language]
+        || careerVerifyTranslations["English"];
+
+
+    document.getElementById("pageTitle").innerText =
+        t.pageTitle;
+
+
+    document.getElementById("pageDescription").innerText =
+        t.pageDescription;
+
+
+    for (let i = 1; i <= 5; i++) {
+
+        document.getElementById("q" + i).innerText =
+            t["q" + i];
+
+    }
+
+
+    document.getElementById("q1yes").innerText =
+        t.yes;
+
+    document.getElementById("q2yes").innerText =
+        t.yes;
+
+    document.getElementById("q3yes").innerText =
+        t.yes;
+
+    document.getElementById("q4yes").innerText =
+        t.yes;
+
+    document.getElementById("q5yes").innerText =
+        t.yes;
+
+
+    document.getElementById("q1no").innerText =
+        t.no;
+
+    document.getElementById("q2no").innerText =
+        t.no;
+
+    document.getElementById("q3no").innerText =
+        t.no;
+
+    document.getElementById("q4no").innerText =
+        t.no;
+
+    document.getElementById("q5no").innerText =
+        t.no;
+
+
+    document.getElementById("verifyBtn").innerText =
+        t.verify;
+
+
+    document.getElementById("resultTitle").innerText =
+        t.resultTitle;
+
+
+    document.getElementById("continueBtn").innerText =
+        t.continue;
+
+}
+
+
+
+function verifyCareer() {
+
+    let score = 0;
+
+
+    for (let i = 1; i <= 5; i++) {
+
+        const selected =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+        if (!selected) {
+
+            const language =
+                getCareerVerifyLanguage();
+
+            const t =
+                careerVerifyTranslations[language]
+                || careerVerifyTranslations["English"];
+
+
+            alert(
+                t["q" + i]
+                + "\n\nPlease select Yes or No."
+            );
+
+            return;
+
+        }
+
+
+        if (selected.value === "yes") {
+
+            score += 20;
+
+        }
+
+    }
+
+
+    let status;
+    let message;
+
+
+    const language =
+        getCareerVerifyLanguage();
+
+    const t =
+        careerVerifyTranslations[language]
+        || careerVerifyTranslations["English"];
+
+
+    if (score >= 80) {
+
+        status = t.highlySuitable;
+
+        message = t.highlyMessage;
+
+    }
+
+    else if (score >= 50) {
+
+        status = t.partiallySuitable;
+
+        message = t.partiallyMessage;
+
+    }
+
+    else {
+
+        status = t.needsImprovement;
+
+        message = t.improvementMessage;
+
+    }
+
+
+    // Save result
+
+    localStorage.setItem(
+        "career_verification_score",
+        score
+    );
+
+
+    localStorage.setItem(
+        "career_verification_status",
+        status
+    );
+
+
+    // Show result
+
+    document.getElementById("result")
+        .style.display = "block";
+
+
+    document.getElementById("scoreText")
+        .innerText =
+        t.score + ": " + score + " / 100";
+
+
+    document.getElementById("statusText")
+        .innerText =
+        status;
+
+
+    document.getElementById("messageText")
+        .innerText =
+        message;
+
+
+    document.getElementById("scoreBar")
+        .style.width =
+        score + "%";
+
+
+    document.getElementById("result")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+function continueToReality() {
+
+    window.location.href =
+        "reality-check.html";
+
+}
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const selector =
+            document.getElementById(
+                "languageSelector"
+            );
+
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selectedLanguage"
+            ) || "English";
+
+
+        if (selector) {
+
+            selector.value =
+                savedLanguage;
+
+
+            selector.addEventListener(
+                "change",
+                function () {
+
+                    localStorage.setItem(
+                        "selectedLanguage",
+                        this.value
+                    );
+
+
+                    translateCareerVerifyPage();
+
+                }
+            );
+
+        }
+
+
+        translateCareerVerifyPage();
+
+    }
+);
+
+</script>
+
+
+</div>
+<div class="dashboard-back">
+    <button onclick="window.location.href='dashboard.html'">
+        ← Go Back to Dashboard
+    </button>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile-responsive.css">
+
+<title>AI Career Hub - Transition Plan</title>
+
+
+</head>
+
+<body class="transition-page">
+
+<select id="languageSelector" onchange="changeLanguage()">
+    <option value="en">English</option>
+    <option value="ta">தமிழ்</option>
+    <option value="hi">हिन्दी</option>
+    <option value="th">Thanglish</option>
+    <option value="kn">ಕನ್ನಡ</option>
+    <option value="ml">മലയാളം</option>
+</select>
+
+<div class="container">
+
+<h1 id="title">Career Transition Plan</h1>
+
+<p class="subtitle" id="subtitle">
+Your personalized step-by-step career switching plan
+</p>
+
+<div class="card">
+
+<h2 id="careerTitle">Career Transition</h2>
+
+<div class="info-grid">
+
+<div class="info-box">
+<strong id="currentLabel">Current Career</strong>
+<span id="currentCareer">-</span>
+</div>
+
+<div class="info-box">
+<strong id="targetLabel">Target Career</strong>
+<span id="targetCareer">-</span>
+</div>
+
+<div class="info-box">
+<strong id="levelLabel">Current Level</strong>
+<span id="currentLevel">-</span>
+</div>
+
+<div class="info-box">
+<strong id="readinessLabel">Readiness</strong>
+<span id="readiness">-</span>
+</div>
+
+</div>
+
+</div>
+<div class="card">
+
+<h2 id="skillsTitle">Skills To Learn</h2>
+
+<p id="skillsDescription">
+These skills should be developed for your target career.
+</p>
+
+<div id="missingSkills">
+</div>
+
+<button type="button" onclick="generatePlan(); createLearningPlan();" id="generateBtn">
+Generate Transition Plan
+</button>
+
+</div>
+
+<div class="card">
+
+<h2 id="planTitle">Your Learning Plan</h2>
+
+<div id="planContainer">
+
+<p id="planMessage">
+Click "Generate Transition Plan" to create your personalized plan.
+</p>
+
+</div>
+
+</div>
+<script>
+
+const careerSkills = {
+
+    "Data Scientist": [
+        "Python",
+        "SQL",
+        "Statistics",
+        "Pandas",
+        "NumPy",
+        "Machine Learning",
+        "Data Visualization"
+    ],
+
+    "AI Engineer": [
+        "Python",
+        "Mathematics",
+        "Machine Learning",
+        "Deep Learning",
+        "TensorFlow",
+        "PyTorch"
+    ],
+
+    "Web Developer": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Backend Development",
+        "Database"
+    ]
+
+};
+
+const learningTime = {
+
+    "Python": "2 Weeks",
+    "SQL": "2 Weeks",
+    "Statistics": "2 Weeks",
+    "Pandas": "1 Week",
+    "NumPy": "1 Week",
+    "Machine Learning": "4 Weeks",
+    "Data Visualization": "2 Weeks",
+
+    "Mathematics": "3 Weeks",
+    "Deep Learning": "4 Weeks",
+    "TensorFlow": "2 Weeks",
+    "PyTorch": "2 Weeks",
+
+    "HTML": "1 Week",
+    "CSS": "2 Weeks",
+    "JavaScript": "3 Weeks",
+    "React": "3 Weeks",
+    "Backend Development": "3 Weeks",
+    "Database": "2 Weeks"
+};
+function generatePlan() {
+    alert("Generate button clicked!");
+
+    const currentCareer =
+        localStorage.getItem("whatif_current_career") ||
+        localStorage.getItem("selected_career") ||
+        "Not Available";
+
+    const targetCareer =
+        localStorage.getItem("whatif_target_career") ||
+        localStorage.getItem("selected_career");
+
+    const level =
+        localStorage.getItem("whatif_level") ||
+        localStorage.getItem("selected_level") ||
+        "Not Available";
+
+    const readiness =
+        localStorage.getItem("whatif_readiness") || "0";
+
+    if (!targetCareer) {
+
+        alert("Please complete the What-If Simulator first.");
+
+        return;
+    }
+
+    document.getElementById("currentCareer").innerText =
+        currentCareer;
+
+    document.getElementById("targetCareer").innerText =
+        targetCareer;
+
+    document.getElementById("currentLevel").innerText =
+        level;
+
+    document.getElementById("readiness").innerText =
+        readiness + "%";
+
+    const currentSkills =
+        careerSkills[currentCareer] || [];
+
+    const targetSkills =
+        careerSkills[targetCareer] || [];
+
+    const missingSkills =
+        targetSkills.filter(function(skill) {
+            return !currentSkills.includes(skill);
+        });
+
+    const missingContainer =
+        document.getElementById("missingSkills");
+
+    missingContainer.innerHTML = "";
+
+    if (missingSkills.length === 0) {
+
+        missingContainer.innerHTML =
+            "<p><strong>You already have the required skills.</strong></p>";
+
+    } else {
+
+        missingSkills.forEach(function(skill) {
+
+            missingContainer.innerHTML +=
+                `<span class="skill">${skill}</span>`;
+
+        });
+
+    }
+
+    localStorage.setItem(
+        "transition_missing_skills",
+        JSON.stringify(missingSkills)
+    );
+
+    alert("Transition Plan generated successfully!");
+}
+
+
+function createLearningPlan() {
+
+    const targetCareer =
+        localStorage.getItem("whatif_target_career") ||
+        localStorage.getItem("selected_career") ||
+        "";
+
+    let missingSkills = [];
+
+    try {
+        missingSkills = JSON.parse(
+            localStorage.getItem("transition_missing_skills") || "[]"
+        );
+    } catch (error) {
+        missingSkills = [];
+    }
+
+    const container =
+        document.getElementById("planContainer");
+
+    if (!container) {
+        alert("Learning plan container not found!");
+        return;
+    }
+
+    container.innerHTML = "";
+
+    if (!targetCareer) {
+
+        container.innerHTML =
+            "<p>Please complete the What-If Simulator first.</p>";
+
+        return;
+    }
+
+    if (!Array.isArray(missingSkills)) {
+        missingSkills = [];
+    }
+
+    if (missingSkills.length === 0) {
+
+        container.innerHTML = `
+            <div class="result">
+                <h3>🎉 You are ready!</h3>
+                <p>
+                    You already have the major skills required
+                    for ${targetCareer}.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    missingSkills.forEach(function(skill, index) {
+
+        const time =
+            (typeof learningTime !== "undefined" &&
+             learningTime[skill])
+                ? learningTime[skill]
+                : "2 Weeks";
+
+        container.innerHTML += `
+            <div class="plan-step">
+
+                <h3>Step ${index + 1}: ${skill}</h3>
+
+                <p>
+                    <strong>Estimated Time:</strong>
+                    ${time}
+                </p>
+
+                <p>
+                    Learn the fundamentals, practice regularly,
+                    complete small projects and test your knowledge.
+                </p>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width:0%">
+                    </div>
+                </div>
+
+            </div>
+        `;
+    });
+}
+
+function goNext() {
+
+    window.location.href =
+        "career-roadmap.html";
+}
+
+</script>
+<script>
+
+const transitionTranslations = {
+
+    en: {
+        title: "Career Transition Plan",
+        subtitle: "Your personalized step-by-step career switching plan",
+        careerTitle: "Career Transition",
+        currentLabel: "Current Career",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        skillsTitle: "Skills To Learn",
+        skillsDescription: "These skills should be developed for your target career.",
+        generateBtn: "Generate Transition Plan",
+        planTitle: "Your Learning Plan",
+        planMessage: 'Click "Generate Transition Plan" to create your personalized plan.'
+    },
+
+    ta: {
+        title: "Career Transition Plan",
+        subtitle: "Ungalukkaana step-by-step career switching plan",
+        careerTitle: "Career Transition",
+        currentLabel: "Current Career",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        skillsTitle: "Karka Vendiya Skills",
+        skillsDescription: "Target career-ku thevaiyana skills-ai develop pannanum.",
+        generateBtn: "Transition Plan Generate Pannu",
+        planTitle: "Ungal Learning Plan",
+        planMessage: "Personalized plan create panna Generate Transition Plan click pannunga."
+    },
+
+    th: {
+        title: "Career Transition Plan",
+        subtitle: "Unakkana step-by-step career switching plan",
+        careerTitle: "Career Transition",
+        currentLabel: "Current Career",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        skillsTitle: "Learn Panna Vendiya Skills",
+        skillsDescription: "Target career-ku thevaiyana skills-ai develop pannanum.",
+        generateBtn: "Transition Plan Generate Pannu",
+        planTitle: "Un Learning Plan",
+        planMessage: "Personalized plan create panna Generate Transition Plan click pannu."
+    },
+
+    hi: {
+        title: "Career Transition Plan",
+        subtitle: "आपके लिए व्यक्तिगत चरण-दर-चरण करियर योजना",
+        careerTitle: "करियर ट्रांज़िशन",
+        currentLabel: "वर्तमान करियर",
+        targetLabel: "लक्षित करियर",
+        levelLabel: "वर्तमान स्तर",
+        readinessLabel: "तैयारी",
+        skillsTitle: "सीखने वाले कौशल",
+        skillsDescription: "आपके लक्षित करियर के लिए इन कौशलों को विकसित करें।",
+        generateBtn: "ट्रांज़िशन प्लान बनाएँ",
+        planTitle: "आपकी लर्निंग योजना",
+        planMessage: "व्यक्तिगत योजना बनाने के लिए बटन दबाएँ।"
+    },
+
+    kn: {
+        title: "Career Transition Plan",
+        subtitle: "Nimma step-by-step career switching plan",
+        careerTitle: "Career Transition",
+        currentLabel: "Current Career",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        skillsTitle: "Kalibekada Skills",
+        skillsDescription: "Target career-ge bekada skills annu develop maadi.",
+        generateBtn: "Transition Plan Generate Maadi",
+        planTitle: "Nimma Learning Plan",
+        planMessage: "Personalized plan create maadalu button click maadi."
+    },
+
+    ml: {
+        title: "Career Transition Plan",
+        subtitle: "Ningalkkulla step-by-step career switching plan",
+        careerTitle: "Career Transition",
+        currentLabel: "Current Career",
+        targetLabel: "Target Career",
+        levelLabel: "Current Level",
+        readinessLabel: "Readiness",
+        skillsTitle: "Padikkenda Skills",
+        skillsDescription: "Target career-inu aavashyamaya skills develop cheyyuka.",
+        generateBtn: "Transition Plan Generate Cheyyuka",
+        planTitle: "Ningalude Learning Plan",
+        planMessage: "Personalized plan create cheyyan button click cheyyuka."
+    }
+
+};
+
+function changeLanguage() {
+
+    const lang =
+        document.getElementById("languageSelector").value;
+
+    const t =
+        transitionTranslations[lang];
+
+    Object.keys(t).forEach(key => {
+
+        const element =
+            document.getElementById(key);
+
+        if (element) {
+
+            element.innerText =
+                t[key];
+
+        }
+
+    });
+
+    localStorage.setItem(
+        "selectedLanguage",
+        lang
+    );
+}
+
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const savedLanguage =
+        localStorage.getItem("selectedLanguage") || "en";
+
+    document.getElementById("languageSelector").value =
+        savedLanguage;
+
+    changeLanguage();
+
+    const currentCareer =
+        localStorage.getItem("whatif_current_career");
+
+    const targetCareer =
+        localStorage.getItem("whatif_target_career");
+
+    const level =
+        localStorage.getItem("whatif_level");
+
+    const readiness =
+        localStorage.getItem("whatif_readiness");
+
+    document.getElementById("currentCareer").innerText =
+        currentCareer || "Not Available";
+
+    document.getElementById("targetCareer").innerText =
+        targetCareer || "Not Available";
+
+    document.getElementById("currentLevel").innerText =
+        level || "Not Available";
+
+    document.getElementById("readiness").innerText =
+        readiness ? readiness + "%" : "Not Available";
+
+    const currentSkills =
+        careerSkills[currentCareer] || [];
+
+    const targetSkills =
+        careerSkills[targetCareer] || [];
+
+    const missingSkills =
+        targetSkills.filter(skill =>
+            !currentSkills.includes(skill)
+        );
+
+    const missingContainer =
+        document.getElementById("missingSkills");
+
+    missingContainer.innerHTML = "";
+
+    missingSkills.forEach(skill => {
+
+        missingContainer.innerHTML +=
+            `<span class="skill">${skill}</span>`;
+
+    });
+
+    localStorage.setItem(
+        "transition_missing_skills",
+        JSON.stringify(missingSkills)
+    );
+
+});
+
+</script>
+
+<div class="card" style="text-align:center;">
+
+<button type="button" onclick="createLearningPlan()" id="createBtn">
+Generate My Learning Steps
+</button>
+
+<button onclick="goNext()" id="nextBtn">
+Continue to Career Roadmap →
+</button>
+
+</div>
+
+</div>
+<div class="dashboard-back">
+    <button onclick="window.location.href='dashboard.html'">
+        ← Go Back to Dashboard
+    </button>
+</div>
+
+<script>
+(function syncCareerJourneyData() {
+    // Transition Plan-oda actual source: What-If Simulator keys.
+    // Language selector value ("en", "ta", etc.) career-a use aagaadhu.
+
+    function readValue(key, fallback) {
+        const value = localStorage.getItem(key);
+        if (value === null || String(value).trim() === "") {
+            return fallback;
+        }
+        return String(value).trim();
+    }
+
+    const currentCareer = readValue(
+        "whatif_current_career",
+        "Not Available"
+    );
+
+    const targetCareer = readValue(
+        "whatif_target_career",
+        "Not Available"
+    );
+
+    const level = readValue(
+        "whatif_level",
+        "Not Available"
+    );
+
+    let readiness = readValue(
+        "whatif_readiness",
+        "0"
+    );
+
+    readiness = parseFloat(readiness.replace("%", ""));
+    if (Number.isNaN(readiness)) readiness = 0;
+    readiness = Math.max(0, Math.min(100, readiness));
+
+    // Sync only career-related keys. Never read languageSelector here.
+    const values = {
+        current_career: currentCareer,
+        currentCareer: currentCareer,
+        currentCareerName: currentCareer,
+
+        target_career: targetCareer,
+        targetCareer: targetCareer,
+        selected_career: targetCareer,
+        selectedCareer: targetCareer,
+
+        selected_level: level,
+        selectedLevel: level,
+        user_level: level,
+
+        readiness: String(readiness),
+        readiness_score: String(readiness),
+        job_readiness: String(readiness),
+        jobReadiness: String(readiness),
+        mission_readiness: String(readiness),
+        missionReadiness: String(readiness)
+    };
+
+    Object.entries(values).forEach(([key, value]) => {
+        localStorage.setItem(key, value);
+    });
+
+    // Show the same values on Transition Plan.
+    const currentElement = document.getElementById("currentCareer");
+    const targetElement = document.getElementById("targetCareer");
+    const levelElement = document.getElementById("currentLevel");
+    const readinessElement = document.getElementById("readiness");
+
+    if (currentElement) currentElement.textContent = currentCareer;
+    if (targetElement) targetElement.textContent = targetCareer;
+    if (levelElement) levelElement.textContent = level;
+    if (readinessElement) readinessElement.textContent = readiness + "%";
+
+})();
+</script>
+
+
+</body>
+</html>

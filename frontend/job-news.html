@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Hub - Job News</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(135deg,#eef4ff,#f8fafc);
+            color: #1e293b;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            background: white;
+            padding: 16px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 3px 18px rgba(15,23,42,.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            color: #1d4ed8;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            margin: 0 8px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #languageSelector {
+            position: fixed;
+            top: 75px;
+            right: 20px;
+            z-index: 999;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 92%;
+            margin: 50px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d4ed8;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 35px;
+        }
+
+        .info-card {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .news-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(15,23,42,.08);
+            transition: .25s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(15,23,42,.14);
+        }
+
+        .news-title {
+            color: #1d4ed8;
+            font-size: 22px;
+            margin-top: 0;
+        }
+
+        .company {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .news-info {
+            margin: 8px 0;
+        }
+
+        .source {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        .read-btn {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .read-btn:hover {
+            background: #15803d;
+            text-decoration: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            color: #2563eb;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        @media(max-width:700px) {
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            #languageSelector {
+                top: 120px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="brand">
+        AI Career Hub
+    </div>
+
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="practice.html">Practice</a>
+    </div>
+
+</div>
+
+<select id="languageSelector">
+
+    <option value="English">English</option>
+    <option value="Tamil">தமிழ்</option>
+    <option value="Hindi">हिन्दी</option>
+    <option value="Thanglish">Thanglish</option>
+    <option value="Kannada">ಕನ್ನಡ</option>
+    <option value="Malayalam">മലയാളം</option>
+
+</select>
+
+<div class="container">
+
+    <h1 id="pageTitle">
+        Real Job News
+    </h1>
+
+    <p class="subtitle" id="pageSubtitle">
+        Latest job updates from a real job source
+    </p>
+
+    <div class="info-card">
+
+        <strong id="infoTitle">
+            Verified Source
+        </strong>
+
+        <p id="infoText">
+            News shown here comes from a live external job source.
+            Always open the original link before taking action.
+        </p>
+
+    </div>
+
+    <div id="status"></div>
+
+    <div id="newsContainer"></div>
+
+</div>
+<script>
+
+function escapeHTML(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function formatDate(dateValue) {
+
+    if (!dateValue) {
+        return "Date unavailable";
+    }
+
+    const date = new Date(dateValue);
+
+    if (isNaN(date.getTime())) {
+        return "Date unavailable";
+    }
+
+    return date.toLocaleDateString(
+        undefined,
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+}
+
+
+function createNewsCard(newsItem) {
+
+    const card =
+        document.createElement("div");
+
+    card.className = "news-card";
+
+
+    const headline =
+        newsItem.headline ||
+        "Job update";
+
+
+    const company =
+        newsItem.company ||
+        "Company information unavailable";
+
+
+    const publishedDate =
+        formatDate(
+            newsItem.published_date
+        );
+
+
+    const source =
+        newsItem.source ||
+        "Unknown source";
+
+
+    const originalURL =
+        newsItem.original_url;
+
+
+    card.innerHTML = `
+
+        <h2 class="news-title">
+            📰 ${escapeHTML(headline)}
+        </h2>
+
+        <p class="company">
+            🏢 ${escapeHTML(company)}
+        </p>
+
+        <p class="news-info">
+            📅 <strong>Published:</strong>
+            ${escapeHTML(publishedDate)}
+        </p>
+
+        <p class="source">
+            🌐 Source:
+            ${escapeHTML(source)}
+        </p>
+
+        ${
+            originalURL
+            ?
+            `
+            <a
+                class="read-btn"
+                href="${escapeHTML(originalURL)}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🔗 Read Original
+            </a>
+            `
+            :
+            `
+            <div class="error">
+                Original source link unavailable.
+            </div>
+            `
+        }
+
+    `;
+
+
+    return card;
+
+}
+async function loadJobNews() {
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    const container =
+        document.getElementById(
+            "newsContainer"
+        );
+
+
+    container.innerHTML = "";
+
+    status.innerHTML = `
+        <div class="loading">
+            🔎 Loading real job news...
+        </div>
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+                "http://127.0.0.1:8000/job-news"
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Job news source unavailable"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        status.innerHTML = `
+
+            <div class="info-card">
+
+                <strong>
+                    ${data.count}
+                    real job updates found
+                </strong>
+
+                <p>
+                    🌐 Source:
+                    ${escapeHTML(
+                        data.source
+                    )}
+                </p>
+
+                <p>
+                    🕐 Last checked:
+                    ${escapeHTML(
+                        new Date(
+                            data.last_checked
+                        ).toLocaleString()
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+
+        if (
+            !data.news ||
+            data.news.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+
+                    <h2>
+                        No job news found
+                    </h2>
+
+                    <p>
+                        Please check again later.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        data.news.forEach(
+            function(newsItem) {
+
+                container.appendChild(
+                    createNewsCard(
+                        newsItem
+                    )
+                );
+
+            }
+        );
+
+
+    } catch (error) {
+
+        status.innerHTML = `
+
+            <div class="error">
+
+                ❌ Unable to load real job news.
+
+                <br><br>
+
+                Please make sure the
+                FastAPI server is running.
+
+            </div>
+
+        `;
+
+    }
+
+}
+const newsTranslations = {
+
+    English: {
+
+        title:
+            "Real Job News",
+
+        subtitle:
+            "Latest job updates from a real job source",
+
+        verified:
+            "Verified Source",
+
+        info:
+            "News shown here comes from a live external job source. Always open the original link before taking action."
+
+    },
+
+
+    Tamil: {
+
+        title:
+            "உண்மையான வேலை செய்திகள்",
+
+        subtitle:
+            "உண்மையான job source-லிருந்து சமீபத்திய வேலை updates",
+
+        verified:
+            "சரிபார்க்கப்பட்ட Source",
+
+        info:
+            "இங்கே காட்டப்படும் செய்திகள் live external job source-லிருந்து பெறப்படுகின்றன. எந்த action எடுப்பதற்கு முன்பும் original link-ஐ open செய்து சரிபார்க்கவும்."
+
+    },
+
+
+    Thanglish: {
+
+        title:
+            "Real Job News",
+
+        subtitle:
+            "Real job source la irundhu latest job updates",
+
+        verified:
+            "Verified Source",
+
+        info:
+            "Inga kaamikura news live external job source la irundhu varum. Action edukkurathukku munnaadi original link-a open panni check pannu."
+
+    },
+
+
+    Hindi: {
+
+        title:
+            "वास्तविक नौकरी समाचार",
+
+        subtitle:
+            "वास्तविक job source से नवीनतम नौकरी updates",
+
+        verified:
+            "सत्यापित Source",
+
+        info:
+            "यहाँ दिखाई गई news live external job source से आती है। कोई action लेने से पहले original link को जरूर खोलकर जांचें।"
+
+    },
+
+
+    Kannada: {
+
+        title:
+            "ನಿಜವಾದ ಉದ್ಯೋಗ ಸುದ್ದಿ",
+
+        subtitle:
+            "ನಿಜವಾದ job source ನಿಂದ ಇತ್ತೀಚಿನ ಉದ್ಯೋಗ updates",
+
+        verified:
+            "ಪರಿಶೀಲಿಸಿದ Source",
+
+        info:
+            "ಇಲ್ಲಿ ತೋರಿಸಿರುವ news live external job source ನಿಂದ ಬರುತ್ತದೆ. ಯಾವುದೇ action ತೆಗೆದುಕೊಳ್ಳುವ ಮೊದಲು original link ಅನ್ನು ತೆರೆಯಿರಿ."
+
+    },
+
+
+    Malayalam: {
+
+        title:
+            "യഥാർത്ഥ ജോലി വാർത്തകൾ",
+
+        subtitle:
+            "യഥാർത്ഥ job source-ൽ നിന്നുള്ള പുതിയ job updates",
+
+        verified:
+            "പരിശോധിച്ച Source",
+
+        info:
+            "ഇവിടെ കാണിക്കുന്ന news live external job source-ൽ നിന്നാണ് ലഭിക്കുന്നത്. ഏതെങ്കിലും action എടുക്കുന്നതിന് മുമ്പ് original link പരിശോധിക്കുക."
+
+    }
+
+};
+
+
+function changeNewsLanguage() {
+
+    const language =
+        document.getElementById(
+            "languageSelector"
+        ).value;
+
+
+    localStorage.setItem(
+        "selected_language",
+        language
+    );
+
+
+    const t =
+        newsTranslations[language] ||
+        newsTranslations.English;
+
+
+    document.getElementById(
+        "pageTitle"
+    ).textContent =
+        t.title;
+
+
+    document.getElementById(
+        "pageSubtitle"
+    ).textContent =
+        t.subtitle;
+
+
+    document.getElementById(
+        "infoTitle"
+    ).textContent =
+        t.verified;
+
+
+    document.getElementById(
+        "infoText"
+    ).textContent =
+        t.info;
+
+}
+document.getElementById(
+    "languageSelector"
+).addEventListener(
+    "change",
+    changeNewsLanguage
+);
+
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selected_language"
+            ) || "English";
+
+
+        document.getElementById(
+            "languageSelector"
+        ).value =
+            savedLanguage;
+
+
+        changeNewsLanguage();
+
+
+        loadJobNews();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

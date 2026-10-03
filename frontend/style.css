@@ -1,0 +1,6870 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef4ff, #f8fbff);
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #1d4ed8;
+    font-size: 36px;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+h2 {
+    color: #1e3a8a;
+    text-align: center;
+    font-size: 27px;
+    margin: 10px 0 20px;
+}
+
+h3 {
+    color: #1e40af;
+}
+
+.container,
+.news-container,
+.job-container,
+.skills-container,
+.admin-container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+}
+/* ===== CARDS ===== */
+
+.card,
+.job-card,
+.news-card,
+.admin-card,
+.skill-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 25px;
+    margin: 18px 0;
+    box-shadow: 0 10px 30px rgba(30, 64, 175, 0.10);
+    transition: 0.25s ease;
+}
+
+.card:hover,
+.job-card:hover,
+.news-card:hover,
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(30, 64, 175, 0.16);
+}
+
+
+/* ===== GRID ===== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(240px, 1fr)
+    );
+    gap: 22px;
+}
+
+
+/* ===== INPUTS ===== */
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 13px 15px;
+    margin: 8px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background: white;
+    color: #1f2937;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+
+/* ===== BUTTONS ===== */
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 13px 24px;
+    margin: 7px 5px;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.22);
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 20px rgba(37, 99, 235, 0.30);
+}
+
+
+/* ===== LINKS ===== */
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* ===== NAVBAR ===== */
+
+.navbar {
+    width: 100%;
+    background: white;
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    margin: 0 8px;
+}
+
+
+/* ===== PROGRESS BAR ===== */
+
+.progress {
+    width: 100%;
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px 0 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+
+/* ===== RESULT / MESSAGE ===== */
+
+#message,
+#result,
+#output {
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+}
+
+
+/* ===== CHECKBOX ===== */
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+
+/* ===== LANGUAGE SELECTOR ===== */
+
+#languageSelector {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    width: auto;
+    min-width: 130px;
+    z-index: 9999;
+    padding: 9px 12px;
+    margin: 0;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ===== JOB & NEWS ===== */
+
+.job-card h3,
+.news-card h3 {
+    color: #1d4ed8;
+    margin-top: 0;
+}
+
+.job-card p,
+.news-card p {
+    margin: 7px 0;
+}
+
+
+/* ===== TABLE ===== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 13px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 700px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .container,
+    .news-container,
+    .job-container,
+    .skills-container,
+    .admin-container {
+        width: 94%;
+        padding: 18px;
+        margin: 25px auto;
+    }
+
+    button {
+        width: 100%;
+        margin: 7px 0;
+    }
+
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #languageSelector {
+        top: 10px;
+        right: 10px;
+    }
+}
+/* =========================================
+   AI CAREER HUB - FINAL PROFESSIONAL DESIGN
+   PART 1
+   ========================================= */
+
+body {
+    background: linear-gradient(135deg, #eef4ff 0%, #f8fafc 100%);
+    color: #1e293b;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main container */
+
+.container,
+.news-container,
+.job-container,
+.skills-container,
+.admin-container {
+    max-width: 1100px;
+    width: 92%;
+    margin: 40px auto;
+    padding: 30px;
+}
+
+/* Headings */
+
+h1 {
+    color: #1d4ed8;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #1e3a8a;
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h3 {
+    color: #1e40af;
+}
+
+/* Professional cards */
+
+.card,
+.job-card,
+.news-card,
+.admin-card,
+.skill-card {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 25px;
+    margin: 18px 0;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+    transition: all 0.25s ease;
+}
+
+/* Card hover */
+
+.card:hover,
+.job-card:hover,
+.news-card:hover,
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.14);
+}
+
+/* Grid */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(240px, 1fr)
+    );
+    gap: 22px;
+}
+/* =========================================
+   AI CAREER HUB - PROFESSIONAL DESIGN
+   PART 2
+   ========================================= */
+
+/* Buttons */
+
+button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 24px;
+    margin: 7px 5px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.22);
+    transition: 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(37, 99, 235, 0.30);
+}
+
+/* Inputs */
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 13px 15px;
+    margin: 8px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background: white;
+    color: #1e293b;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Labels */
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 12px;
+}
+
+/* Links */
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar */
+
+.navbar {
+    background: white;
+    width: 100%;
+    padding: 16px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 18px rgba(15, 23, 42, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    margin: 0 8px;
+}
+
+/* Messages */
+
+#message,
+#result,
+#output {
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+}
+/* =========================================
+   AI CAREER HUB - PROFESSIONAL DESIGN
+   PART 3 - FINAL POLISH
+   ========================================= */
+
+/* Progress bar */
+
+.progress {
+    width: 100%;
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px 0 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+/* Language selector */
+
+#languageSelector {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 9999;
+    width: auto;
+    min-width: 130px;
+    padding: 9px 12px;
+    margin: 0;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.12);
+}
+
+/* Job and news cards */
+
+.job-card h3,
+.news-card h3 {
+    color: #1d4ed8;
+    margin-top: 0;
+}
+
+.job-card p,
+.news-card p {
+    margin: 7px 0;
+}
+
+/* Checkbox */
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 13px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 700px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .container,
+    .news-container,
+    .job-container,
+    .skills-container,
+    .admin-container {
+        width: 94%;
+        padding: 18px;
+        margin: 25px auto;
+    }
+
+    button {
+        width: 100%;
+        margin: 7px 0;
+    }
+
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #languageSelector {
+        top: 10px;
+        right: 10px;
+    }
+}
+/* ============================= */
+/* AI ROBOT WELCOME SCREEN */
+/* ============================= */
+
+.robot-welcome {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 15, 35, 0.96);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.robot-box {
+    width: 380px;
+    max-width: 90%;
+    padding: 40px 30px;
+    text-align: center;
+    background: linear-gradient(145deg, #111c3a, #1b2850);
+    border-radius: 25px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    animation: robotBoxIn 0.7s ease;
+}
+
+.robot-icon {
+    font-size: 90px;
+    margin-bottom: 15px;
+    animation: robotFloat 2s ease-in-out infinite;
+}
+
+.robot-box h2 {
+    color: white;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+.robot-box p {
+    color: #cbd5e1;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.robot-loading {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+}
+
+.robot-loading span {
+    width: 9px;
+    height: 9px;
+    background: #60a5fa;
+    border-radius: 50%;
+    animation: robotDots 1.2s infinite;
+}
+
+.robot-loading span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.robot-loading span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes robotFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+@keyframes robotBoxIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@keyframes robotDots {
+
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+
+}
+/* =========================================
+   AI CAREER HUB - PREMIUM ROBOT WELCOME
+   ========================================= */
+
+.robot-welcome {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 35%, #182f78 0%, transparent 35%),
+        radial-gradient(circle at 20% 70%, #321b78 0%, transparent 30%),
+        linear-gradient(135deg, #020817, #071a45, #160b3d);
+
+    animation: welcomeFade 0.6s ease;
+}
+
+.robot-welcome::before {
+    content: "";
+    position: absolute;
+    inset: 6% 8%;
+
+    border: 1px solid rgba(80, 160, 255, 0.45);
+    border-radius: 28px;
+
+    box-shadow:
+        0 0 40px rgba(0, 110, 255, 0.15),
+        inset 0 0 50px rgba(50, 100, 255, 0.08);
+
+    pointer-events: none;
+}
+
+.welcome-card {
+    position: relative;
+
+    width: min(850px, 82vw);
+    min-height: 650px;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 35, 80, 0.92),
+            rgba(9, 18, 48, 0.94)
+        );
+
+    border: 1px solid rgba(80, 160, 255, 0.45);
+    border-radius: 30px;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.55),
+        0 0 60px rgba(0, 100, 255, 0.15);
+
+    backdrop-filter: blur(18px);
+
+    animation: welcomeCardIn 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+/* =========================================
+   ROBOT
+   ========================================= */
+
+.welcome-robot {
+    position: relative;
+
+    width: 250px;
+    height: 250px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: robotFloat 3s ease-in-out infinite;
+}
+
+.welcome-robot::before {
+    content: "";
+
+    position: absolute;
+
+    width: 245px;
+    height: 245px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(0, 191, 255, 0.5);
+
+    box-shadow:
+        0 0 25px #008cff,
+        inset 0 0 25px rgba(0, 140, 255, 0.2);
+
+    animation: orbitSpin 8s linear infinite;
+}
+
+/* Robot head */
+
+.robot-head {
+    position: absolute;
+
+    width: 190px;
+    height: 140px;
+
+    top: 25px;
+
+    border-radius: 55px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #b9d8ff
+    );
+
+    border: 3px solid #72bfff;
+
+    box-shadow:
+        0 0 30px rgba(0, 174, 255, 0.65),
+        inset 0 -10px 20px rgba(50, 100, 200, 0.15);
+
+    z-index: 3;
+}
+
+/* Robot screen */
+
+.robot-screen {
+    position: absolute;
+
+    width: 150px;
+    height: 90px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #061329,
+            #0b2345
+        );
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 150, 255, 0.3),
+        0 0 20px rgba(0, 120, 255, 0.35);
+}
+
+.robot-eye {
+    width: 28px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: #48d9ff;
+
+    box-shadow:
+        0 0 10px #00bfff,
+        0 0 25px #008cff;
+
+    animation: eyeBlink 4s infinite;
+}
+
+/* Robot body */
+
+.robot-body {
+    position: absolute;
+
+    width: 125px;
+    height: 105px;
+
+    bottom: 0;
+
+    border-radius: 45px 45px 30px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f5fbff,
+            #9bcaff
+        );
+
+    border: 3px solid #65b8ff;
+
+    box-shadow:
+        0 0 25px rgba(0, 160, 255, 0.5);
+
+    z-index: 2;
+}
+
+/* AI badge */
+
+.robot-ai {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #06162f;
+
+    color: #4edbff;
+
+    font-size: 22px;
+    font-weight: 800;
+
+    border: 2px solid #4edbff;
+
+    box-shadow:
+        0 0 15px #009dff,
+        inset 0 0 15px rgba(0, 160, 255, 0.25);
+}
+
+/* Waving hand */
+
+.robot-left {
+    position: absolute;
+
+    left: 10px;
+    top: 80px;
+
+    font-size: 58px;
+
+    z-index: 5;
+
+    transform-origin: bottom right;
+
+    animation: robotWave 1.5s ease-in-out infinite;
+}
+
+/* =========================================
+   WELCOME TEXT
+   ========================================= */
+
+.welcome-content {
+    position: relative;
+    z-index: 10;
+}
+
+.welcome-small {
+    color: #e5efff;
+
+    font-size: 25px;
+    font-weight: 500;
+
+    margin-bottom: 4px;
+}
+
+.welcome-title {
+    font-size: clamp(42px, 6vw, 70px);
+    font-weight: 900;
+    line-height: 1.05;
+
+    background:
+        linear-gradient(
+            90deg,
+            #29d8ff,
+            #628cff,
+            #c64dff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 0 30px rgba(70, 130, 255, 0.25);
+
+    margin-bottom: 18px;
+}
+
+.welcome-content p {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #d7e4ff;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   SPEECH BUBBLE
+   ========================================= */
+
+.welcome-bubble {
+    position: absolute;
+
+    top: 35px;
+    right: 35px;
+
+    padding: 14px 20px;
+
+    color: white;
+
+    font-size: 15px;
+    line-height: 1.5;
+
+    background: rgba(20, 60, 130, 0.7);
+
+    border: 1px solid rgba(80, 180, 255, 0.7);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 25px rgba(0, 130, 255, 0.25);
+
+    transform: rotate(2deg);
+}
+
+/* =========================================
+   FLOATING CAREER ICONS
+   ========================================= */
+
+.welcome-icon {
+    position: absolute;
+
+    z-index: 4;
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(15, 45, 100, 0.65);
+
+    border: 1px solid rgba(70, 160, 255, 0.55);
+
+    box-shadow:
+        0 0 25px rgba(0, 130, 255, 0.2);
+
+    font-size: 28px;
+
+    animation: iconFloat 4s ease-in-out infinite;
+}
+
+.icon-cap {
+    left: 10%;
+    top: 25%;
+}
+
+.icon-chart {
+    left: 12%;
+    bottom: 25%;
+    animation-delay: 0.8s;
+}
+
+.icon-target {
+    right: 10%;
+    top: 30%;
+    animation-delay: 1.2s;
+}
+
+.icon-job {
+    right: 13%;
+    bottom: 25%;
+    animation-delay: 1.8s;
+}
+/* =========================================
+   PREMIUM ROBOT WELCOME - PART 2
+   ANIMATIONS + RESPONSIVE
+   ========================================= */
+
+@keyframes welcomeFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes welcomeCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes orbitSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes robotWave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-18deg);
+    }
+
+    50% {
+        transform: rotate(12deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes eyeBlink {
+    0%, 44%, 48%, 100% {
+        transform: scaleY(1);
+    }
+
+    46% {
+        transform: scaleY(0.12);
+    }
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(3deg);
+    }
+}
+
+/* =========================================
+   EXTRA GLOW
+   ========================================= */
+
+.robot-head::after {
+    content: "";
+
+    position: absolute;
+    inset: -8px;
+
+    border-radius: 60px;
+
+    border: 1px solid rgba(60, 190, 255, 0.2);
+
+    box-shadow:
+        0 0 35px rgba(0, 150, 255, 0.2);
+
+    pointer-events: none;
+}
+
+.welcome-card::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 20%,
+            rgba(80, 180, 255, 0.06),
+            transparent 80%
+        );
+
+    pointer-events: none;
+}
+
+/* =========================================
+   DECORATIVE ORBITS
+   ========================================= */
+
+.welcome-orbit {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(50, 150, 255, 0.18);
+
+    pointer-events: none;
+}
+
+.orbit-one {
+    width: 500px;
+    height: 500px;
+
+    animation: orbitLarge 15s linear infinite;
+}
+
+.orbit-two {
+    width: 700px;
+    height: 700px;
+
+    border-color: rgba(150, 70, 255, 0.12);
+
+    animation: orbitLargeReverse 20s linear infinite;
+}
+
+@keyframes orbitLarge {
+    from {
+        transform: rotate(0deg) scaleX(1.4);
+    }
+
+    to {
+        transform: rotate(360deg) scaleX(1.4);
+    }
+}
+
+@keyframes orbitLargeReverse {
+    from {
+        transform: rotate(360deg) scaleX(1.2);
+    }
+
+    to {
+        transform: rotate(0deg) scaleX(1.2);
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .robot-welcome::before {
+        inset: 3%;
+        border-radius: 20px;
+    }
+
+    .welcome-card {
+        width: 86vw;
+        min-height: 570px;
+
+        padding: 25px 18px;
+
+        border-radius: 22px;
+    }
+
+    .welcome-robot {
+        width: 210px;
+        height: 210px;
+    }
+
+    .robot-head {
+        width: 160px;
+        height: 120px;
+    }
+
+    .robot-screen {
+        width: 125px;
+        height: 75px;
+        gap: 32px;
+    }
+
+    .robot-eye {
+        width: 23px;
+        height: 14px;
+    }
+
+    .robot-body {
+        width: 105px;
+        height: 90px;
+    }
+
+    .robot-ai {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .robot-left {
+        left: 0;
+        top: 75px;
+        font-size: 45px;
+    }
+
+    .welcome-small {
+        font-size: 20px;
+    }
+
+    .welcome-title {
+        font-size: 42px;
+    }
+
+    .welcome-content p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .welcome-bubble {
+        top: 18px;
+        right: 15px;
+
+        padding: 10px 14px;
+
+        font-size: 12px;
+    }
+
+    .welcome-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 21px;
+    }
+
+    .icon-cap {
+        left: 4%;
+        top: 23%;
+    }
+
+    .icon-chart {
+        left: 5%;
+        bottom: 23%;
+    }
+
+    .icon-target {
+        right: 4%;
+        top: 27%;
+    }
+
+    .icon-job {
+        right: 5%;
+        bottom: 23%;
+    }
+
+    .orbit-one {
+        width: 350px;
+        height: 350px;
+    }
+
+    .orbit-two {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+/* =========================================
+   SMALL PHONE
+   ========================================= */
+
+@media (max-width: 430px) {
+
+    .welcome-card {
+        min-height: 520px;
+    }
+
+    .welcome-robot {
+        transform: scale(0.82);
+        margin-bottom: 0;
+    }
+
+    .welcome-title {
+        font-size: 34px;
+    }
+
+    .welcome-content p {
+        font-size: 14px;
+    }
+
+    .welcome-bubble {
+        transform: scale(0.85);
+        transform-origin: top right;
+    }
+
+}
+/* =====================================================
+   AI CAREER HUB - PROFESSIONAL DASHBOARD UI
+   STEP 1
+   ===================================================== */
+
+body {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(139, 92, 246, 0.12), transparent 30%),
+        linear-gradient(135deg, #07111f, #0b1020 50%, #111827);
+    color: #f8fafc;
+}
+
+/* Smooth page experience */
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Dashboard cards */
+.card,
+.dashboard-card,
+.stat-card,
+.progress-card,
+.feature-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+/* Card hover */
+.card:hover,
+.dashboard-card:hover,
+.stat-card:hover,
+.progress-card:hover,
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+}
+
+/* Buttons */
+button,
+.btn,
+a.button {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button:hover,
+.btn:hover,
+a.button:hover {
+    transform: translateY(-2px);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+    background: rgba(15, 23, 42, 0.85);
+    color: #f8fafc;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: rgba(96, 165, 250, 0.7);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #07111f;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Page entrance animation */
+@keyframes dashboardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: dashboardFadeIn 0.6s ease-out;
+}
+/* =====================================================
+   AI CAREER HUB - STEP 2
+   PREMIUM SIDEBAR + HEADER
+   ===================================================== */
+
+/* Main navigation / sidebar */
+.sidebar,
+.side-nav,
+nav.sidebar {
+    background: linear-gradient(
+        180deg,
+        rgba(7, 17, 31, 0.98),
+        rgba(15, 23, 42, 0.96)
+    );
+
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        10px 0 40px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Sidebar links */
+.sidebar a,
+.side-nav a,
+nav.sidebar a {
+    position: relative;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+/* Sidebar hover */
+.sidebar a:hover,
+.side-nav a:hover,
+nav.sidebar a:hover {
+    background: rgba(59, 130, 246, 0.12);
+
+    transform: translateX(4px);
+
+    border-radius: 10px;
+}
+
+/* Active navigation item */
+.sidebar a.active,
+.side-nav a.active,
+nav.sidebar a.active {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.20),
+            rgba(139, 92, 246, 0.12)
+        );
+
+    border-left: 3px solid #60a5fa;
+}
+
+/* Top header */
+header,
+.top-header,
+.dashboard-header {
+    background: rgba(7, 17, 31, 0.82);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.18);
+}
+
+/* Header search */
+header input,
+.top-header input,
+.dashboard-header input {
+    background: rgba(15, 23, 42, 0.8);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    color: #f8fafc;
+
+    border-radius: 12px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+header input:focus,
+.top-header input:focus,
+.dashboard-header input:focus {
+    border-color: rgba(96, 165, 250, 0.7);
+
+    box-shadow:
+        0 0 20px rgba(59, 130, 246, 0.12);
+}
+
+/* Profile area */
+.profile,
+.user-profile,
+.profile-box {
+    transition: transform 0.25s ease;
+}
+
+.profile:hover,
+.user-profile:hover,
+.profile-box:hover {
+    transform: translateY(-2px);
+}
+/* =====================================================
+   PREMIUM DASHBOARD - STEP 3 PART 2
+   ===================================================== */
+
+#premiumDashboard {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(59, 130, 246, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(139, 92, 246, 0.12),
+            transparent 30%
+        ),
+        #07111f;
+
+    color: #f8fafc;
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
+    overflow: hidden;
+}
+
+
+/* SIDEBAR */
+
+.premium-sidebar {
+    width: 255px;
+    min-width: 255px;
+
+    height: 100vh;
+
+    padding: 25px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            #081525,
+            #0b1324
+        );
+
+    border-right:
+        1px solid rgba(255,255,255,0.07);
+}
+
+
+/* LOGO */
+
+.premium-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 5px 10px 30px;
+}
+
+.premium-logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-weight: 800;
+
+    box-shadow:
+        0 0 25px rgba(59,130,246,0.35);
+}
+
+.premium-logo strong {
+    display: block;
+
+    font-size: 15px;
+}
+
+.premium-logo span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #60a5fa;
+}
+
+
+/* MENU TITLE */
+
+.premium-menu-title {
+    padding: 0 12px 12px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #64748b;
+}
+
+
+/* MENU */
+
+.premium-menu {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.premium-menu a {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 13px;
+
+    color: #94a3b8;
+
+    text-decoration: none;
+
+    border-radius: 11px;
+
+    font-size: 13px;
+
+    transition:
+        all 0.25s ease;
+}
+
+.premium-menu a span {
+    width: 20px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+.premium-menu a:hover {
+    color: #f8fafc;
+
+    background:
+        rgba(59,130,246,0.10);
+
+    transform:
+        translateX(3px);
+}
+
+.premium-menu a.premium-active {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(37,99,235,0.28),
+            rgba(124,58,237,0.15)
+        );
+
+    box-shadow:
+        inset 3px 0 #60a5fa;
+}
+
+
+/* SIDEBAR BOTTOM */
+
+.premium-sidebar-bottom {
+    margin-top: auto;
+}
+
+.ai-status {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    margin-bottom: 10px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 12px rgba(34,197,94,0.8);
+}
+
+.ai-status strong {
+    display: block;
+
+    font-size: 11px;
+}
+
+.ai-status small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    color: #64748b;
+}
+
+.premium-logout {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background:
+        rgba(239,68,68,0.08);
+
+    color: #fca5a5;
+
+    cursor: pointer;
+}
+
+
+/* MAIN */
+
+.premium-main {
+    flex: 1;
+
+    min-width: 0;
+
+    overflow-y: auto;
+}
+
+
+/* TOPBAR */
+
+.premium-topbar {
+    height: 76px;
+
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        rgba(7,17,31,0.78);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(18px);
+}
+
+.topbar-small {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #60a5fa;
+}
+
+.premium-page-title h2 {
+    margin: 4px 0 0;
+
+    font-size: 20px;
+}
+
+
+/* TOP ACTIONS */
+
+.premium-top-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.premium-search {
+    display: flex;
+    align-items: center;
+
+    width: 230px;
+
+    padding: 9px 12px;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+}
+
+.premium-search span {
+    color: #64748b;
+
+    margin-right: 8px;
+}
+
+.premium-search input {
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-size: 11px;
+}
+
+.premium-language {
+    padding: 9px 10px;
+
+    border-radius: 10px;
+
+    background: #101b30;
+
+    color: #e2e8f0;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.premium-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.premium-avatar {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.premium-profile-text strong {
+    display: block;
+
+    font-size: 11px;
+}
+
+.premium-profile-text small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 8px;
+}
+
+
+/* CONTENT */
+
+.premium-content {
+    padding: 28px;
+}
+
+
+/* HERO */
+
+.premium-hero {
+    min-height: 235px;
+
+    padding: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(30,64,175,0.48),
+            rgba(76,29,149,0.38),
+            rgba(15,23,42,0.7)
+        );
+
+    border:
+        1px solid rgba(96,165,250,0.16);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.28);
+}
+
+.hero-content {
+    max-width: 650px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    margin-bottom: 13px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(96,165,250,0.10);
+
+    border:
+        1px solid rgba(96,165,250,0.18);
+
+    color: #93c5fd;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+.premium-hero h1 {
+    margin: 0;
+
+    font-size: 31px;
+
+    line-height: 1.2;
+}
+
+.premium-hero h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #60a5fa,
+            #c084fc
+        );
+
+      background-clip:text;
+     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.premium-hero p {
+    max-width: 580px;
+
+    margin: 12px 0 20px;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 10px;
+}
+
+.hero-primary,
+.hero-secondary {
+    padding: 10px 15px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.hero-primary {
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: #fff;
+
+    box-shadow:
+        0 8px 25px rgba(37,99,235,0.25);
+}
+
+.hero-secondary {
+    color: #cbd5e1;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+.hero-primary:hover,
+.hero-secondary:hover {
+    transform:
+        translateY(-2px);
+}
+
+
+/* AI ORB */
+
+.hero-ai-orb {
+    width: 155px;
+    height: 155px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 35px;
+}
+
+.orb-core {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #60a5fa,
+            #2563eb 55%,
+            #172554
+        );
+
+    box-shadow:
+        0 0 45px rgba(59,130,246,0.55);
+}
+
+.orb-core span {
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+.orb-ring {
+    position: absolute;
+
+    border:
+        1px solid rgba(96,165,250,0.3);
+
+    border-radius: 50%;
+}
+
+.ring-one {
+    width: 125px;
+    height: 125px;
+
+    animation:
+        premiumRotate 9s linear infinite;
+}
+
+.ring-two {
+    width: 155px;
+    height: 155px;
+
+    border-style: dashed;
+
+    animation:
+        premiumRotateReverse 13s linear infinite;
+}
+
+
+/* STATS */
+
+.premium-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 18px;
+}
+
+.premium-stat-card {
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.premium-stat-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(96,165,250,0.3);
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(59,130,246,0.12);
+
+    font-size: 17px;
+}
+
+.premium-stat-card small {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    margin-bottom: 5px;
+}
+
+.premium-stat-card strong {
+    display: block;
+
+    max-width: 145px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 13px;
+}
+
+
+/* NEXT SECTION */
+
+.premium-next-section {
+    margin-top: 20px;
+
+    padding: 25px;
+
+    min-height: 100px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(15,23,42,0.7);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+}
+
+.premium-next-section span {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #60a5fa;
+}
+
+.premium-next-section h2 {
+    margin-top: 7px;
+
+    font-size: 18px;
+}
+
+
+/* ANIMATIONS */
+
+@keyframes premiumRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes premiumRotateReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .premium-sidebar {
+        width: 75px;
+        min-width: 75px;
+    }
+
+    .premium-logo div:last-child,
+    .premium-menu label,
+    .premium-menu-title,
+    .ai-status div,
+    .premium-logout {
+        display: none;
+    }
+
+    .premium-menu a {
+        justify-content: center;
+    }
+
+    .premium-top-actions .premium-search {
+        display: none;
+    }
+
+    .premium-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .hero-ai-orb {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .premium-topbar {
+        padding: 0 15px;
+    }
+
+    .premium-content {
+        padding: 15px;
+    }
+
+    .premium-profile-text {
+        display: none;
+    }
+
+    .premium-hero {
+        padding: 22px;
+    }
+
+    .premium-hero h1 {
+        font-size: 24px;
+    }
+
+    .premium-stats {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =====================================================
+   AI CAREER HUB
+   DASHBOARD PREMIUM SKIN - PART 1
+   ===================================================== */
+
+body {
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(37, 99, 235, 0.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(124, 58, 237, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #050b16,
+            #081426 50%,
+            #0d1530
+        ) !important;
+
+    color: #e5eefc !important;
+}
+
+
+/* MAIN CONTAINER */
+
+.container {
+    background: transparent !important;
+}
+
+
+/* HEADINGS */
+
+h1,
+h2,
+h3,
+h4 {
+    color: #f8fafc !important;
+}
+
+
+/* PAGE TITLE */
+
+h1 {
+    text-shadow:
+        0 0 25px rgba(96, 165, 250, 0.18);
+}
+
+
+/* ALL COMMON CARDS */
+
+.card,
+.box,
+.section,
+.profile-card,
+.progress-card,
+.stat-card,
+.score-card,
+.feature-card,
+.dashboard-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 27, 48, 0.92),
+            rgba(10, 20, 38, 0.88)
+        ) !important;
+
+    border:
+        1px solid rgba(96, 165, 250, 0.12) !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.28),
+        inset 0 1px rgba(255,255,255,0.025) !important;
+
+    color: #e2e8f0 !important;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease !important;
+}
+
+
+/* CARD HOVER */
+
+.card:hover,
+.box:hover,
+.section:hover,
+.profile-card:hover,
+.progress-card:hover,
+.stat-card:hover,
+.score-card:hover,
+.feature-card:hover,
+.dashboard-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(96, 165, 250, 0.28) !important;
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,0.38),
+        0 0 25px rgba(37,99,235,0.08) !important;
+}
+
+
+/* NORMAL TEXT */
+
+p,
+span,
+label {
+    color: #cbd5e1;
+}
+
+
+/* SMALL SECONDARY TEXT */
+
+small {
+    color: #94a3b8;
+}
+
+
+/* LINKS */
+
+a {
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+a:hover {
+    color: #60a5fa !important;
+}
+
+
+/* SELECT */
+
+select {
+    background:
+        #0f1b30 !important;
+
+    color:
+        #f8fafc !important;
+
+    border:
+        1px solid rgba(96,165,250,0.18) !important;
+
+    border-radius:
+        10px !important;
+}
+
+
+/* INPUT */
+
+input,
+textarea {
+    background:
+        rgba(15, 27, 48, 0.9) !important;
+
+    color:
+        #f8fafc !important;
+
+    border:
+        1px solid rgba(96,165,250,0.12) !important;
+
+    border-radius:
+        10px !important;
+}
+
+
+/* BUTTONS */
+
+button {
+    border: none;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(37,99,235,0.25);
+}
+
+
+/* PROGRESS ELEMENTS */
+
+progress {
+    accent-color: #3b82f6;
+}
+
+
+/* PAGE FADE */
+
+@keyframes dashboardPageIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+body {
+    animation:
+        dashboardPageIn 0.5s ease-out;
+}
+/* =====================================================
+   AI CAREER HUB - FINAL DASHBOARD DESIGN
+   ===================================================== */
+
+body {
+    margin: 0 !important;
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(37,99,235,.18), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(124,58,237,.16), transparent 28%),
+        linear-gradient(135deg,#050b16 0%,#081426 55%,#0c1530 100%) !important;
+    color: #e2e8f0 !important;
+}
+
+/* TOP NAV */
+
+body > select,
+#languageSelector,
+#language-select,
+#languageSelector select {
+    position: fixed !important;
+    top: 20px !important;
+    right: 25px !important;
+    z-index: 9999 !important;
+    padding: 10px 16px !important;
+    background: rgba(15,23,42,.95) !important;
+    color: white !important;
+    border: 1px solid rgba(96,165,250,.25) !important;
+    border-radius: 12px !important;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    width: min(1180px, 92%) !important;
+    margin: 0 auto !important;
+    padding: 35px 0 60px !important;
+}
+
+/* MAIN TITLE */
+
+.container > h1,
+body > h1 {
+    font-size: clamp(28px,4vw,46px) !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    margin: 35px 0 8px !important;
+    color: #f8fafc !important;
+    text-shadow: 0 0 35px rgba(96,165,250,.25) !important;
+}
+
+.container > p,
+body > p {
+    text-align: center !important;
+    color: #94a3b8 !important;
+}
+
+/* SECTION HEADINGS */
+
+.container h2,
+.container h3 {
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+    margin-top: 32px !important;
+}
+
+/* ALL CARDS */
+
+.container .card,
+.container .box,
+.container .section,
+.container .profile-card,
+.container .progress-card,
+.container .stat-card,
+.container .score-card,
+.container .feature-card,
+.container .dashboard-card,
+.container .result-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,30,52,.88),
+            rgba(8,20,37,.82)
+        ) !important;
+
+    border: 1px solid rgba(96,165,250,.13) !important;
+    border-radius: 20px !important;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.30),
+        inset 0 1px rgba(255,255,255,.025) !important;
+
+    color: #e2e8f0 !important;
+
+    transition: all .25s ease !important;
+}
+
+.container .card:hover,
+.container .box:hover,
+.container .section:hover,
+.container .profile-card:hover,
+.container .progress-card:hover,
+.container .stat-card:hover,
+.container .score-card:hover,
+.container .feature-card:hover,
+.container .dashboard-card:hover,
+.container .result-card:hover {
+    transform: translateY(-5px) !important;
+
+    border-color:
+        rgba(96,165,250,.32) !important;
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.40),
+        0 0 30px rgba(37,99,235,.10) !important;
+}
+
+/* VALUES */
+
+.container strong,
+.container .score,
+.container .percentage,
+.container .value {
+    color: #60a5fa !important;
+}
+
+/* BUTTONS */
+
+.container button,
+.container a.button {
+    background:
+        linear-gradient(135deg,#2563eb,#7c3aed) !important;
+
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 11px 20px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 8px 25px rgba(37,99,235,.20) !important;
+    transition: all .2s ease !important;
+}
+
+.container button:hover,
+.container a.button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 32px rgba(37,99,235,.35) !important;
+}
+
+/* INPUTS */
+
+.container input,
+.container textarea,
+.container select {
+    background: rgba(15,23,42,.9) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(96,165,250,.18) !important;
+    border-radius: 10px !important;
+}
+
+/* PROGRESS */
+
+.container progress {
+    width: 100% !important;
+    height: 10px !important;
+    accent-color: #3b82f6 !important;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .container {
+        width: 94% !important;
+        padding-top: 25px !important;
+    }
+
+    .container > h1,
+    body > h1 {
+        font-size: 30px !important;
+    }
+
+    .container .card,
+    .container .box,
+    .container .section,
+    .container .profile-card,
+    .container .progress-card,
+    .container .stat-card,
+    .container .score-card,
+    .container .feature-card,
+    .container .dashboard-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+/* ===== FINAL DASHBOARD CARD FIX ===== */
+
+body {
+    background:
+        radial-gradient(circle at 15% 10%, rgba(37,99,235,.20), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(124,58,237,.18), transparent 30%),
+        linear-gradient(135deg, #030712, #07152b, #0b1635) !important;
+}
+
+/* ALL DASHBOARD CARDS */
+
+.card,
+.box,
+.profile-card,
+.progress-card,
+.stat-card,
+.score-card,
+.feature-card,
+.dashboard-card,
+.result-card,
+section > div {
+    background: rgba(10, 25, 48, 0.82) !important;
+    color: #eaf2ff !important;
+    border: 1px solid rgba(96, 165, 250, 0.20) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 35px rgba(0,0,0,.35) !important;
+}
+
+/* CARD TEXT */
+
+.card *,
+.box *,
+.profile-card *,
+.progress-card *,
+.stat-card *,
+.score-card *,
+.feature-card *,
+.dashboard-card *,
+.result-card * {
+    color: #eaf2ff !important;
+}
+
+/* SMALL LABEL */
+
+.card small,
+.card label,
+.box small,
+.profile-card small,
+.progress-card small {
+    color: #94a3b8 !important;
+}
+
+/* BIG SCORE */
+
+.card strong,
+.box strong,
+.profile-card strong,
+.progress-card strong,
+.stat-card strong,
+.score-card strong {
+    color: #60a5fa !important;
+}
+
+/* HEADINGS */
+
+h1,
+h2,
+h3,
+h4 {
+    color: #f8fafc !important;
+}
+
+/* PAGE TEXT */
+
+p {
+    color: #cbd5e1 !important;
+}
+
+/* CARD HOVER */
+
+.card:hover,
+.box:hover,
+.profile-card:hover,
+.progress-card:hover,
+.stat-card:hover,
+.score-card:hover,
+.feature-card:hover,
+.dashboard-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(96,165,250,.45) !important;
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.45),
+        0 0 25px rgba(37,99,235,.12) !important;
+}
+
+/* LANGUAGE SELECT */
+
+#languageSelector {
+    background: #0f1f3a !important;
+    color: white !important;
+    border: 1px solid rgba(96,165,250,.35) !important;
+}
+
+/* BUTTON */
+
+button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+    .card,
+    .box,
+    .profile-card,
+    .progress-card,
+    .stat-card,
+    .score-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+/* ===== CAREER PROFILE PREMIUM CARD ===== */
+
+.card:has(#profileTitle) {
+    background: linear-gradient(145deg, #101f3d, #081426) !important;
+    color: #eaf2ff !important;
+    border: 1px solid rgba(96, 165, 250, 0.28) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45) !important;
+}
+
+.card:has(#profileTitle) #profileTitle {
+    color: #ffffff !important;
+}
+
+.card:has(#profileTitle) .profile-box {
+    background: linear-gradient(145deg, #162b4d, #0b1b33) !important;
+    color: #eaf2ff !important;
+    border: 1px solid rgba(96, 165, 250, 0.22) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.30) !important;
+}
+
+.card:has(#profileTitle) .profile-box strong {
+    color: #8fc5ff !important;
+}
+
+.card:has(#profileTitle) .profile-box span {
+    color: #ffffff !important;
+}
+/* ===== PROFILE INNER BOXES - PREMIUM DARK ===== */
+
+.profile-grid .profile-box {
+    background: #0d203b !important;
+    background-image: linear-gradient(
+        145deg,
+        #17365d,
+        #091a31
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    border-radius: 16px !important;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+
+    padding: 20px !important;
+}
+
+/* Box title */
+.profile-grid .profile-box strong {
+    color: #8ecbff !important;
+}
+
+/* Box value */
+.profile-grid .profile-box span {
+    color: #ffffff !important;
+}
+
+/* Hover effect */
+.profile-grid .profile-box:hover {
+    transform: translateY(-3px);
+    border-color: rgba(96, 165, 250, 0.65) !important;
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.45),
+        0 0 18px rgba(59, 130, 246, 0.12) !important;
+    transition: all 0.25s ease;
+}
+/* ===== MY PROGRESS PREMIUM CARDS ===== */
+
+.score-grid .score-card {
+    background: linear-gradient(145deg, #17365d, #091a31) !important;
+    color: #ffffff !important;
+
+    border: 1px solid rgba(96, 165, 250, 0.30) !important;
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+
+    padding: 22px !important;
+
+    transition: all 0.25s ease !important;
+}
+
+.score-grid .score-card h3 {
+    color: #b9dcff !important;
+}
+
+.score-grid .score-card .score-value {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 12px rgba(96, 165, 250, 0.35);
+}
+
+.score-grid .score-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(96, 165, 250, 0.65) !important;
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(59, 130, 246, 0.15) !important;
+}
+/* =====================================================
+   AI CAREER HUB - FINAL DASHBOARD PREMIUM UI
+   ===================================================== */
+
+/* MAIN DASHBOARD */
+body {
+    background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.15), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.12), transparent 35%),
+        #050d1b !important;
+    color: #eaf2ff !important;
+}
+
+/* ALL MAIN CARDS */
+.card {
+    background: linear-gradient(145deg, #101f3d, #071426) !important;
+    color: #eaf2ff !important;
+    border: 1px solid rgba(96, 165, 250, 0.25) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 35px rgba(0,0,0,.38) !important;
+}
+
+/* CARD HEADINGS */
+.card h2,
+.card h3 {
+    color: #ffffff !important;
+}
+
+/* NORMAL TEXT */
+.card p,
+.card label {
+    color: #b9cbea !important;
+}
+
+/* PROFILE BOXES */
+.profile-grid .profile-box {
+    background: linear-gradient(145deg, #17365d, #091a31) !important;
+    color: #fff !important;
+    border: 1px solid rgba(96,165,250,.30) !important;
+    border-radius: 16px !important;
+}
+
+/* SCORE CARDS */
+.score-grid .score-card {
+    background: linear-gradient(145deg, #17365d, #091a31) !important;
+    color: #fff !important;
+    border: 1px solid rgba(96,165,250,.30) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35) !important;
+}
+
+/* SCORE TITLES */
+.score-grid .score-card h3 {
+    color: #b9dcff !important;
+}
+
+/* SCORE VALUES */
+.score-grid .score-value {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 12px rgba(96,165,250,.35);
+}
+
+/* OVERALL JOB READINESS */
+.card:has(#jobReadinessTitle) {
+    background: linear-gradient(145deg, #101f3d, #071426) !important;
+    color: #fff !important;
+}
+
+/* PROGRESS BAR */
+progress {
+    accent-color: #3b82f6 !important;
+}
+
+.progress-bar,
+.progress,
+.progress-fill {
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    ) !important;
+    border-radius: 50px !important;
+}
+
+/* BUTTONS */
+button {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    ) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 6px 18px rgba(37,99,235,.25) !important;
+    transition: .25s ease !important;
+}
+
+button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(59,130,246,.35) !important;
+}
+
+/* SELECT / INPUT */
+select,
+input,
+textarea {
+    background: #0b1c33 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(96,165,250,.28) !important;
+    border-radius: 10px !important;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    border-color: #3b82f6 !important;
+    outline: none !important;
+    box-shadow: 0 0 12px rgba(59,130,246,.18) !important;
+}
+
+/* LANGUAGE SELECT */
+#languageSelect,
+#language,
+select {
+    background-color: #0b1c33 !important;
+    color: #ffffff !important;
+}
+
+/* CARD HOVER */
+.card:hover {
+    border-color: rgba(96,165,250,.45) !important;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45),
+        0 0 20px rgba(59,130,246,.08) !important;
+}
+
+/* SCORE CARD HOVER */
+.score-grid .score-card:hover,
+.profile-grid .profile-box:hover {
+    transform: translateY(-4px) !important;
+    transition: .25s ease !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .card {
+        border-radius: 16px !important;
+    }
+
+    .score-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+/* =====================================================
+   FINAL - CAREER STATUS + QUICK ACTIONS
+   ===================================================== */
+
+/* Career Status inner box */
+.card:has(#statusLabel) .profile-box {
+    background: linear-gradient(145deg, #17365d, #091a31) !important;
+    background-color: #0d203b !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(96, 165, 250, 0.35) !important;
+    border-radius: 16px !important;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.40),
+        inset 0 1px 0 rgba(255,255,255,0.05) !important;
+}
+
+/* Current Status title */
+.card:has(#statusLabel) #statusLabel {
+    color: #8ecbff !important;
+}
+
+/* Current Status value */
+.card:has(#statusLabel) #statusValue {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+/* Status message */
+.card:has(#statusLabel) #statusMessage {
+    color: #b9cbea !important;
+}
+
+/* Quick Actions buttons */
+.card button {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    ) !important;
+
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+
+    box-shadow: 0 6px 18px rgba(37,99,235,0.25) !important;
+}
+
+.card button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow:
+        0 10px 25px rgba(59,130,246,0.35) !important;
+}
+
+/* Remove white backgrounds from common dashboard containers */
+.card > div {
+    color: #eaf2ff !important;
+}
+/* =========================================
+   AI CAREER HUB — PROFESSIONAL UI SYSTEM
+   PART 1 — GLOBAL DESIGN
+   ========================================= */
+
+:root {
+    --bg-main: #07111f;
+    --bg-secondary: #0b1730;
+    --card-bg: rgba(15, 28, 52, 0.88);
+    --card-border: rgba(120, 150, 220, 0.18);
+
+    --primary: #5b7cfa;
+    --primary-light: #7c9cff;
+    --purple: #8b5cf6;
+    --cyan: #22d3ee;
+
+    --text-main: #f4f7ff;
+    --text-secondary: #aab7d1;
+    --text-muted: #71809d;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+
+    --radius: 18px;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+/* ---------- GLOBAL ---------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(91, 124, 250, 0.15), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(139, 92, 246, 0.13), transparent 28%),
+        linear-gradient(135deg, #050b16, #071426 45%, #0b1530);
+    color: var(--text-main);
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+p {
+    color: var(--text-secondary);
+}
+/* ---------- PROFESSIONAL CARDS ---------- */
+
+.card,
+.score-card,
+.profile-box,
+.feature-card,
+.job-card,
+.question-card,
+.result-card,
+.roadmap-card,
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card:hover,
+.score-card:hover,
+.feature-card:hover,
+.job-card:hover,
+.question-card:hover,
+.roadmap-card:hover,
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(124, 156, 255, 0.4);
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.35);
+}
+/* ---------- BUTTONS ---------- */
+
+button,
+.btn,
+input[type="submit"] {
+    border: none;
+    border-radius: 12px;
+    padding: 11px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 22px rgba(91, 124, 250, 0.25);
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(91, 124, 250, 0.4);
+}
+
+button:active,
+.btn:active {
+    transform: scale(0.97);
+}
+/* ---------- INPUTS ---------- */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(130, 150, 190, 0.2);
+    background: rgba(8, 18, 35, 0.8);
+    color: var(--text-main);
+    outline: none;
+    transition: 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(91, 124, 250, 0.15);
+}
+
+select option {
+    background: #0b1730;
+    color: white;
+}
+/* ---------- SCROLLBAR ---------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050b16;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary), var(--purple));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+/* ---------- PAGE ANIMATION ---------- */
+
+body {
+    animation: pageEnter 0.45s ease;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================================
+   AI CAREER HUB - CAREER PAGE
+   PROFESSIONAL UI
+========================================= */
+
+body {
+    overflow-x: hidden;
+}
+
+/* Career page main container */
+.career-container,
+.career-section,
+.career-form,
+.form-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* Main headings */
+h1, h2 {
+    letter-spacing: 0.3px;
+}
+
+/* Form / question cards */
+form,
+.question,
+.question-card,
+.career-card {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 20px;
+    padding: 24px;
+    margin: 18px 0;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+}
+
+/* Labels */
+label {
+    display: block;
+    color: #cbd5e1;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Select boxes */
+select {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    background: rgba(15, 23, 42, 0.95);
+    color: #f8fafc;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Text inputs */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    background: rgba(15, 23, 42, 0.95);
+    color: #f8fafc;
+    outline: none;
+}
+
+input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Radio buttons */
+input[type="radio"] {
+    accent-color: #6366f1;
+    transform: scale(1.15);
+    margin-right: 8px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    accent-color: #6366f1;
+    transform: scale(1.15);
+}
+
+/* Buttons */
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 13px 22px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Career result */
+#result,
+.result,
+.result-box,
+#careerResult {
+    background: rgba(30, 41, 59, 0.82);
+    border: 1px solid rgba(129, 140, 248, 0.28);
+    border-radius: 18px;
+    padding: 22px;
+    margin-top: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Highlighted career name */
+#result h2,
+#careerResult h2 {
+    color: #a5b4fc;
+    margin-bottom: 10px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .career-container,
+    .career-section,
+    .career-form,
+    .form-container {
+        width: 92%;
+        padding: 10px;
+        margin: 20px auto;
+    }
+
+    form,
+    .question,
+    .question-card,
+    .career-card {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+/* =========================================
+   CAREER PAGE - FULL WIDTH LAYOUT FIX
+========================================= */
+
+body {
+    min-height: 100vh;
+}
+
+/* Center the main page content */
+body > div {
+    max-width: 1200px !important;
+    width: 92% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Headings */
+body > div h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+body > div h2 {
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Description */
+body > div p {
+    line-height: 1.7;
+}
+
+/* Form sections */
+body > div form {
+    width: 100%;
+    max-width: 900px;
+    margin: 25px auto;
+}
+
+/* Result section */
+body > div #result,
+body > div #careerResult {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+
+/* Better spacing */
+body > div label {
+    margin-top: 14px;
+}
+
+/* Selects */
+body > div select {
+    min-height: 48px;
+}
+
+/* Main button */
+body > div button {
+    min-height: 48px;
+}
+
+/* Desktop spacing */
+@media (min-width: 1000px) {
+    body > div {
+        padding-top: 25px;
+        padding-bottom: 50px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    body > div {
+        width: 94% !important;
+    }
+
+    body > div h1 {
+        font-size: 30px;
+    }
+
+    body > div h2 {
+        font-size: 23px;
+    }
+}
+/* =========================================
+   CAREER PAGE - FINAL CENTER FIX
+========================================= */
+
+/* Main content area */
+main,
+.container,
+.content,
+.page-container,
+.career-container {
+    width: 92% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* All forms */
+form {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Form controls */
+form select,
+form input[type="text"],
+form input[type="number"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Career page headings */
+h1 {
+    text-align: center !important;
+}
+
+h2 {
+    text-align: center !important;
+}
+
+/* Description */
+p {
+    line-height: 1.7;
+}
+
+/* Result card */
+#result,
+#careerResult {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Better desktop spacing */
+@media (min-width: 900px) {
+    form {
+        padding: 28px !important;
+    }
+
+    form select {
+        min-height: 50px !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    main,
+    .container,
+    .content,
+    .page-container,
+    .career-container {
+        width: 94% !important;
+    }
+
+    form {
+        width: 100% !important;
+        padding: 18px !important;
+    }
+}
+/* =========================================
+   AI CAREER HUB - CAREER DISCOVERY FINAL UI
+========================================= */
+
+/* Main page */
+.container {
+    width: 92% !important;
+    max-width: 1150px !important;
+    margin: 35px auto !important;
+    padding: 0 !important;
+}
+
+/* Main career card */
+.container > .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 40px !important;
+    border-radius: 24px !important;
+    background: rgba(15, 23, 42, 0.88) !important;
+    border: 1px solid rgba(99, 102, 241, 0.30) !important;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.40),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Main title */
+#title {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    margin-bottom: 18px !important;
+}
+
+/* Career heading */
+#heading {
+    text-align: center !important;
+    font-size: 30px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Description */
+#description {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 16px !important;
+    margin: 0 auto 35px !important;
+    max-width: 750px !important;
+}
+
+/* Labels */
+#interestLabel,
+#levelLabel {
+    display: block !important;
+    width: 100% !important;
+    max-width: 850px !important;
+    margin: 22px auto 9px !important;
+    color: #cbd5e1 !important;
+    font-weight: 700 !important;
+}
+
+/* Interest + Level dropdowns */
+#interest,
+#level {
+    display: block !important;
+    width: 100% !important;
+    max-width: 850px !important;
+    min-height: 52px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    padding: 0 16px !important;
+    border-radius: 14px !important;
+    background: rgba(2, 6, 23, 0.85) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99, 102, 241, 0.35) !important;
+    font-size: 15px !important;
+    outline: none !important;
+    transition: all 0.25s ease !important;
+}
+
+/* Dropdown hover/focus */
+#interest:hover,
+#level:hover,
+#interest:focus,
+#level:focus {
+    border-color: #818cf8 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12) !important;
+}
+
+/* Discover button */
+#discoverBtn {
+    display: block !important;
+    margin: 28px auto 10px !important;
+    min-height: 50px !important;
+    padding: 0 28px !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.28) !important;
+    transition: all 0.25s ease !important;
+}
+
+#discoverBtn:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.38) !important;
+}
+
+/* Result area */
+#result {
+    width: 100% !important;
+    max-width: 850px !important;
+    margin: 32px auto 0 !important;
+    padding: 28px !important;
+    box-sizing: border-box !important;
+    border-radius: 20px !important;
+    background: rgba(30, 41, 59, 0.72) !important;
+    border: 1px solid rgba(129, 140, 248, 0.28) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
+}
+
+/* Result heading */
+#result h3 {
+    color: #a5b4fc !important;
+    margin-bottom: 10px !important;
+}
+
+/* Recommended career */
+#result h2 {
+    text-align: center !important;
+    font-size: 28px !important;
+    color: #f8fafc !important;
+    margin: 12px 0 !important;
+}
+
+/* Result text */
+#result p {
+    text-align: center !important;
+    color: #cbd5e1 !important;
+}
+
+/* Result button */
+#result button {
+    display: block !important;
+    margin: 18px auto 0 !important;
+}
+
+/* Language selector */
+#languageSelector {
+    background: rgba(15, 23, 42, 0.9) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(129, 140, 248, 0.35) !important;
+    border-radius: 10px !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .container {
+        width: 94% !important;
+        margin: 20px auto !important;
+    }
+
+    .container > .card {
+        padding: 24px 18px !important;
+        border-radius: 18px !important;
+    }
+
+    #title {
+        font-size: 30px !important;
+    }
+
+    #heading {
+        font-size: 23px !important;
+    }
+
+    #description {
+        font-size: 14px !important;
+    }
+
+    #discoverBtn {
+        width: 100% !important;
+    }
+
+    #result {
+        padding: 20px !important;
+    }
+}
+/* =========================================
+   ASSESSMENT ANSWER SELECT - DARK FIX
+========================================= */
+
+select,
+select:focus,
+select:active {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(129, 140, 248, 0.4) !important;
+    outline: none !important;
+}
+
+/* Selected answer */
+select option {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+}
+
+/* Answer feedback */
+.correct,
+.correct-answer,
+.answer-correct,
+.result-correct {
+    color: #22c55e !important;
+    background: rgba(34, 197, 94, 0.12) !important;
+    border: 1px solid rgba(34, 197, 94, 0.35) !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+    margin-top: 10px !important;
+    font-weight: 700 !important;
+}
+
+.wrong,
+.wrong-answer,
+.answer-wrong,
+.result-wrong,
+.incorrect {
+    color: #ef4444 !important;
+    background: rgba(239, 68, 68, 0.12) !important;
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+    margin-top: 10px !important;
+    font-weight: 700 !important;
+}
+/* Assessment answer dropdown - premium dark */
+
+select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(129, 140, 248, 0.45) !important;
+}
+
+select option {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+/* =========================================
+   ASSESSMENT DROPDOWN - DARK OPTION FIX
+========================================= */
+
+select {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    color-scheme: dark !important;
+    border: 1px solid #6366f1 !important;
+}
+
+select:focus {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    color-scheme: dark !important;
+    border-color: #818cf8 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18) !important;
+}
+
+select option {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+}
+
+select option:checked {
+    background-color: #312e81 !important;
+    color: #ffffff !important;
+}
+/* ===== ASSESSMENT DARK DROPDOWN ===== */
+
+select {
+    background: #111827 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border: 1px solid #6366f1 !important;
+    border-radius: 12px !important;
+    min-height: 48px !important;
+    padding: 10px 14px !important;
+    color-scheme: dark !important;
+}
+
+/* Chrome / Edge / Firefox */
+select option,
+select optgroup {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+/* Selected option */
+select option:checked {
+    background: #3730a3 !important;
+    color: #ffffff !important;
+}
+
+/* Focus */
+select:focus {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border-color: #818cf8 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.20) !important;
+}
+/* =========================================
+   ASSESSMENT - SELECTED ANSWER FIX
+========================================= */
+
+/* Selected radio option - dark premium */
+input[type="radio"]:checked + label {
+    background: linear-gradient(
+        135deg,
+        rgba(37, 99, 235, 0.25),
+        rgba(124, 58, 237, 0.25)
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 2px solid #6366f1 !important;
+
+    box-shadow:
+        0 0 15px rgba(99, 102, 241, 0.25) !important;
+}
+
+/* If radio is inside the label */
+label:has(input[type="radio"]:checked) {
+    background: linear-gradient(
+        135deg,
+        rgba(37, 99, 235, 0.25),
+        rgba(124, 58, 237, 0.25)
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 2px solid #6366f1 !important;
+
+    box-shadow:
+        0 0 15px rgba(99, 102, 241, 0.25) !important;
+}
+
+/* Radio button itself */
+input[type="radio"] {
+    accent-color: #6366f1 !important;
+}
+
+/* Selected radio button */
+input[type="radio"]:checked {
+    accent-color: #818cf8 !important;
+}
+
+/* Keep answer text visible */
+input[type="radio"]:checked + label,
+label:has(input[type="radio"]:checked) {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Remove unwanted white selected background */
+input[type="radio"]:checked + label *,
+label:has(input[type="radio"]:checked) * {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+/* =========================================
+   CAREER VERIFY - PREMIUM DARK UI
+========================================= */
+
+.verify-page {
+    background: #020617 !important;
+    color: #f8fafc !important;
+}
+
+.verify-page .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 35px auto !important;
+}
+
+.verify-page .card {
+    background: rgba(15, 23, 42, 0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99, 102, 241, 0.3) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+    padding: 40px !important;
+}
+
+/* Question / option cards */
+.verify-page .card > div,
+.verify-page label {
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #f8fafc !important;
+    border-color: rgba(129, 140, 248, 0.3) !important;
+}
+
+/* Selected option */
+.verify-page input[type="radio"]:checked + label {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.3),
+        rgba(124,58,237,0.3)
+    ) !important;
+
+    color: #ffffff !important;
+    border: 2px solid #6366f1 !important;
+}
+
+/* Radio */
+.verify-page input[type="radio"] {
+    accent-color: #6366f1 !important;
+}
+
+/* Headings */
+.verify-page h1,
+.verify-page h2,
+.verify-page h3 {
+    color: #f8fafc !important;
+}
+
+/* Paragraphs */
+.verify-page p {
+    color: #cbd5e1 !important;
+}
+
+/* Buttons */
+.verify-page button {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    ) !important;
+
+    color: #ffffff !important;
+    border: none !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .verify-page .container {
+        width: 94% !important;
+    }
+
+    .verify-page .card {
+        padding: 22px 16px !important;
+    }
+}
+/* =========================================
+   REALITY CHECK - PREMIUM UI
+========================================= */
+
+.reality-page {
+    background: #020617 !important;
+    color: #f8fafc !important;
+}
+
+.reality-page .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 35px auto !important;
+}
+
+.reality-page .card {
+    background: rgba(15, 23, 42, 0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99, 102, 241, 0.30) !important;
+    border-radius: 24px !important;
+    padding: 40px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.40) !important;
+}
+
+.reality-page h1,
+.reality-page h2,
+.reality-page h3 {
+    color: #f8fafc !important;
+}
+
+.reality-page p {
+    color: #cbd5e1 !important;
+    line-height: 1.7;
+}
+
+.reality-page label {
+    display: block !important;
+    background: rgba(30, 41, 59, 0.75) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(129, 140, 248, 0.25) !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    margin: 10px 0 !important;
+}
+
+.reality-page input[type="radio"],
+.reality-page input[type="checkbox"] {
+    accent-color: #6366f1 !important;
+}
+
+.reality-page button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 13px 24px !important;
+    font-weight: 700 !important;
+}
+
+.reality-page button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99,102,241,0.30);
+}
+
+.reality-page input[type="radio"]:checked + label,
+.reality-page input[type="checkbox"]:checked + label {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.28),
+        rgba(124,58,237,0.28)
+    ) !important;
+    border-color: #6366f1 !important;
+}
+
+@media (max-width: 700px) {
+    .reality-page .container {
+        width: 94% !important;
+    }
+
+    .reality-page .card {
+        padding: 22px 16px !important;
+    }
+
+    .reality-page button {
+        width: 100%;
+    }
+}
+/* REALITY CHECK FORCE DARK FIX */
+
+body.reality-page,
+body.reality-page * {
+    box-sizing: border-box;
+}
+
+body.reality-page {
+    background: #020617 !important;
+    color: #ffffff !important;
+    min-height: 100vh !important;
+}
+
+body.reality-page .container {
+    background: transparent !important;
+}
+
+body.reality-page .card {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #334155 !important;
+    border-radius: 24px !important;
+}
+
+body.reality-page h1,
+body.reality-page h2,
+body.reality-page h3,
+body.reality-page p,
+body.reality-page label,
+body.reality-page span {
+    color: #ffffff !important;
+}
+
+body.reality-page button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+body.reality-page input,
+body.reality-page select,
+body.reality-page textarea {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+/* ===== REALITY CHECK WHITE CARD FINAL FIX ===== */
+
+body.reality-page .card,
+body.reality-page .card > div,
+body.reality-page .question-card,
+body.reality-page .question,
+body.reality-page .options,
+body.reality-page .option,
+body.reality-page .result-card {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-color: rgba(99, 102, 241, 0.35) !important;
+}
+
+/* Keep text visible */
+body.reality-page .card *,
+body.reality-page .question-card *,
+body.reality-page .option *,
+body.reality-page .result-card * {
+    color: #ffffff !important;
+}
+
+/* Answer options */
+body.reality-page label {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Selected option */
+body.reality-page input[type="radio"]:checked + label,
+body.reality-page input[type="checkbox"]:checked + label {
+    background: #312e81 !important;
+    background-color: #312e81 !important;
+    color: #ffffff !important;
+    border: 2px solid #6366f1 !important;
+}
+
+/* Inputs */
+body.reality-page input,
+body.reality-page select,
+body.reality-page textarea {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+}
+/* =========================================
+   REALITY CHECK - FORCE REMOVE WHITE BOXES
+========================================= */
+
+body.reality-page div,
+body.reality-page section,
+body.reality-page article,
+body.reality-page fieldset {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+/* Main content area */
+body.reality-page .container {
+    background: transparent !important;
+}
+
+/* Keep text visible */
+body.reality-page div,
+body.reality-page section,
+body.reality-page article,
+body.reality-page fieldset,
+body.reality-page label,
+body.reality-page p,
+body.reality-page h1,
+body.reality-page h2,
+body.reality-page h3,
+body.reality-page span {
+    color: #ffffff !important;
+}
+
+/* Answer choices */
+body.reality-page label {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+}
+
+/* Selected answer */
+body.reality-page label:has(input:checked) {
+    background: #312e81 !important;
+    background-color: #312e81 !important;
+    border: 2px solid #6366f1 !important;
+    color: #ffffff !important;
+}
+
+/* Buttons */
+body.reality-page button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+}
+/* =========================================
+   SKILL GAP - PREMIUM DARK UI
+========================================= */
+
+body.skill-gap-page {
+    background: #020617 !important;
+    color: #f8fafc !important;
+    min-height: 100vh !important;
+}
+
+body.skill-gap-page .container {
+    background: transparent !important;
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 35px auto !important;
+}
+
+body.skill-gap-page .card,
+body.skill-gap-page div,
+body.skill-gap-page section {
+    color: #f8fafc !important;
+}
+
+body.skill-gap-page .card {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+    border-radius: 24px !important;
+    padding: 35px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+}
+
+body.skill-gap-page h1,
+body.skill-gap-page h2,
+body.skill-gap-page h3,
+body.skill-gap-page p,
+body.skill-gap-page label,
+body.skill-gap-page span {
+    color: #f8fafc !important;
+}
+
+body.skill-gap-page select,
+body.skill-gap-page input,
+body.skill-gap-page textarea {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+}
+
+body.skill-gap-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    font-weight: 700 !important;
+}
+
+body.skill-gap-page button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99,102,241,0.3);
+}
+
+@media (max-width:700px) {
+    body.skill-gap-page .container {
+        width: 94% !important;
+    }
+
+    body.skill-gap-page .card {
+        padding: 22px 16px !important;
+    }
+
+    body.skill-gap-page button {
+        width: 100%;
+    }
+}
+/* =========================================
+   SKILL GAP - FORCE DARK BOX FIX
+========================================= */
+
+body.skill-gap-page .container > div,
+body.skill-gap-page .container > section,
+body.skill-gap-page .container > article {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+/* All direct content boxes */
+body.skill-gap-page .container > div > div,
+body.skill-gap-page .container > section > div,
+body.skill-gap-page .container > article > div {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+/* Text */
+body.skill-gap-page h1,
+body.skill-gap-page h2,
+body.skill-gap-page h3,
+body.skill-gap-page h4,
+body.skill-gap-page p,
+body.skill-gap-page label,
+body.skill-gap-page span {
+    color: #ffffff !important;
+}
+
+/* Skill selection area */
+body.skill-gap-page input[type="checkbox"] {
+    accent-color: #6366f1 !important;
+}
+
+body.skill-gap-page label {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+}
+
+/* Selected skill */
+body.skill-gap-page label:has(input:checked) {
+    background: #312e81 !important;
+    background-color: #312e81 !important;
+    border-color: #6366f1 !important;
+    color: #ffffff !important;
+}
+
+/* Inputs / dropdown */
+body.skill-gap-page select,
+body.skill-gap-page input,
+body.skill-gap-page textarea {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    border-color: #475569 !important;
+}
+
+/* Buttons */
+body.skill-gap-page button {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    ) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+/* =========================================
+   SKILL GAP - ULTIMATE DARK OVERRIDE
+========================================= */
+
+body.skill-gap-page,
+body.skill-gap-page .container,
+body.skill-gap-page .container * {
+    color: #ffffff !important;
+}
+
+/* Remove ALL white backgrounds inside Skill Gap */
+body.skill-gap-page .container,
+body.skill-gap-page .container > *,
+body.skill-gap-page .container > * > *,
+body.skill-gap-page .container > * > * > * {
+    background-color: #0f172a !important;
+    background-image: none !important;
+}
+
+/* Main outer boxes */
+body.skill-gap-page .container > div,
+body.skill-gap-page .container > section {
+    background: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 20px !important;
+}
+
+/* Inner boxes */
+body.skill-gap-page .container div {
+    background-color: #111827 !important;
+}
+
+/* Keep headings/text readable */
+body.skill-gap-page h1,
+body.skill-gap-page h2,
+body.skill-gap-page h3,
+body.skill-gap-page h4,
+body.skill-gap-page p,
+body.skill-gap-page label,
+body.skill-gap-page span,
+body.skill-gap-page strong {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+/* Dropdown / input */
+body.skill-gap-page select,
+body.skill-gap-page input,
+body.skill-gap-page textarea {
+    background-color: #111827 !important;
+    color: #ffffff !important;
+}
+
+/* Button */
+body.skill-gap-page button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+/* =========================================
+   SKILL GAP CARDS - EXACT FIX
+========================================= */
+
+body.skill-gap-page .skillgap-card {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+
+    border: 1px solid rgba(99, 102, 241, 0.35) !important;
+    border-radius: 20px !important;
+
+    padding: 28px !important;
+    margin: 18px 0 !important;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Card headings */
+body.skill-gap-page .skillgap-card h3 {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+/* Description */
+body.skill-gap-page .skillgap-card p {
+    color: #cbd5e1 !important;
+    background: transparent !important;
+}
+
+/* Dropdowns */
+body.skill-gap-page .skillgap-card select {
+    width: 100% !important;
+
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+
+    padding: 13px 15px !important;
+}
+
+/* Dropdown options */
+body.skill-gap-page .skillgap-card select option {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+/* Skill checkbox options */
+body.skill-gap-page .skill-option {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+
+    padding: 13px 15px !important;
+    margin: 8px 0 !important;
+}
+
+/* Selected skill */
+body.skill-gap-page .skill-option:has(input:checked) {
+    background: #312e81 !important;
+    background-color: #312e81 !important;
+    border-color: #6366f1 !important;
+}
+
+/* Skill text */
+body.skill-gap-page .skill-option span {
+    color: #ffffff !important;
+}
+
+/* Checkbox */
+body.skill-gap-page .skill-option input {
+    accent-color: #6366f1 !important;
+}
+/* =========================================
+   WHAT-IF SIMULATOR - PREMIUM UI
+========================================= */
+
+body {
+    background: #020617 !important;
+    color: #f8fafc !important;
+}
+
+body .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 35px auto !important;
+}
+
+body .container > .card {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+
+    padding: 35px !important;
+    margin: 20px 0 !important;
+
+    box-shadow: 0 20px 55px rgba(0,0,0,0.4) !important;
+}
+
+/* Headings */
+body .card h2,
+body .card h3 {
+    color: #ffffff !important;
+}
+
+/* Subtitle & text */
+body .subtitle,
+body .card p,
+body .card label,
+body .card strong {
+    color: #cbd5e1 !important;
+}
+
+/* Dropdown */
+body .card select {
+    width: 100% !important;
+
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+
+    padding: 13px 15px !important;
+    margin: 8px 0 18px !important;
+}
+
+/* Dropdown options */
+body .card select option {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+/* Button */
+body .card button {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    ) !important;
+
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+
+    padding: 13px 25px !important;
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+}
+
+body .card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99,102,241,0.3);
+}
+
+/* Result section */
+body #result {
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #334155 !important;
+    border-radius: 16px !important;
+
+    padding: 20px !important;
+    margin-top: 20px !important;
+}
+
+/* Result skill boxes */
+body #commonSkills,
+body #additionalSkills {
+    color: #ffffff !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    body .container {
+        width: 94% !important;
+    }
+
+    body .container > .card {
+        padding: 22px 16px !important;
+    }
+
+    body .card button {
+        width: 100% !important;
+    }
+}
+/* ================================
+   WHAT-IF CAREER SIMULATOR
+   ================================ */
+
+.what-if-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.what-if-page .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 90px 0 50px !important;
+}
+
+.what-if-page #title {
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.what-if-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 17px !important;
+    margin-bottom: 35px !important;
+}
+
+.what-if-page .card {
+    background: rgba(15, 23, 42, 0.88) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 35px !important;
+    margin: 25px 0 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.what-if-page .card h2 {
+    color: #ffffff !important;
+    font-size: 25px !important;
+    margin-bottom: 25px !important;
+}
+
+.what-if-page label {
+    display: block !important;
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    margin: 18px 0 8px !important;
+}
+
+.what-if-page select {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 14px 16px !important;
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid #475569 !important;
+    border-radius: 13px !important;
+    font-size: 15px !important;
+    outline: none !important;
+}
+
+.what-if-page select:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+.what-if-page select option {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+.what-if-page button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 28px !important;
+    margin-top: 25px !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.what-if-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.what-if-page #result {
+    background: rgba(17,24,39,0.95) !important;
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+    border-radius: 18px !important;
+    padding: 25px !important;
+    margin-top: 20px !important;
+}
+
+.what-if-page #result h3 {
+    color: #ffffff !important;
+}
+
+.what-if-page #result p,
+.what-if-page #result strong {
+    color: #cbd5e1 !important;
+}
+
+.what-if-page #commonSkills,
+.what-if-page #additionalSkills {
+    color: #ffffff !important;
+}
+
+.what-if-page #languageSelector {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 10px !important;
+}
+
+@media (max-width: 700px) {
+
+    .what-if-page .container {
+        width: 94% !important;
+        padding: 85px 0 30px !important;
+    }
+
+    .what-if-page #title {
+        font-size: 30px !important;
+    }
+
+    .what-if-page .card {
+        padding: 22px 18px !important;
+        border-radius: 20px !important;
+    }
+
+    .what-if-page button {
+        width: 100% !important;
+    }
+}
+/* What-If Recommendation */
+.what-if-page #recommendation {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99, 102, 241, 0.35) !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.what-if-page #recommendation h3,
+.what-if-page #recommendation p,
+.what-if-page #recommendation span,
+.what-if-page #recommendation strong {
+    color: #f8fafc !important;
+}
+/* What-If Recommendation Message */
+.what-if-page #message {
+    background: #111827 !important;
+    background-color: #111827 !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99, 102, 241, 0.35) !important;
+    border-radius: 14px !important;
+    padding: 16px 18px !important;
+    margin-top: 10px !important;
+    display: block !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+.what-if-page #messageLabel {
+    color: #a5b4fc !important;
+}
+/* =================================
+   TRANSITION PLAN PREMIUM UI
+   ================================= */
+
+.transition-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.transition-page .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 90px 0 50px !important;
+}
+
+.transition-page #title {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.transition-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 17px !important;
+    margin-bottom: 35px !important;
+}
+
+.transition-page .card {
+    background: rgba(15,23,42,0.90) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 32px !important;
+    margin: 24px 0 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.transition-page .card h2 {
+    color: #ffffff !important;
+    font-size: 25px !important;
+    margin-bottom: 24px !important;
+}
+
+.transition-page .info-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 18px !important;
+}
+
+.transition-page .info-box {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.18),
+        rgba(124,58,237,0.15)
+    ) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+    border-left: 4px solid #6366f1 !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+}
+
+.transition-page .info-box strong {
+    color: #94a3b8 !important;
+}
+
+.transition-page .info-box span {
+    color: #ffffff !important;
+    font-size: 18px !important;
+}
+
+.transition-page .card p {
+    color: #cbd5e1 !important;
+}
+
+.transition-page .skill {
+    display: inline-block !important;
+    background: rgba(37,99,235,0.18) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(96,165,250,0.3) !important;
+    padding: 9px 14px !important;
+    border-radius: 20px !important;
+    margin: 5px !important;
+}
+
+.transition-page .plan-step {
+    background: rgba(17,24,39,0.9) !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    border-radius: 18px !important;
+    padding: 22px !important;
+    margin: 16px 0 !important;
+    transition: 0.25s ease !important;
+}
+
+.transition-page .plan-step:hover {
+    transform: translateY(-3px) !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.18) !important;
+}
+
+.transition-page .plan-step h3 {
+    color: #a5b4fc !important;
+}
+
+.transition-page .progress {
+    background: #1e293b !important;
+    border-radius: 20px !important;
+    height: 14px !important;
+}
+
+.transition-page .progress-bar {
+    background: linear-gradient(90deg,#2563eb,#7c3aed) !important;
+}
+
+.transition-page .result {
+    background: rgba(17,24,39,0.95) !important;
+    background-color: #111827 !important;
+    color: #ffffff !important;
+    border-left: 5px solid #6366f1 !important;
+    border-radius: 16px !important;
+}
+
+.transition-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 25px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.transition-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.transition-page #languageSelector {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+}
+
+@media (max-width: 800px) {
+
+    .transition-page .info-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .transition-page .container {
+        width: 94% !important;
+        padding: 85px 0 30px !important;
+    }
+
+    .transition-page #title {
+        font-size: 30px !important;
+    }
+
+    .transition-page .card {
+        padding: 22px 18px !important;
+    }
+
+    .transition-page .info-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .transition-page button {
+        width: 100% !important;
+        margin: 7px 0 !important;
+    }
+}
+/* =================================
+   CAREER ROADMAP PREMIUM UI
+   ================================= */
+
+.roadmap-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.roadmap-page .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 90px 0 50px !important;
+}
+
+.roadmap-page #title {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.roadmap-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 17px !important;
+    margin-bottom: 35px !important;
+}
+
+.roadmap-page .card {
+    background: rgba(15,23,42,0.90) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 32px !important;
+    margin: 24px 0 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.roadmap-page .card h2 {
+    color: #ffffff !important;
+    font-size: 25px !important;
+    margin-bottom: 24px !important;
+}
+
+.roadmap-page .info-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4,1fr) !important;
+    gap: 18px !important;
+}
+
+.roadmap-page .info-box {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.18),
+        rgba(124,58,237,0.15)
+    ) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+    border-left: 4px solid #6366f1 !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+}
+
+.roadmap-page .info-box strong {
+    display: block !important;
+    color: #94a3b8 !important;
+    margin-bottom: 7px !important;
+}
+
+.roadmap-page .info-box span {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+}
+
+.roadmap-page .roadmap {
+    position: relative !important;
+    margin-top: 25px !important;
+}
+
+.roadmap-page .roadmap-step {
+    background: rgba(17,24,39,0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    border-left: 5px solid #6366f1 !important;
+    border-radius: 18px !important;
+    padding: 24px !important;
+    margin: 18px 0 !important;
+    transition: 0.25s ease !important;
+}
+
+.roadmap-page .roadmap-step:hover {
+    transform: translateY(-4px) !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 15px 35px rgba(99,102,241,0.18) !important;
+}
+
+.roadmap-page .roadmap-step h3 {
+    color: #a5b4fc !important;
+    margin-top: 0 !important;
+}
+
+.roadmap-page .roadmap-step p {
+    color: #cbd5e1 !important;
+}
+
+.roadmap-page .step-number {
+    display: inline-block !important;
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border-radius: 50% !important;
+    width: 38px !important;
+    height: 38px !important;
+    text-align: center !important;
+    line-height: 38px !important;
+    margin-right: 9px !important;
+    box-shadow: 0 5px 18px rgba(37,99,235,0.3) !important;
+}
+
+.roadmap-page .skill {
+    display: inline-block !important;
+    background: rgba(37,99,235,0.18) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(96,165,250,0.3) !important;
+    padding: 9px 14px !important;
+    border-radius: 20px !important;
+    margin: 5px !important;
+}
+
+.roadmap-page .check-list {
+    color: #cbd5e1 !important;
+}
+
+.roadmap-page .check-list li {
+    margin: 10px 0 !important;
+}
+
+.roadmap-page .badge {
+    background: rgba(37,99,235,0.18) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(96,165,250,0.3) !important;
+}
+
+.roadmap-page .progress {
+    background: #1e293b !important;
+}
+
+.roadmap-page .progress-bar {
+    background: linear-gradient(90deg,#2563eb,#7c3aed) !important;
+}
+
+.roadmap-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 25px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.roadmap-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.roadmap-page #languageSelector {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+}
+
+@media (max-width:800px) {
+    .roadmap-page .info-grid {
+        grid-template-columns: repeat(2,1fr) !important;
+    }
+}
+
+@media (max-width:600px) {
+    .roadmap-page .container {
+        width: 94% !important;
+        padding: 85px 0 30px !important;
+    }
+
+    .roadmap-page #title {
+        font-size: 30px !important;
+    }
+
+    .roadmap-page .card {
+        padding: 22px 18px !important;
+    }
+
+    .roadmap-page .info-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .roadmap-page button {
+        width: 100% !important;
+        margin: 7px 0 !important;
+    }
+}
+/* =================================
+   PRACTICE PAGE PREMIUM UI
+   ================================= */
+
+.practice-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.practice-page .navbar {
+    background: rgba(15,23,42,0.92) !important;
+    border-bottom: 1px solid rgba(99,102,241,0.25) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.practice-page .logo {
+    color: #60a5fa !important;
+}
+
+.practice-page .language-box {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+}
+
+.practice-page .container {
+    width: 92% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 80px 0 50px !important;
+}
+
+.practice-page h1 {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.practice-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 17px !important;
+    margin-bottom: 35px !important;
+}
+
+.practice-page .card {
+    background: rgba(15,23,42,0.90) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    margin-bottom: 25px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.practice-page .card h2 {
+    color: #ffffff !important;
+    margin-top: 0 !important;
+}
+
+.practice-page label {
+    color: #cbd5e1 !important;
+}
+
+.practice-page select {
+    width: 100% !important;
+    padding: 14px !important;
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+}
+
+.practice-page select:focus {
+    border-color: #6366f1 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+.practice-page select option {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+
+.practice-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 25px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.practice-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.practice-page .secondary {
+    background: #334155 !important;
+}
+
+.practice-page .success {
+    background: linear-gradient(135deg,#059669,#16a34a) !important;
+}
+
+.practice-page .info-box {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.18),
+        rgba(124,58,237,0.15)
+    ) !important;
+    color: #e2e8f0 !important;
+    border-left: 5px solid #6366f1 !important;
+    border-top: 1px solid rgba(99,102,241,0.2) !important;
+    border-right: 1px solid rgba(99,102,241,0.2) !important;
+    border-bottom: 1px solid rgba(99,102,241,0.2) !important;
+    border-radius: 14px !important;
+}
+
+.practice-page .question-box {
+    background: rgba(17,24,39,0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    border-radius: 18px !important;
+    padding: 24px !important;
+    margin: 20px 0 !important;
+    transition: 0.25s ease !important;
+}
+
+.practice-page .question-box:hover {
+    border-color: #6366f1 !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.12) !important;
+}
+
+.practice-page .question-number {
+    color: #818cf8 !important;
+    font-weight: 800 !important;
+}
+
+.practice-page .question-text {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
+}
+
+.practice-page .option {
+    display: block !important;
+    padding: 15px !important;
+    margin: 10px 0 !important;
+    background: #111827 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    transition: 0.2s ease !important;
+}
+
+.practice-page .option:hover {
+    background: rgba(37,99,235,0.15) !important;
+    color: #ffffff !important;
+    border-color: #6366f1 !important;
+    transform: translateX(3px) !important;
+}
+
+.practice-page .option input {
+    margin-right: 10px !important;
+}
+
+.practice-page .score {
+    font-size: 44px !important;
+    font-weight: 800 !important;
+    color: #60a5fa !important;
+    text-align: center !important;
+    margin: 25px !important;
+}
+
+.practice-page .feedback {
+    text-align: center !important;
+    font-size: 18px !important;
+    padding: 18px !important;
+    border-radius: 14px !important;
+    background: rgba(37,99,235,0.14) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+}
+
+.practice-page .hidden {
+    display: none !important;
+}
+
+@media(max-width:700px) {
+
+    .practice-page .navbar {
+        padding: 15px !important;
+    }
+
+    .practice-page .container {
+        width: 94% !important;
+        padding: 75px 0 30px !important;
+    }
+
+    .practice-page h1 {
+        font-size: 30px !important;
+    }
+
+    .practice-page .card {
+        padding: 22px 18px !important;
+    }
+
+    .practice-page .question-text {
+        font-size: 18px !important;
+    }
+
+    .practice-page button {
+        width: 100% !important;
+        margin: 7px 0 !important;
+    }
+}
+/* =================================
+   MOCK INTERVIEW PREMIUM UI
+   ================================= */
+
+.mock-interview-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.mock-interview-page .navbar {
+    background: rgba(15,23,42,0.92) !important;
+    border-bottom: 1px solid rgba(99,102,241,0.25) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.mock-interview-page .logo {
+    color: #60a5fa !important;
+}
+
+.mock-interview-page .language-box {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+}
+
+.mock-interview-page .container {
+    width: 92% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 80px 0 50px !important;
+}
+
+.mock-interview-page h1 {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.mock-interview-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 17px !important;
+    margin-bottom: 35px !important;
+}
+
+.mock-interview-page .card {
+    background: rgba(15,23,42,0.90) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    margin-bottom: 25px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.mock-interview-page .card h2 {
+    color: #ffffff !important;
+    margin-top: 0 !important;
+}
+
+.mock-interview-page label {
+    color: #cbd5e1 !important;
+}
+
+.mock-interview-page select,
+.mock-interview-page textarea {
+    width: 100% !important;
+    padding: 14px !important;
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+}
+
+.mock-interview-page select:focus,
+.mock-interview-page textarea:focus {
+    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+.mock-interview-page select option {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+
+.mock-interview-page textarea {
+    min-height: 160px !important;
+    resize: vertical !important;
+}
+
+.mock-interview-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 25px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.mock-interview-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.mock-interview-page .secondary {
+    background: #334155 !important;
+}
+
+.mock-interview-page .success {
+    background: linear-gradient(135deg,#059669,#16a34a) !important;
+}
+
+.mock-interview-page .danger {
+    background: linear-gradient(135deg,#dc2626,#b91c1c) !important;
+}
+
+.mock-interview-page .info-box {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.18),
+        rgba(124,58,237,0.15)
+    ) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+    border-left: 5px solid #6366f1 !important;
+    border-radius: 14px !important;
+}
+
+.mock-interview-page .question-box {
+    background: rgba(17,24,39,0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    border-radius: 18px !important;
+    padding: 24px !important;
+    margin: 20px 0 !important;
+    transition: 0.25s ease !important;
+}
+
+.mock-interview-page .question-box:hover {
+    border-color: #6366f1 !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.12) !important;
+}
+
+.mock-interview-page .question-number {
+    color: #818cf8 !important;
+    font-weight: 800 !important;
+}
+
+.mock-interview-page .question-text {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
+}
+
+.mock-interview-page .score {
+    font-size: 44px !important;
+    font-weight: 800 !important;
+    color: #60a5fa !important;
+    text-align: center !important;
+    margin: 25px !important;
+}
+
+.mock-interview-page .feedback {
+    text-align: center !important;
+    font-size: 18px !important;
+    padding: 18px !important;
+    border-radius: 14px !important;
+    background: rgba(37,99,235,0.14) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+}
+
+.mock-interview-page .hidden {
+    display: none !important;
+}
+
+@media(max-width:700px) {
+
+    .mock-interview-page .navbar {
+        padding: 15px !important;
+    }
+
+    .mock-interview-page .container {
+        width: 94% !important;
+        padding: 75px 0 30px !important;
+    }
+
+    .mock-interview-page h1 {
+        font-size: 30px !important;
+    }
+
+    .mock-interview-page .card {
+        padding: 22px 18px !important;
+    }
+
+    .mock-interview-page .question-text {
+        font-size: 18px !important;
+    }
+
+    .mock-interview-page button {
+        width: 100% !important;
+        margin: 7px 0 !important;
+    }
+}
+/* =================================
+   RESUME AI PREMIUM UI
+   ================================= */
+
+.resume-ai-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.resume-ai-page .navbar {
+    background: rgba(15,23,42,0.92) !important;
+    border-bottom: 1px solid rgba(99,102,241,0.25) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.resume-ai-page .logo {
+    color: #60a5fa !important;
+}
+
+.resume-ai-page .container {
+    width: 92% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 80px 0 50px !important;
+}
+
+.resume-ai-page h1 {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.resume-ai-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    font-size: 17px !important;
+    margin-bottom: 35px !important;
+}
+
+.resume-ai-page .card {
+    background: rgba(15,23,42,0.90) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    margin: 24px 0 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.resume-ai-page .card h2 {
+    color: #ffffff !important;
+    margin-top: 0 !important;
+}
+
+.resume-ai-page label {
+    color: #cbd5e1 !important;
+}
+
+.resume-ai-page input,
+.resume-ai-page textarea,
+.resume-ai-page select {
+    width: 100% !important;
+    padding: 14px 15px !important;
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+}
+
+.resume-ai-page input::placeholder,
+.resume-ai-page textarea::placeholder {
+    color: #64748b !important;
+}
+
+.resume-ai-page input:focus,
+.resume-ai-page textarea:focus,
+.resume-ai-page select:focus {
+    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+.resume-ai-page select option {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+
+.resume-ai-page textarea {
+    min-height: 140px !important;
+    resize: vertical !important;
+}
+
+.resume-ai-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 25px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.resume-ai-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.resume-ai-page .secondary {
+    background: #334155 !important;
+}
+
+.resume-ai-page #languageSelector {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+}
+
+.resume-ai-page .result,
+.resume-ai-page .result-box,
+.resume-ai-page .feedback,
+.resume-ai-page .info-box {
+    background: rgba(17,24,39,0.92) !important;
+    background-color: #111827 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+    border-radius: 16px !important;
+}
+
+.resume-ai-page .score {
+    color: #60a5fa !important;
+    font-weight: 800 !important;
+}
+
+.resume-ai-page strong {
+    color: #a5b4fc !important;
+}
+
+.resume-ai-page .hidden {
+    display: none !important;
+}
+
+@media(max-width:700px) {
+
+    .resume-ai-page .container {
+        width: 94% !important;
+        padding: 75px 0 30px !important;
+    }
+
+    .resume-ai-page h1 {
+        font-size: 30px !important;
+    }
+
+    .resume-ai-page .card {
+        padding: 22px 18px !important;
+    }
+
+    .resume-ai-page button {
+        width: 100% !important;
+        margin: 7px 0 !important;
+    }
+}
+/* =================================
+   JOBS PAGE PREMIUM UI
+   ================================= */
+
+.jobs-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+}
+
+.jobs-page .navbar {
+    background: rgba(15,23,42,0.92) !important;
+    border-bottom: 1px solid rgba(99,102,241,0.25) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.jobs-page .brand {
+    color: #60a5fa !important;
+}
+
+.jobs-page .nav-links a {
+    color: #93c5fd !important;
+    transition: 0.2s ease !important;
+}
+
+.jobs-page .nav-links a:hover {
+    color: #ffffff !important;
+}
+
+.jobs-page #languageSelector {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+}
+
+.jobs-page .container {
+    width: 92% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 80px 0 50px !important;
+}
+
+.jobs-page h1 {
+    text-align: center !important;
+    font-size: 42px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 12px !important;
+}
+
+.jobs-page .subtitle {
+    text-align: center !important;
+    color: #94a3b8 !important;
+    margin-bottom: 35px !important;
+}
+
+.jobs-page .search-card {
+    background: rgba(15,23,42,0.90) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.35) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.jobs-page label {
+    color: #cbd5e1 !important;
+}
+
+.jobs-page input {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+}
+
+.jobs-page input::placeholder {
+    color: #64748b !important;
+}
+
+.jobs-page input:focus {
+    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+.jobs-page button {
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 13px !important;
+    padding: 14px 25px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.jobs-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+.jobs-page .profile-card {
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.18),
+        rgba(124,58,237,0.15)
+    ) !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+    border-left: 5px solid #6366f1 !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+}
+
+.jobs-page .job-card {
+    background: rgba(15,23,42,0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+    border-radius: 20px !important;
+    padding: 27px !important;
+    margin: 20px 0 !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.35) !important;
+    transition: 0.25s ease !important;
+}
+
+.jobs-page .job-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 20px 50px rgba(99,102,241,0.18) !important;
+}
+
+.jobs-page .job-title {
+    color: #a5b4fc !important;
+    font-size: 24px !important;
+}
+
+.jobs-page .company {
+    color: #60a5fa !important;
+    font-size: 17px !important;
+}
+
+.jobs-page .job-info {
+    color: #cbd5e1 !important;
+}
+
+.jobs-page .match {
+    background: rgba(37,99,235,0.15) !important;
+    color: #bfdbfe !important;
+    border: 1px solid rgba(96,165,250,0.25) !important;
+    border-radius: 12px !important;
+    padding: 13px !important;
+}
+
+.jobs-page .skills {
+    margin-top: 16px !important;
+}
+
+.jobs-page .skill {
+    background: rgba(37,99,235,0.18) !important;
+    color: #93c5fd !important;
+    border: 1px solid rgba(96,165,250,0.3) !important;
+    padding: 7px 12px !important;
+    border-radius: 20px !important;
+}
+
+.jobs-page .source {
+    color: #64748b !important;
+}
+
+.jobs-page .apply-btn {
+    display: inline-block !important;
+    background: linear-gradient(135deg,#059669,#16a34a) !important;
+    color: #ffffff !important;
+    padding: 12px 20px !important;
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    margin-top: 14px !important;
+    transition: 0.25s ease !important;
+}
+
+.jobs-page .apply-btn:hover {
+    background: linear-gradient(135deg,#16a34a,#15803d) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(22,163,74,0.25) !important;
+}
+
+.jobs-page .loading {
+    color: #60a5fa !important;
+}
+
+.jobs-page .error {
+    background: rgba(127,29,29,0.3) !important;
+    color: #fecaca !important;
+    border: 1px solid rgba(248,113,113,0.3) !important;
+    border-radius: 14px !important;
+}
+
+.jobs-page .empty {
+    background: rgba(15,23,42,0.92) !important;
+    color: #cbd5e1 !important;
+    border: 1px solid #334155 !important;
+    border-radius: 18px !important;
+}
+
+@media(max-width:700px) {
+
+    .jobs-page .navbar {
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 15px !important;
+    }
+
+    .jobs-page .nav-links {
+        text-align: center !important;
+    }
+
+    .jobs-page .container {
+        width: 94% !important;
+        padding: 75px 0 30px !important;
+    }
+
+    .jobs-page h1 {
+        font-size: 30px !important;
+    }
+
+    .jobs-page .search-card,
+    .jobs-page .job-card {
+        padding: 22px 18px !important;
+    }
+
+    .jobs-page button {
+        width: 100% !important;
+        margin: 7px 0 !important;
+    }
+
+    .jobs-page input {
+        max-width: 100% !important;
+    }
+
+    .jobs-page .apply-btn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+/* =================================
+   ADMIN PAGE PREMIUM UI
+   ================================= */
+
+.admin-page {
+    min-height: 100vh !important;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37,99,235,0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(124,58,237,0.16), transparent 35%),
+        #020617 !important;
+    color: #f8fafc !important;
+    padding: 30px !important;
+}
+
+.admin-page .container {
+    max-width: 1100px !important;
+    width: 92% !important;
+    margin: auto !important;
+}
+
+/* HEADER */
+
+.admin-page .header {
+    background: rgba(15,23,42,0.92) !important;
+    color: #ffffff !important;
+    padding: 22px 25px !important;
+    border-radius: 20px !important;
+    margin-bottom: 25px !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.35) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.admin-page .header h1 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+.admin-page select {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 11px !important;
+    padding: 10px 15px !important;
+}
+
+.admin-page select:focus {
+    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+.admin-page select option {
+    background: #0f172a !important;
+    color: #ffffff !important;
+}
+
+/* LOGIN + ADMIN PANEL */
+
+.admin-page .login-card,
+.admin-page .admin-panel {
+    background: rgba(15,23,42,0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+    backdrop-filter: blur(14px) !important;
+}
+
+.admin-page .login-card {
+    max-width: 500px !important;
+    margin: 40px auto !important;
+}
+
+.admin-page h2 {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+.admin-page label {
+    color: #cbd5e1 !important;
+}
+
+.admin-page input {
+    background: #111827 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+    border-radius: 12px !important;
+    padding: 13px !important;
+}
+
+.admin-page input::placeholder {
+    color: #64748b !important;
+}
+
+.admin-page input:focus {
+    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+
+/* BUTTON */
+
+.admin-page button {
+    width: 100% !important;
+    margin-top: 20px !important;
+    padding: 14px !important;
+    border: none !important;
+    border-radius: 13px !important;
+    background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: 0.25s ease !important;
+}
+
+.admin-page button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 30px rgba(99,102,241,0.35) !important;
+}
+
+/* MESSAGE */
+
+.admin-page #adminMessage {
+    color: #a5b4fc !important;
+    margin-top: 15px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+}
+
+/* STATISTICS */
+
+.admin-page .stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    margin-top: 20px !important;
+}
+
+.admin-page .stat-card {
+    padding: 25px !important;
+    border-radius: 18px !important;
+    background: linear-gradient(
+        135deg,
+        rgba(37,99,235,0.18),
+        rgba(124,58,237,0.15)
+    ) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(99,102,241,0.28) !important;
+    text-align: center !important;
+    transition: 0.25s ease !important;
+}
+
+.admin-page .stat-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 15px 35px rgba(99,102,241,0.18) !important;
+}
+
+.admin-page .stat-card h3 {
+    color: #cbd5e1 !important;
+    margin-bottom: 12px !important;
+}
+
+.admin-page .stat-card .number {
+    font-size: 36px !important;
+    font-weight: 800 !important;
+    color: #60a5fa !important;
+}
+
+/* FEATURE USAGE */
+
+.admin-page .feature-card {
+    margin-top: 25px !important;
+    padding: 25px !important;
+    border-radius: 20px !important;
+    background: rgba(15,23,42,0.9) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(99,102,241,0.3) !important;
+}
+
+.admin-page .feature-card h2 {
+    color: #ffffff !important;
+}
+
+.admin-page .feature-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 15px 18px !important;
+    margin-top: 10px !important;
+    background: #111827 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+    transition: 0.2s ease !important;
+}
+
+.admin-page .feature-row:hover {
+    border-color: #6366f1 !important;
+    transform: translateX(3px) !important;
+}
+
+.admin-page .feature-row span:last-child {
+    color: #60a5fa !important;
+    font-weight: 800 !important;
+}
+
+/* HIDDEN ADMIN PANEL */
+
+.admin-page #adminPanel {
+    display: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .admin-page {
+        padding: 15px !important;
+    }
+
+    .admin-page .container {
+        width: 94% !important;
+    }
+
+    .admin-page .header {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 20px !important;
+    }
+
+    .admin-page .stats {
+        grid-template-columns: 1fr !important;
+    }
+
+    .admin-page .login-card,
+    .admin-page .admin-panel,
+    .admin-page .feature-card {
+        padding: 22px 18px !important;
+    }
+
+    .admin-page .feature-row {
+        padding: 13px !important;
+    }
+
+    .admin-page .stat-card .number {
+        font-size: 30px !important;
+    }
+}
+/* =================================
+   DASHBOARD CHART UI
+   ================================= */
+
+.dashboard-page .dashboard-chart-card {
+    background: rgba(15, 23, 42, 0.92) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(99, 102, 241, 0.3) !important;
+    border-radius: 24px !important;
+    padding: 30px !important;
+    margin: 25px 0 !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dashboard-page .dashboard-chart-card h2 {
+    color: #ffffff !important;
+    margin-bottom: 20px !important;
+}
+
+.dashboard-page .chart-container {
+    width: 100% !important;
+    height: 350px !important;
+    position: relative !important;
+}
+
+@media (max-width: 700px) {
+
+    .dashboard-page .dashboard-chart-card {
+        padding: 20px !important;
+    }
+
+    .dashboard-page .chart-container {
+        height: 280px !important;
+    }
+
+}
+/* ASSESSMENT OPTION HOVER FIX */
+
+.assessment-page .option:hover {
+    background: #172554 !important;
+    background-color: #172554 !important;
+    color: #ffffff !important;
+    border-color: #6366f1 !important;
+}
+
+.assessment-page .option:hover span {
+    color: #ffffff !important;
+}
+
+.assessment-page .option:hover label {
+    color: #ffffff !important;
+}
+/* =================================
+   SKILL ASSESSMENT OPTION HOVER FIX
+   ================================= */
+
+body:has(#q1) .card label:hover {
+    background: #172554 !important;
+    background-color: #172554 !important;
+    color: #ffffff !important;
+    border: 2px solid #6366f1 !important;
+    border-radius: 12px !important;
+}
+
+body:has(#q1) .card label:hover span {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+body:has(#q1) .card label:hover input {
+    accent-color: #6366f1 !important;
+}
+/* PRACTICE QUESTION VISIBILITY FIX */
+
+.practice-page #questionsContainer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 100px !important;
+    width: 100% !important;
+}
+
+.practice-page #questionsContainer .question-box {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.practice-page #questionsContainer .question-text {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.practice-page #questionsContainer .option {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+/* PRACTICE START BUTTON HOVER */
+
+.practice-page #startBtn {
+    background: linear-gradient(135deg, #2563eb, #4f46e5) !important;
+    color: #ffffff !important;
+    border: 1px solid #6366f1 !important;
+    transition: all 0.25s ease !important;
+}
+
+.practice-page #startBtn:hover {
+    background: linear-gradient(135deg, #1d4ed8, #3730a3) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.55) !important;
+    transform: translateY(-2px) !important;
+}
+/* PRACTICE DROPDOWN BRIGHT HOVER */
+
+.practice-page #careerSelect,
+.practice-page #levelSelect {
+    background: #111827 !important;
+    color: #f8fafc !important;
+    border: 2px solid #334155 !important;
+    transition: all 0.25s ease !important;
+}
+
+.practice-page #careerSelect:hover,
+.practice-page #levelSelect:hover,
+.practice-page #careerSelect:focus,
+.practice-page #levelSelect:focus {
+    background: #172554 !important;
+    color: #ffffff !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.45) !important;
+    outline: none !important;
+}
+
+.practice-page #careerSelect option,
+.practice-page #levelSelect option {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+.dashboard-back {
+    width: 100%;
+    text-align: center;
+    margin: 35px 0 25px;
+}
+
+.dashboard-back button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    border: none;
+    padding: 13px 28px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dashboard-back button:hover {
+    transform: translateY(-2px);
+}

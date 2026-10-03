@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Career Hub - Skills</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="./language.js"></script>
+
+    <style>
+        .skills-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .skill-card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .skill-card input {
+            margin-right: 10px;
+        }
+
+        .category {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 25px;
+            cursor: pointer;
+        }
+
+        #message {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="skills-container">
+
+        <h1>🚀 AI Career Hub</h1>
+
+        <h2>🧠 Select Your Skills</h2>
+
+        <p>Select the skills you already know.</p>
+
+        <div id="skillsList" class="skills-grid">
+            Loading skills...
+        </div>
+
+        <button onclick="saveSkills()">
+            Continue →
+        </button>
+
+        <p id="message"></p>
+
+    </div>
+
+
+<script>
+
+let selectedSkills = [];
+
+
+fetch("http://127.0.0.1:8000/skills")
+
+.then(response => response.json())
+
+.then(data => {
+
+    const skillsList = document.getElementById("skillsList");
+
+    skillsList.innerHTML = "";
+
+    data.skills.forEach(skill => {
+
+        skillsList.innerHTML += `
+
+            <div class="skill-card">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        value="${skill.name}"
+                        onchange="selectSkill(this)"
+                    >
+
+                    <strong>${skill.name}</strong>
+
+                </label>
+
+                <div class="category">
+                    ${skill.category}
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+})
+
+.catch(error => {
+
+    console.log(error);
+
+    document.getElementById("skillsList").innerHTML =
+        "Unable to load skills ❌";
+
+});
+
+
+function selectSkill(checkbox) {
+
+    if (checkbox.checked) {
+
+        selectedSkills.push(checkbox.value);
+
+    } else {
+
+        selectedSkills =
+            selectedSkills.filter(
+                skill => skill !== checkbox.value
+            );
+
+    }
+
+}
+
+
+function saveSkills() {
+
+    if (selectedSkills.length === 0) {
+
+        document.getElementById("message").innerText =
+            "Please select at least one skill ❌";
+
+        return;
+    }
+
+    localStorage.setItem(
+        "selected_skills",
+        JSON.stringify(selectedSkills)
+    );
+
+    document.getElementById("message").innerText =
+        selectedSkills.length +
+        " skills selected successfully 🚀";
+
+}
+
+</script>
+<script src="language.js"></script>
+
+</body>
+</html>

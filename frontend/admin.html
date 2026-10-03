@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Hub - Admin</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="admin-page">
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1 id="pageTitle">
+            🔐 AI Career Hub - Admin
+        </h1>
+
+        <select id="languageSelect" onchange="changeLanguage()">
+
+            <option value="en">English</option>
+            <option value="ta">தமிழ்</option>
+            <option value="th">Thanglish</option>
+            <option value="hi">हिन्दी</option>
+            <option value="kn">ಕನ್ನಡ</option>
+            <option value="ml">മലയാളം</option>
+
+        </select>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <div class="login-card">
+
+        <h2 id="loginTitle">
+            🔐 Admin Login
+        </h2>
+
+        <label id="usernameLabel">
+            Username
+        </label>
+
+        <input
+            type="text"
+            id="adminUsername"
+            placeholder="Enter username"
+        >
+
+        <label id="passwordLabel">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter password"
+        >
+
+        <button
+            onclick="adminLogin()"
+            id="loginButton"
+        >
+            Login
+        </button>
+
+        <div id="adminMessage"></div>
+
+    </div>
+
+
+    <!-- ADMIN DASHBOARD -->
+
+    <div
+        class="admin-panel"
+        id="adminPanel"
+    >
+
+        <h2 id="dashboardTitle">
+            📊 Admin Dashboard
+        </h2>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+
+            <!-- TOTAL USERS -->
+
+            <div class="stat-card">
+
+                <h3 id="usersTitle">
+                    👥 Total Users
+                </h3>
+
+                <div
+                    class="number"
+                    id="userCount"
+                >
+                    Loading...
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL VISITORS -->
+
+            <div class="stat-card">
+
+                <h3 id="visitorsTitle">
+                    🌐 Total Visitors
+                </h3>
+
+                <div
+                    class="number"
+                    id="adminVisitorCount"
+                >
+                    Loading...
+                </div>
+
+            </div>
+
+
+            <!-- TODAY VISITORS -->
+
+            <div class="stat-card">
+
+                <h3 id="todayVisitorsTitle">
+                    📅 Today Visitors
+                </h3>
+
+                <div
+                    class="number"
+                    id="todayVisitorCount"
+                >
+                    Loading...
+                </div>
+
+            </div>
+
+
+            <!-- APPLICATIONS -->
+
+            <div class="stat-card">
+
+                <h3 id="applicationsTitle">
+                    📝 Applications
+                </h3>
+
+                <div
+                    class="number"
+                    id="applicationCount"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEATURE USAGE -->
+
+        <div class="feature-card">
+
+            <h2 id="featureTitle">
+                📊 Feature Usage
+            </h2>
+
+
+            <div class="feature-row">
+
+                <span id="practiceLabel">
+                    📝 Practice
+                </span>
+
+                <strong id="practiceCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="feature-row">
+
+                <span id="interviewLabel">
+                    🎤 Mock Interview
+                </span>
+
+                <strong id="interviewCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="feature-row">
+
+                <span id="assessmentLabel">
+                    📚 Skill Assessment
+                </span>
+
+                <strong id="assessmentCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="feature-row">
+
+                <span id="jobsLabel">
+                    💼 Jobs
+                </span>
+
+                <strong id="jobsCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   LANGUAGE TRANSLATIONS
+========================= */
+
+const translations = {
+
+    en: {
+        pageTitle: "🔐 AI Career Hub - Admin",
+        loginTitle: "🔐 Admin Login",
+        usernameLabel: "Username",
+        passwordLabel: "Password",
+        loginButton: "Login",
+        dashboardTitle: "📊 Admin Dashboard",
+        usersTitle: "👥 Total Users",
+        visitorsTitle: "🌐 Total Visitors",
+        todayVisitorsTitle: "📅 Today Visitors",
+        applicationsTitle: "📝 Applications",
+        featureTitle: "📊 Feature Usage",
+        practiceLabel: "📝 Practice",
+        interviewLabel: "🎤 Mock Interview",
+        assessmentLabel: "📚 Skill Assessment",
+        jobsLabel: "💼 Jobs"
+    },
+
+
+    ta: {
+        pageTitle: "🔐 AI Career Hub - நிர்வாகம்",
+        loginTitle: "🔐 நிர்வாகி உள்நுழைவு",
+        usernameLabel: "பயனர் பெயர்",
+        passwordLabel: "கடவுச்சொல்",
+        loginButton: "உள்நுழை",
+        dashboardTitle: "📊 நிர்வாகி டாஷ்போர்டு",
+        usersTitle: "👥 மொத்த பயனர்கள்",
+        visitorsTitle: "🌐 மொத்த பார்வையாளர்கள்",
+        todayVisitorsTitle: "📅 இன்று வந்தவர்கள்",
+        applicationsTitle: "📝 விண்ணப்பங்கள்",
+        featureTitle: "📊 அம்ச பயன்பாடு",
+        practiceLabel: "📝 பயிற்சி",
+        interviewLabel: "🎤 போலி நேர்காணல்",
+        assessmentLabel: "📚 திறன் மதிப்பீடு",
+        jobsLabel: "💼 வேலைகள்"
+    },
+
+
+    th: {
+        pageTitle: "🔐 AI Career Hub - Admin",
+        loginTitle: "🔐 Admin Login",
+        usernameLabel: "Username",
+        passwordLabel: "Password",
+        loginButton: "Login",
+        dashboardTitle: "📊 Admin Dashboard",
+        usersTitle: "👥 Total Users",
+        visitorsTitle: "🌐 Total Visitors",
+        todayVisitorsTitle: "📅 Today Visitors",
+        applicationsTitle: "📝 Applications",
+        featureTitle: "📊 Feature Usage",
+        practiceLabel: "📝 Practice",
+        interviewLabel: "🎤 Mock Interview",
+        assessmentLabel: "📚 Skill Assessment",
+        jobsLabel: "💼 Jobs"
+    },
+
+
+    hi: {
+        pageTitle: "🔐 AI Career Hub - एडमिन",
+        loginTitle: "🔐 एडमिन लॉगिन",
+        usernameLabel: "उपयोगकर्ता नाम",
+        passwordLabel: "पासवर्ड",
+        loginButton: "लॉगिन",
+        dashboardTitle: "📊 एडमिन डैशबोर्ड",
+        usersTitle: "👥 कुल उपयोगकर्ता",
+        visitorsTitle: "🌐 कुल विज़िटर",
+        todayVisitorsTitle: "📅 आज के विज़िटर",
+        applicationsTitle: "📝 आवेदन",
+        featureTitle: "📊 फीचर उपयोग",
+        practiceLabel: "📝 अभ्यास",
+        interviewLabel: "🎤 मॉक इंटरव्यू",
+        assessmentLabel: "📚 कौशल मूल्यांकन",
+        jobsLabel: "💼 नौकरियां"
+    },
+
+
+    kn: {
+        pageTitle: "🔐 AI Career Hub - ಆಡ್ಮಿನ್",
+        loginTitle: "🔐 ಆಡ್ಮಿನ್ ಲಾಗಿನ್",
+        usernameLabel: "ಬಳಕೆದಾರ ಹೆಸರು",
+        passwordLabel: "ಪಾಸ್‌ವರ್ಡ್",
+        loginButton: "ಲಾಗಿನ್",
+        dashboardTitle: "📊 ಆಡ್ಮಿನ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        usersTitle: "👥 ಒಟ್ಟು ಬಳಕೆದಾರರು",
+        visitorsTitle: "🌐 ಒಟ್ಟು ವೀಕ್ಷಕರು",
+        todayVisitorsTitle: "📅 ಇಂದಿನ ವೀಕ್ಷಕರು",
+        applicationsTitle: "📝 ಅರ್ಜಿಗಳು",
+        featureTitle: "📊 ವೈಶಿಷ್ಟ್ಯ ಬಳಕೆ",
+        practiceLabel: "📝 ಅಭ್ಯಾಸ",
+        interviewLabel: "🎤 ಮಾಕ್ ಇಂಟರ್ವ್ಯೂ",
+        assessmentLabel: "📚 ಕೌಶಲ್ಯ ಮೌಲ್ಯಮಾಪನ",
+        jobsLabel: "💼 ಉದ್ಯೋಗಗಳು"
+    },
+
+
+    ml: {
+        pageTitle: "🔐 AI Career Hub - അഡ്മിൻ",
+        loginTitle: "🔐 അഡ്മിൻ ലോഗിൻ",
+        usernameLabel: "ഉപയോക്തൃനാമം",
+        passwordLabel: "പാസ്‌വേഡ്",
+        loginButton: "ലോഗിൻ",
+        dashboardTitle: "📊 അഡ്മിൻ ഡാഷ്ബോർഡ്",
+        usersTitle: "👥 ആകെ ഉപയോക്താക്കൾ",
+        visitorsTitle: "🌐 ആകെ സന്ദർശകർ",
+        todayVisitorsTitle: "📅 ഇന്നത്തെ സന്ദർശകർ",
+        applicationsTitle: "📝 അപേക്ഷകൾ",
+        featureTitle: "📊 ഫീച്ചർ ഉപയോഗം",
+        practiceLabel: "📝 പരിശീലനം",
+        interviewLabel: "🎤 മോക്ക് ഇന്റർവ്യൂ",
+        assessmentLabel: "📚 നൈപുണ്യ വിലയിരുത്തൽ",
+        jobsLabel: "💼 ജോലികൾ"
+    }
+
+};
+
+
+/* =========================
+   LANGUAGE CHANGE
+========================= */
+
+function changeLanguage() {
+
+    const lang =
+        document.getElementById("languageSelect").value;
+
+    const t =
+        translations[lang];
+
+
+    document.getElementById("pageTitle").innerText =
+        t.pageTitle;
+
+    document.getElementById("loginTitle").innerText =
+        t.loginTitle;
+
+    document.getElementById("usernameLabel").innerText =
+        t.usernameLabel;
+
+    document.getElementById("passwordLabel").innerText =
+        t.passwordLabel;
+
+    document.getElementById("loginButton").innerText =
+        t.loginButton;
+
+    document.getElementById("dashboardTitle").innerText =
+        t.dashboardTitle;
+
+    document.getElementById("usersTitle").innerText =
+        t.usersTitle;
+
+    document.getElementById("visitorsTitle").innerText =
+        t.visitorsTitle;
+
+    document.getElementById("todayVisitorsTitle").innerText =
+        t.todayVisitorsTitle;
+
+    document.getElementById("applicationsTitle").innerText =
+        t.applicationsTitle;
+
+    document.getElementById("featureTitle").innerText =
+        t.featureTitle;
+
+    document.getElementById("practiceLabel").innerText =
+        t.practiceLabel;
+
+    document.getElementById("interviewLabel").innerText =
+        t.interviewLabel;
+
+    document.getElementById("assessmentLabel").innerText =
+        t.assessmentLabel;
+
+    document.getElementById("jobsLabel").innerText =
+        t.jobsLabel;
+
+}
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+async function adminLogin() {
+
+    const username =
+        document.getElementById("adminUsername").value.trim();
+
+    const password =
+        document.getElementById("adminPassword").value;
+
+    try {
+
+        const response = await fetch("/admin/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:
+                "username=" + encodeURIComponent(username) +
+                "&password=" + encodeURIComponent(password)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+            document.getElementById("adminMessage").innerText =
+                data.message + " 🚀";
+
+            document.getElementById("adminPanel").style.display =
+                "block";
+
+            loadUserCount();
+            loadAdminVisitorCount();
+            loadTodayVisitorCount();
+            loadFeatureUsage();
+
+        } else {
+
+            document.getElementById("adminMessage").innerText =
+                data.message + " ❌";
+
+            document.getElementById("adminPanel").style.display =
+                "none";
+        }
+
+    } catch (error) {
+
+        console.error("Admin login error:", error);
+
+        document.getElementById("adminMessage").innerText =
+            "Server error ❌";
+
+        document.getElementById("adminPanel").style.display =
+            "none";
+    }
+}
+
+
+/* =========================
+   TOTAL USERS
+========================= */
+
+async function loadUserCount() {
+
+    try {
+
+        const response =
+            await fetch("/admin/user-count");
+
+        if (!response.ok) {
+            throw new Error("User API failed");
+        }
+
+        const data =
+            await response.json();
+
+        document.getElementById("userCount").innerText =
+            data.total_users;
+
+    }
+
+    catch (error) {
+
+        console.error("User error:", error);
+
+        document.getElementById("userCount").innerText =
+            "Unable to load";
+
+    }
+
+}
+
+
+/* =========================
+   TOTAL VISITORS
+========================= */
+
+async function loadAdminVisitorCount() {
+
+    try {
+
+        const response =
+    await fetch("/admin/visitor-count");
+
+        if (!response.ok) {
+            throw new Error("Visitor API failed");
+        }
+
+        const data =
+            await response.json();
+
+        console.log(
+            "Visitor count:",
+            data.total_visitors
+        );
+
+        document.getElementById("adminVisitorCount").innerText =
+            data.total_visitors;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Visitor error:",
+            error
+        );
+
+        document.getElementById("adminVisitorCount").innerText =
+            "Unable to load";
+
+    }
+
+}
+
+
+/* =========================
+   TODAY VISITORS
+========================= */
+
+async function loadTodayVisitorCount() {
+
+    try {
+
+        const response =
+            await fetch("/admin/today-visitor-count");
+
+        if (!response.ok) {
+            throw new Error("Today visitor API failed");
+        }
+
+        const data =
+            await response.json();
+
+        document.getElementById("todayVisitorCount").innerText =
+            data.today_visitors;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Today visitor error:",
+            error
+        );
+
+        document.getElementById("todayVisitorCount").innerText =
+            "Unable to load";
+
+    }
+
+}
+
+/* =========================
+   FEATURE USAGE + APPLICATIONS
+========================= */
+
+async function loadFeatureUsage() {
+
+    try {
+
+        const response = await fetch("/admin/analytics", {
+            credentials: "same-origin"
+        });
+
+        if (!response.ok) {
+            throw new Error("Analytics API failed: " + response.status);
+        }
+
+        const data = await response.json();
+
+        document.getElementById("practiceCount").innerText =
+            data.practice ?? 0;
+
+        document.getElementById("interviewCount").innerText =
+            data.mock_interview ?? 0;
+
+        document.getElementById("assessmentCount").innerText =
+            data.skill_assessment ?? 0;
+
+        document.getElementById("jobsCount").innerText =
+            data.jobs ?? 0;
+
+    } catch (error) {
+
+        console.error("Feature usage error:", error);
+
+        document.getElementById("practiceCount").innerText = "—";
+        document.getElementById("interviewCount").innerText = "—";
+        document.getElementById("assessmentCount").innerText = "—";
+        document.getElementById("jobsCount").innerText = "—";
+
+    }
+
+
+    // APPLICATION COUNT
+
+    try {
+
+        const response = await fetch("/admin/application-count", {
+            credentials: "same-origin"
+        });
+
+        if (!response.ok) {
+            throw new Error("Application API failed: " + response.status);
+        }
+
+        const data = await response.json();
+
+        document.getElementById("applicationCount").innerText =
+            data.total_applications ?? 0;
+
+    } catch (error) {
+
+        console.error("Application count error:", error);
+
+        document.getElementById("applicationCount").innerText = "—";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

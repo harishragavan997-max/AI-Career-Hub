@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="./language.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 id="title">🚀 AI Career Hub</h1>
+
+    <h2 id="heading">Build Your Career With AI</h2>
+
+    <p id="description">
+        Discover your career, identify skill gaps,
+        practice, prepare for interviews and find jobs.
+    </p>
+
+    <br>
+
+    <button id="loginBtn" onclick="window.location.href='login.html'">
+        🔐 Login
+    </button>
+
+    <button id="registerBtn" onclick="window.location.href='register.html'">
+        📝 Register
+    </button>
+
+</div>
+
+
+<script>
+
+// ===== INDEX PAGE TRANSLATION =====
+
+const indexTranslations = {
+
+    English: {
+        title: "🚀 AI Career Hub",
+        heading: "Build Your Career With AI",
+        description: "Discover your career, identify skill gaps, practice, prepare for interviews and find jobs.",
+        login: "🔐 Login",
+        register: "📝 Register"
+    },
+
+    Tamil: {
+        title: "🚀 AI Career Hub",
+        heading: "AI மூலம் உங்கள் தொழிலை உருவாக்குங்கள்",
+        description: "உங்கள் தொழிலை கண்டறியுங்கள், திறன் இடைவெளிகளை அறியுங்கள், பயிற்சி செய்யுங்கள், நேர்காணலுக்கு தயாராகுங்கள் மற்றும் வேலைகளை தேடுங்கள்.",
+        login: "🔐 உள்நுழைய",
+        register: "📝 பதிவு செய்யவும்"
+    },
+
+    Hindi: {
+        title: "🚀 AI Career Hub",
+        heading: "AI के साथ अपना करियर बनाएं",
+        description: "अपना करियर खोजें, कौशल अंतर पहचानें, अभ्यास करें, इंटरव्यू की तैयारी करें और नौकरियां खोजें।",
+        login: "🔐 लॉगिन",
+        register: "📝 पंजीकरण"
+    },
+
+    Thanglish: {
+        title: "🚀 AI Career Hub",
+        heading: "AI Use Panni Un Career-ah Build Pannu",
+        description: "Un career-ah discover pannu, skill gaps-ah identify pannu, practice pannu, interview-ku prepare aagu, jobs-ah thedu.",
+        login: "🔐 Login Pannu",
+        register: "📝 Register Pannu"
+    },
+
+    Kannada: {
+        title: "🚀 AI Career Hub",
+        heading: "AI ಮೂಲಕ ನಿಮ್ಮ ವೃತ್ತಿಯನ್ನು ನಿರ್ಮಿಸಿ",
+        description: "ನಿಮ್ಮ ವೃತ್ತಿಯನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ, ಕೌಶಲ್ಯ ಅಂತರವನ್ನು ಗುರುತಿಸಿ, ಅಭ್ಯಾಸ ಮಾಡಿ, ಸಂದರ್ಶನಕ್ಕೆ ತಯಾರಿ ಮಾಡಿ ಮತ್ತು ಉದ್ಯೋಗಗಳನ್ನು ಹುಡುಕಿ.",
+        login: "🔐 ಲಾಗಿನ್",
+        register: "📝 ನೋಂದಣಿ"
+    },
+
+    Malayalam: {
+        title: "🚀 AI Career Hub",
+        heading: "AI ഉപയോഗിച്ച് നിങ്ങളുടെ കരിയർ നിർമ്മിക്കുക",
+        description: "നിങ്ങളുടെ കരിയർ കണ്ടെത്തുക, കഴിവുകളുടെ വിടവ് തിരിച്ചറിയുക, പരിശീലിക്കുക, അഭിമുഖത്തിന് തയ്യാറെടുക്കുക, ജോലികൾ കണ്ടെത്തുക.",
+        login: "🔐 ലോഗിൻ",
+        register: "📝 രജിസ്റ്റർ ചെയ്യുക"
+    }
+
+};
+
+
+function translateIndexPage(language) {
+
+    const t = indexTranslations[language] || indexTranslations.English;
+
+    document.getElementById("title").innerText = t.title;
+
+    document.getElementById("heading").innerText = t.heading;
+
+    document.getElementById("description").innerText = t.description;
+
+    document.getElementById("loginBtn").innerText = t.login;
+
+    document.getElementById("registerBtn").innerText = t.register;
+}
+
+
+// ===== LANGUAGE CHANGE =====
+
+function updateIndexLanguage() {
+
+    const language =
+        localStorage.getItem("selectedLanguage") || "English";
+
+    translateIndexPage(language);
+}
+
+
+// ===== PAGE LOAD =====
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    updateIndexLanguage();
+
+    const selector = document.getElementById("languageSelector");
+
+    if (selector) {
+
+        selector.addEventListener("change", function() {
+
+            translateIndexPage(this.value);
+
+        });
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

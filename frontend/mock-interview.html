@@ -1,0 +1,2475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Career Hub - Mock Interview</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile-responsive.css">
+<script src="course-data.js"></script>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(59,130,246,.20), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(139,92,246,.18), transparent 35%),
+        #020617;
+    color: #f8fafc;
+}
+
+.interview-page {
+    min-height: 100vh;
+    padding: 25px;
+}
+
+.top-bar {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #60a5fa;
+}
+
+.language-box select {
+    background: rgba(15,23,42,.95);
+    color: #ffffff;
+    border: 1px solid rgba(96,165,250,.5);
+    border-radius: 12px;
+    padding: 10px 14px;
+    outline: none;
+}
+
+.main-card {
+    max-width: 1000px;
+    margin: auto;
+    background: rgba(15,23,42,.88);
+    border: 1px solid rgba(96,165,250,.25);
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 25px 80px rgba(0,0,0,.45);
+    backdrop-filter: blur(18px);
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+/* MOCK INTERVIEW HEADLINE FIX */
+.mock-headline,
+.hero h1,
+.hero p {
+    position: relative;
+    z-index: 5;
+}
+
+.hero {
+    background: rgba(15, 23, 42, 0.92) !important;
+    border: 1px solid rgba(96, 165, 250, 0.30) !important;
+    border-radius: 20px !important;
+    padding: 24px !important;
+    color: #ffffff !important;
+}
+
+.hero h1 {
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,.45);
+}
+
+.hero p {
+    color: #cbd5e1 !important;
+}
+
+.hero h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+    background: linear-gradient(90deg,#60a5fa,#a78bfa);
+    -webkitbackground-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: #cbd5e1;
+    margin: 0;
+}
+
+.setup-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field label {
+    color: #cbd5e1;
+    font-weight: 700;
+}
+
+.field select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(148,163,184,.25);
+    background: #0f172a;
+    color: #ffffff;
+    outline: none;
+}
+
+.field select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96,165,250,.15);
+}
+
+.primary-btn,
+.secondary-btn,
+.dashboard-btn {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 22px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(59,130,246,.3);
+}
+
+.secondary-btn {
+    background: rgba(30,41,59,.9);
+    color: white;
+    border: 1px solid rgba(148,163,184,.25);
+}
+
+.secondary-btn:hover {
+    background: rgba(51,65,85,.95);
+}
+
+.dashboard-btn {
+    display: block;
+    margin: 28px auto 0;
+    background: #2563eb;
+    color: white;
+}
+
+.dashboard-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.start-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.status {
+    text-align: center;
+    margin-top: 15px;
+    color: #93c5fd;
+    min-height: 22px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+</style>
+</head>
+<body>
+
+<div class="interview-page">
+
+    <div class="top-bar">
+
+        <div class="logo">
+            AI <span>Career Hub</span>
+        </div>
+
+        <div class="language-box">
+            <select id="languageSelect">
+                <option value="English">English</option>
+                <option value="Tamil">தமிழ்</option>
+                <option value="Hindi">हिन्दी</option>
+                <option value="Thanglish">Thanglish</option>
+                <option value="Kannada">ಕನ್ನಡ</option>
+                <option value="Malayalam">മലയാളം</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="main-card">
+
+        <!-- SETUP SCREEN -->
+
+        <section id="setupScreen">
+
+            <div class="hero">
+
+                <h1 id="pageTitle">
+                    AI Mock Interview
+                </h1>
+
+                <p id="pageSubtitle">
+                    Practice interview questions based on your selected career.
+                </p>
+
+            </div>
+
+
+            <div class="setup-grid">
+
+                <div class="field">
+
+                    <label id="careerLabel">
+                        Select Career
+                    </label>
+
+                    <select id="careerSelect">
+                        <option value="">
+                            Select a career
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label id="levelLabel">
+                        Select Level
+                    </label>
+
+                    <select id="levelSelect">
+
+                        <option value="">
+                            Select level
+                        </option>
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="start-area">
+
+                <button
+                    class="primary-btn"
+                    id="startButton"
+                    type="button">
+
+                    Start Interview
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="status"
+                id="setupStatus">
+            </div>
+
+
+            <button
+                class="dashboard-btn"
+                id="dashboardButton1"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+
+
+        <!-- INTERVIEW SCREEN -->
+
+        <section
+            id="interviewScreen"
+            class="hidden">
+
+            <div class="hero">
+
+                <h1 id="interviewTitle">
+                    Mock Interview
+                </h1>
+
+                <p id="careerDisplay">
+                </p>
+
+            </div>
+
+
+            <div class="question-header">
+
+                <strong id="questionNumber">
+                    Question 1 / 25
+                </strong>
+
+                <span id="scoreDisplay">
+                    Score: 0
+                </span>
+
+            </div>
+
+
+            <div class="progress-wrapper">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+
+            <div
+                id="questionContainer"
+                class="question-container">
+            </div>
+
+
+            <div class="answer-area">
+
+                <label id="answerLabel">
+                    Your Answer
+                </label>
+
+                <textarea
+                    id="answerInput"
+                    rows="7"
+                    placeholder="Type your answer here...">
+                </textarea>
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    id="previousButton"
+                    type="button">
+
+                    Previous
+
+                </button>
+
+
+                <button
+                    class="primary-btn"
+                    id="nextButton"
+                    type="button">
+
+                    Next
+
+                </button>
+
+
+                <button
+                    class="primary-btn hidden"
+                    id="submitButton"
+                    type="button">
+
+                    Submit Interview
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="dashboard-btn"
+                id="dashboardButton2"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+
+
+        <!-- RESULT SCREEN -->
+
+        <section
+            id="resultScreen"
+            class="hidden">
+
+            <div class="hero">
+
+                <h1 id="resultTitle">
+                    Interview Result
+                </h1>
+
+                <p id="resultSubtitle">
+                    Your mock interview performance
+                </p>
+
+            </div>
+
+
+            <div class="result-grid">
+
+                <div class="result-box">
+
+                    <span id="scoreHeading">
+                        Score
+                    </span>
+
+                    <strong id="finalScore">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="correctHeading">
+                        Correct
+                    </span>
+
+                    <strong id="correctCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="totalHeading">
+                        Total
+                    </span>
+
+                    <strong id="totalCount">
+                        25
+                    </strong>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <span id="levelHeading">
+                        Level
+                    </span>
+
+                    <strong id="finalLevel">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="result-message"
+                id="resultMessage">
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                    class="primary-btn"
+                    id="retryButton"
+                    type="button">
+
+                    Try Again
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="dashboard-btn"
+                id="dashboardButton3"
+                type="button">
+
+                Go Back Dashboard
+
+            </button>
+
+        </section>
+
+    </div>
+
+</div>
+<style>
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(30,41,59,.7);
+    padding: 15px 18px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+}
+
+.question-header strong {
+    color: #ffffff;
+}
+
+#scoreDisplay {
+    color: #60a5fa;
+    font-weight: 800;
+}
+
+.progress-wrapper {
+    width: 100%;
+    height: 9px;
+    background: #1e293b;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    width: 4%;
+    height: 100%;
+    background: linear-gradient(90deg,#2563eb,#8b5cf6);
+    transition: width .3s ease;
+}
+
+.question-container {
+    background: rgba(30,41,59,.72);
+    border: 1px solid rgba(96,165,250,.18);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 22px;
+}
+
+.question-container h2 {
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.answer-area {
+    margin-top: 20px;
+}
+
+.answer-area label {
+    display: block;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    font-weight: 700;
+}
+
+.answer-area textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 150px;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(148,163,184,.25);
+    background: #020617;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+
+.answer-area textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96,165,250,.12);
+}
+
+.answer-area textarea::placeholder {
+    color: #64748b;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.result-box {
+    background: rgba(30,41,59,.78);
+    border: 1px solid rgba(96,165,250,.22);
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+}
+
+.result-box span {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.result-box strong {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.result-message {
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(30,41,59,.8);
+    border: 1px solid rgba(139,92,246,.25);
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.6;
+}
+
+@media(max-width: 750px) {
+
+    .interview-page {
+        padding: 14px;
+    }
+
+    .main-card {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .setup-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .question-container h2 {
+        font-size: 18px;
+    }
+
+}
+
+@media(max-width: 450px) {
+
+    .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .language-box select {
+        width: 100%;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .button-row button {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+<script>
+
+const TOTAL_QUESTIONS = 25;
+
+let currentQuestionIndex = 0;
+let questions = [];
+let answers = [];
+let selectedCareer = "";
+let selectedLevel = "Beginner";
+let currentLanguage = "English";
+
+
+const translations = {
+
+English: {
+    pageTitle: "AI Mock Interview",
+    pageSubtitle: "Practice interview questions based on your selected career.",
+    careerLabel: "Select Career",
+    levelLabel: "Select Level",
+    selectCareer: "Select a career",
+    selectLevel: "Select level",
+    start: "Start Interview",
+    interviewTitle: "Mock Interview",
+    answer: "Your Answer",
+    placeholder: "Type your answer here...",
+    previous: "Previous",
+    next: "Next",
+    submit: "Submit Interview",
+    resultTitle: "Interview Result",
+    resultSubtitle: "Your mock interview performance",
+    score: "Score",
+    correct: "Correct",
+    total: "Total",
+    level: "Level",
+    retry: "Try Again",
+    dashboard: "Go Back Dashboard",
+    question: "Question",
+    scoreText: "Score",
+    ready: "Interview is ready.",
+    selectBoth: "Please select career and level.",
+    noSkills: "No skills found for this career.",
+    excellent: "Excellent interview performance!",
+    good: "Good performance. Keep improving your skills.",
+    improve: "Keep practicing and improve your interview skills."
+},
+
+Tamil: {
+    pageTitle: "AI மாதிரி நேர்காணல்",
+    pageSubtitle: "நீங்கள் தேர்ந்தெடுத்த தொழிலுக்கான நேர்காணல் கேள்விகளைப் பயிற்சி செய்யுங்கள்.",
+    careerLabel: "தொழிலை தேர்ந்தெடுக்கவும்",
+    levelLabel: "நிலையை தேர்ந்தெடுக்கவும்",
+    selectCareer: "தொழிலை தேர்ந்தெடுக்கவும்",
+    selectLevel: "நிலையை தேர்ந்தெடுக்கவும்",
+    start: "நேர்காணலை தொடங்கு",
+    interviewTitle: "மாதிரி நேர்காணல்",
+    answer: "உங்கள் பதில்",
+    placeholder: "உங்கள் பதிலை இங்கே உள்ளிடவும்...",
+    previous: "முந்தையது",
+    next: "அடுத்தது",
+    submit: "நேர்காணலை சமர்ப்பிக்கவும்",
+    resultTitle: "நேர்காணல் முடிவு",
+    resultSubtitle: "உங்கள் மாதிரி நேர்காணல் செயல்திறன்",
+    score: "மதிப்பெண்",
+    correct: "சரி",
+    total: "மொத்தம்",
+    level: "நிலை",
+    retry: "மீண்டும் முயற்சி",
+    dashboard: "டாஷ்போர்டுக்கு திரும்பு",
+    question: "கேள்வி",
+    scoreText: "மதிப்பெண்",
+    ready: "நேர்காணல் தயாராக உள்ளது.",
+    selectBoth: "தொழில் மற்றும் நிலையை தேர்ந்தெடுக்கவும்.",
+    noSkills: "இந்த தொழிலுக்கு திறன்கள் கிடைக்கவில்லை.",
+    excellent: "சிறந்த நேர்காணல் செயல்திறன்!",
+    good: "நல்ல செயல்திறன். தொடர்ந்து மேம்படுத்துங்கள்.",
+    improve: "தொடர்ந்து பயிற்சி செய்து நேர்காணல் திறனை மேம்படுத்துங்கள்."
+},
+
+Hindi: {
+    pageTitle: "AI मॉक इंटरव्यू",
+    pageSubtitle: "अपने चुने हुए करियर से जुड़े इंटरव्यू प्रश्नों का अभ्यास करें।",
+    careerLabel: "करियर चुनें",
+    levelLabel: "स्तर चुनें",
+    selectCareer: "करियर चुनें",
+    selectLevel: "स्तर चुनें",
+    start: "इंटरव्यू शुरू करें",
+    interviewTitle: "मॉक इंटरव्यू",
+    answer: "आपका उत्तर",
+    placeholder: "अपना उत्तर यहां लिखें...",
+    previous: "पिछला",
+    next: "अगला",
+    submit: "इंटरव्यू सबमिट करें",
+    resultTitle: "इंटरव्यू परिणाम",
+    resultSubtitle: "आपका मॉक इंटरव्यू प्रदर्शन",
+    score: "स्कोर",
+    correct: "सही",
+    total: "कुल",
+    level: "स्तर",
+    retry: "फिर से प्रयास करें",
+    dashboard: "डैशबोर्ड पर वापस जाएं",
+    question: "प्रश्न",
+    scoreText: "स्कोर",
+    ready: "इंटरव्यू तैयार है।",
+    selectBoth: "कृपया करियर और स्तर चुनें।",
+    noSkills: "इस करियर के लिए कोई कौशल नहीं मिला।",
+    excellent: "बहुत अच्छा इंटरव्यू प्रदर्शन!",
+    good: "अच्छा प्रदर्शन। अपने कौशल को और सुधारें।",
+    improve: "अभ्यास करते रहें और इंटरव्यू कौशल सुधारें।"
+},
+
+Thanglish: {
+    pageTitle: "AI Mock Interview",
+    pageSubtitle: "Nee select panna career-ku related interview questions practice pannunga.",
+    careerLabel: "Career Select Pannu",
+    levelLabel: "Level Select Pannu",
+    selectCareer: "Career select pannu",
+    selectLevel: "Level select pannu",
+    start: "Interview Start Pannu",
+    interviewTitle: "Mock Interview",
+    answer: "Un Answer",
+    placeholder: "Un answer inga type pannu...",
+    previous: "Previous",
+    next: "Next",
+    submit: "Interview Submit Pannu",
+    resultTitle: "Interview Result",
+    resultSubtitle: "Un mock interview performance",
+    score: "Score",
+    correct: "Correct",
+    total: "Total",
+    level: "Level",
+    retry: "Try Again",
+    dashboard: "Dashboard-ku Thirumbi Po",
+    question: "Question",
+    scoreText: "Score",
+    ready: "Interview ready.",
+    selectBoth: "Career and level select pannu.",
+    noSkills: "Indha career-ku skills kidaikkala.",
+    excellent: "Super interview performance!",
+    good: "Nalla performance. Innum improve pannunga.",
+    improve: "Continue practice panni interview skills improve pannunga."
+},
+
+Kannada: {
+    pageTitle: "AI ಮಾಕ್ ಸಂದರ್ಶನ",
+    pageSubtitle: "ನೀವು ಆಯ್ಕೆ ಮಾಡಿದ ವೃತ್ತಿಗೆ ಸಂಬಂಧಿಸಿದ ಸಂದರ್ಶನ ಪ್ರಶ್ನೆಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ.",
+    careerLabel: "ವೃತ್ತಿ ಆಯ್ಕೆಮಾಡಿ",
+    levelLabel: "ಮಟ್ಟ ಆಯ್ಕೆಮಾಡಿ",
+    selectCareer: "ವೃತ್ತಿ ಆಯ್ಕೆಮಾಡಿ",
+    selectLevel: "ಮಟ್ಟ ಆಯ್ಕೆಮಾಡಿ",
+    start: "ಸಂದರ್ಶನ ಪ್ರಾರಂಭಿಸಿ",
+    interviewTitle: "ಮಾಕ್ ಸಂದರ್ಶನ",
+    answer: "ನಿಮ್ಮ ಉತ್ತರ",
+    placeholder: "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ...",
+    previous: "ಹಿಂದಿನದು",
+    next: "ಮುಂದಿನದು",
+    submit: "ಸಂದರ್ಶನ ಸಲ್ಲಿಸಿ",
+    resultTitle: "ಸಂದರ್ಶನ ಫಲಿತಾಂಶ",
+    resultSubtitle: "ನಿಮ್ಮ ಮಾಕ್ ಸಂದರ್ಶನ ಕಾರ್ಯಕ್ಷಮತೆ",
+    score: "ಸ್ಕೋರ್",
+    correct: "ಸರಿಯಾದವು",
+    total: "ಒಟ್ಟು",
+    level: "ಮಟ್ಟ",
+    retry: "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ",
+    question: "ಪ್ರಶ್ನೆ",
+    scoreText: "ಸ್ಕೋರ್",
+    ready: "ಸಂದರ್ಶನ ಸಿದ್ಧವಾಗಿದೆ.",
+    selectBoth: "ವೃತ್ತಿ ಮತ್ತು ಮಟ್ಟವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    noSkills: "ಈ ವೃತ್ತಿಗೆ ಕೌಶಲ್ಯಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+    excellent: "ಅತ್ಯುತ್ತಮ ಸಂದರ್ಶನ ಕಾರ್ಯಕ್ಷಮತೆ!",
+    good: "ಉತ್ತಮ ಕಾರ್ಯಕ್ಷಮತೆ. ಇನ್ನಷ್ಟು ಸುಧಾರಿಸಿ.",
+    improve: "ಅಭ್ಯಾಸ ಮುಂದುವರಿಸಿ ಮತ್ತು ಸಂದರ್ಶನ ಕೌಶಲ್ಯಗಳನ್ನು ಸುಧಾರಿಸಿ."
+},
+
+Malayalam: {
+    pageTitle: "AI മോക്ക് ഇന്റർവ്യൂ",
+    pageSubtitle: "നിങ്ങൾ തിരഞ്ഞെടുത്ത കരിയറുമായി ബന്ധപ്പെട്ട ഇന്റർവ്യൂ ചോദ്യങ്ങൾ പരിശീലിക്കുക.",
+    careerLabel: "കരിയർ തിരഞ്ഞെടുക്കുക",
+    levelLabel: "ലെവൽ തിരഞ്ഞെടുക്കുക",
+    selectCareer: "കരിയർ തിരഞ്ഞെടുക്കുക",
+    selectLevel: "ലെവൽ തിരഞ്ഞെടുക്കുക",
+    start: "ഇന്റർവ്യൂ ആരംഭിക്കുക",
+    interviewTitle: "മോക്ക് ഇന്റർവ്യൂ",
+    answer: "നിങ്ങളുടെ ഉത്തരം",
+    placeholder: "നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക...",
+    previous: "മുമ്പത്തെ",
+    next: "അടുത്തത്",
+    submit: "ഇന്റർവ്യൂ സമർപ്പിക്കുക",
+    resultTitle: "ഇന്റർവ്യൂ ഫലം",
+    resultSubtitle: "നിങ്ങളുടെ മോക്ക് ഇന്റർവ്യൂ പ്രകടനം",
+    score: "സ്കോർ",
+    correct: "ശരി",
+    total: "ആകെ",
+    level: "ലെവൽ",
+    retry: "വീണ്ടും ശ്രമിക്കുക",
+    dashboard: "ഡാഷ്ബോർഡിലേക്ക് മടങ്ങുക",
+    question: "ചോദ്യം",
+    scoreText: "സ്കോർ",
+    ready: "ഇന്റർവ്യൂ തയ്യാറാണ്.",
+    selectBoth: "കരിയറും ലെവലും തിരഞ്ഞെടുക്കുക.",
+    noSkills: "ഈ കരിയറിന് സ്കില്ലുകൾ ലഭ്യമല്ല.",
+    excellent: "മികച്ച ഇന്റർവ്യൂ പ്രകടനം!",
+    good: "നല്ല പ്രകടനം. കൂടുതൽ മെച്ചപ്പെടുത്തുക.",
+    improve: "തുടർന്ന് പരിശീലിച്ച് ഇന്റർവ്യൂ കഴിവുകൾ മെച്ചപ്പെടുത്തുക."
+}
+
+};
+
+</script>
+<script>
+
+/* -----------------------------------------
+   COURSE SKILLS
+----------------------------------------- */
+
+function getCourseSkills(career) {
+
+    if (
+        typeof courseCatalog === "undefined" ||
+        !courseCatalog
+    ) {
+        return [];
+    }
+
+    const course = courseCatalog[career];
+
+    if (!course) {
+        return [];
+    }
+
+    if (Array.isArray(course)) {
+        return course;
+    }
+
+    if (Array.isArray(course.skills)) {
+        return course.skills;
+    }
+
+    if (Array.isArray(course.requiredSkills)) {
+        return course.requiredSkills;
+    }
+
+    if (Array.isArray(course.required_skills)) {
+        return course.required_skills;
+    }
+
+    return [];
+}
+
+
+/* -----------------------------------------
+   SHUFFLE
+----------------------------------------- */
+
+function shuffle(array) {
+
+    const arr = [...array];
+
+    for (
+        let i = arr.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(Math.random() * (i + 1));
+
+        [arr[i], arr[j]] =
+            [arr[j], arr[i]];
+    }
+
+    return arr;
+}
+
+
+/* -----------------------------------------
+   TEXT NORMALIZATION
+----------------------------------------- */
+
+function normalizeText(text) {
+
+    return String(text || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9+#.\s-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+
+/* -----------------------------------------
+   KEYWORD CREATION
+----------------------------------------- */
+
+function createKeywords(skill) {
+
+    const normalized =
+        normalizeText(skill);
+
+    const words =
+        normalized
+            .split(" ")
+            .filter(word => word.length >= 3);
+
+    const keywords = [];
+
+    if (normalized) {
+        keywords.push(normalized);
+    }
+
+    words.forEach(word => {
+
+        if (!keywords.includes(word)) {
+            keywords.push(word);
+        }
+
+    });
+
+    return keywords;
+}
+
+
+/* -----------------------------------------
+   QUESTION GENERATOR
+----------------------------------------- */
+
+function generateQuestions(career) {
+
+    const rawSkills =
+        getCourseSkills(career);
+
+    const skills = [
+        ...new Set(
+            rawSkills
+                .map(skill => String(skill).trim())
+                .filter(Boolean)
+        )
+    ];
+
+    if (skills.length === 0) {
+        return [];
+    }
+
+
+    const templates = [
+
+        skill =>
+            `What is ${skill} and why is it important for a ${career}?`,
+
+        skill =>
+            `How would you use ${skill} in a ${career} project?`,
+
+        skill =>
+            `Explain one practical application of ${skill} for a ${career}.`,
+
+        skill =>
+            `What should a ${career} professional know about ${skill}?`,
+
+        skill =>
+            `How can ${skill} improve your work as a ${career} professional?`,
+
+        skill =>
+            `What type of problem can ${skill} help you solve in ${career}?`,
+
+        skill =>
+            `What is one important concept related to ${skill}?`,
+
+        skill =>
+            `How would you demonstrate your knowledge of ${skill} in an interview?`,
+
+        skill =>
+            `What are the benefits of using ${skill} in ${career}?`,
+
+        skill =>
+            `Describe a simple project where you could apply ${skill}.`
+
+    ];
+
+
+    const pool = [];
+
+    const usedTexts = new Set();
+
+
+    /*
+       First create unique combinations.
+       Every course gets at least 25 questions
+       as long as the course has at least one skill.
+    */
+
+    let round = 0;
+
+    while (
+        pool.length < TOTAL_QUESTIONS &&
+        round < 20
+    ) {
+
+        const shuffledSkills =
+            shuffle(skills);
+
+        for (
+            let i = 0;
+            i < shuffledSkills.length &&
+            pool.length < TOTAL_QUESTIONS;
+            i++
+        ) {
+
+            const skill =
+                shuffledSkills[i];
+
+            const templateIndex =
+                (round * shuffledSkills.length + i)
+                % templates.length;
+
+            const questionText =
+                templates[templateIndex](skill);
+
+            if (usedTexts.has(questionText)) {
+                continue;
+            }
+
+            usedTexts.add(questionText);
+
+            pool.push({
+                id:
+                    `${normalizeText(skill)}_${round}_${i}`,
+                skill: skill,
+                question: questionText,
+                keywords: createKeywords(skill)
+            });
+
+        }
+
+        round++;
+    }
+
+
+    /*
+       Safety fallback.
+       This guarantees 25 questions even if
+       a course has very few skills.
+    */
+
+    if (pool.length < TOTAL_QUESTIONS) {
+
+        let fallbackRound = 0;
+
+        while (
+            pool.length < TOTAL_QUESTIONS &&
+            fallbackRound < 100
+        ) {
+
+            const skill =
+                skills[
+                    fallbackRound % skills.length
+                ];
+
+            const questionText =
+                `For the career ${career}, explain your understanding of ${skill} with one practical example (${fallbackRound + 1}).`;
+
+            if (!usedTexts.has(questionText)) {
+
+                usedTexts.add(questionText);
+
+                pool.push({
+                    id:
+                        `fallback_${fallbackRound}_${normalizeText(skill)}`,
+                    skill: skill,
+                    question: questionText,
+                    keywords: createKeywords(skill)
+                });
+
+            }
+
+            fallbackRound++;
+        }
+    }
+
+
+    return shuffle(pool).slice(
+        0,
+        TOTAL_QUESTIONS
+    );
+}
+
+
+/* -----------------------------------------
+   USED QUESTION STORAGE
+----------------------------------------- */
+
+function getUsedQuestionsKey() {
+
+    return `mock_used_${selectedCareer}`;
+}
+
+
+function getUsedQuestions() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                getUsedQuestionsKey()
+            ) || "[]"
+        );
+
+    } catch (error) {
+
+        return [];
+    }
+}
+
+
+function saveUsedQuestions(ids) {
+
+    localStorage.setItem(
+        getUsedQuestionsKey(),
+        JSON.stringify(ids)
+    );
+}
+
+
+/* -----------------------------------------
+   CREATE NEW 25 QUESTION SET
+----------------------------------------- */
+
+function createInterviewSet() {
+
+    const allQuestions =
+        generateQuestions(selectedCareer);
+
+    if (allQuestions.length < TOTAL_QUESTIONS) {
+        return allQuestions;
+    }
+
+
+    let used =
+        getUsedQuestions();
+
+    let available =
+        allQuestions.filter(
+            question =>
+                !used.includes(question.id)
+        );
+
+
+    /*
+       If the current pool is exhausted,
+       start a fresh cycle.
+    */
+
+    if (available.length < TOTAL_QUESTIONS) {
+
+        used = [];
+
+        available =
+            shuffle(allQuestions);
+    }
+
+
+    const selected =
+        shuffle(available)
+            .slice(0, TOTAL_QUESTIONS);
+
+
+    const newUsed =
+        [
+            ...used,
+            ...selected.map(
+                question => question.id
+            )
+        ];
+
+
+    saveUsedQuestions(newUsed);
+
+    return selected;
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   APPLY LANGUAGE
+----------------------------------------- */
+
+function applyLanguage() {
+
+    const t =
+        translations[currentLanguage];
+
+    document.getElementById("pageTitle").innerText =
+        t.pageTitle;
+
+    document.getElementById("pageSubtitle").innerText =
+        t.pageSubtitle;
+
+    document.getElementById("careerLabel").innerText =
+        t.careerLabel;
+
+    document.getElementById("levelLabel").innerText =
+        t.levelLabel;
+
+    document.getElementById("startButton").innerText =
+        t.start;
+
+    document.getElementById("interviewTitle").innerText =
+        t.interviewTitle;
+
+    document.getElementById("answerLabel").innerText =
+        t.answer;
+
+    document.getElementById("answerInput").placeholder =
+        t.placeholder;
+
+    document.getElementById("previousButton").innerText =
+        t.previous;
+
+    document.getElementById("nextButton").innerText =
+        t.next;
+
+    document.getElementById("submitButton").innerText =
+        t.submit;
+
+    document.getElementById("resultTitle").innerText =
+        t.resultTitle;
+
+    document.getElementById("resultSubtitle").innerText =
+        t.resultSubtitle;
+
+    document.getElementById("scoreHeading").innerText =
+        t.score;
+
+    document.getElementById("correctHeading").innerText =
+        t.correct;
+
+    document.getElementById("totalHeading").innerText =
+        t.total;
+
+    document.getElementById("levelHeading").innerText =
+        t.level;
+
+    document.getElementById("retryButton").innerText =
+        t.retry;
+
+    document.getElementById("dashboardButton1").innerText =
+        t.dashboard;
+
+    document.getElementById("dashboardButton2").innerText =
+        t.dashboard;
+
+    document.getElementById("dashboardButton3").innerText =
+        t.dashboard;
+
+
+    updateCourseDropdown();
+
+    updateLevelDropdown();
+
+    if (
+        document.getElementById("interviewScreen")
+            .classList
+            .contains("hidden") === false
+    ) {
+
+        renderCurrentQuestion();
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   COURSE DROPDOWN
+----------------------------------------- */
+
+function updateCourseDropdown() {
+
+    const select =
+        document.getElementById("careerSelect");
+
+    if (!select) return;
+
+
+    const previous =
+        select.value;
+
+
+    select.innerHTML = "";
+
+
+    const placeholder =
+        document.createElement("option");
+
+    placeholder.value = "";
+
+    placeholder.innerText =
+        translations[currentLanguage]
+            .selectCareer;
+
+    select.appendChild(placeholder);
+
+
+    if (
+        typeof courseCatalog === "undefined" ||
+        !courseCatalog
+    ) {
+        return;
+    }
+
+
+    const careers =
+        Object.keys(courseCatalog);
+
+
+    careers.forEach(career => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = career;
+
+        option.innerText = career;
+
+        select.appendChild(option);
+
+    });
+
+
+    if (
+        previous &&
+        careers.includes(previous)
+    ) {
+
+        select.value = previous;
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   LEVEL DROPDOWN
+----------------------------------------- */
+
+function updateLevelDropdown() {
+
+    const select =
+        document.getElementById("levelSelect");
+
+    if (!select) return;
+
+    const current =
+        select.value;
+
+
+    select.options[0].text =
+        translations[currentLanguage]
+            .selectLevel;
+
+
+    if (current) {
+        select.value = current;
+    }
+
+}
+
+
+/* -----------------------------------------
+   START INTERVIEW
+----------------------------------------- */
+
+function startInterview() {
+
+    selectedCareer =
+        document.getElementById("careerSelect").value;
+
+    selectedLevel =
+        document.getElementById("levelSelect").value;
+
+
+    const status =
+        document.getElementById("setupStatus");
+
+
+    if (
+        !selectedCareer ||
+        !selectedLevel
+    ) {
+
+        status.innerText =
+            translations[currentLanguage]
+                .selectBoth;
+
+        return;
+    }
+
+
+    const skills =
+        getCourseSkills(selectedCareer);
+
+
+    if (!skills.length) {
+
+        status.innerText =
+            translations[currentLanguage]
+                .noSkills;
+
+        return;
+    }
+
+
+    questions =
+        createInterviewSet();
+
+
+    if (!questions.length) {
+
+        status.innerText =
+            translations[currentLanguage]
+                .noSkills;
+
+        return;
+    }
+
+
+    answers =
+        new Array(questions.length)
+            .fill("");
+
+
+    currentQuestionIndex = 0;
+
+
+    localStorage.setItem(
+        "interview_career",
+        selectedCareer
+    );
+
+    localStorage.setItem(
+        "interview_level",
+        selectedLevel
+    );
+
+
+    document.getElementById(
+        "setupScreen"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "interviewScreen"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "careerDisplay"
+    ).innerText =
+        `${selectedCareer} • ${selectedLevel}`;
+
+
+    renderCurrentQuestion();
+
+}
+
+
+/* -----------------------------------------
+   RENDER QUESTION
+----------------------------------------- */
+
+function renderCurrentQuestion() {
+
+    if (!questions.length) return;
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    const question =
+        questions[currentQuestionIndex];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).innerText =
+        `${t.question} ${currentQuestionIndex + 1} / ${questions.length}`;
+
+
+    document.getElementById(
+        "scoreDisplay"
+    ).innerText =
+        `${t.scoreText}: ${calculateCurrentScore()}%`;
+
+
+    document.getElementById(
+        "questionContainer"
+    ).innerHTML = `
+
+        <h2>
+            ${escapeHTML(question.question)}
+        </h2>
+
+    `;
+
+
+    const input =
+        document.getElementById(
+            "answerInput"
+        );
+
+
+    input.value =
+        answers[currentQuestionIndex] || "";
+
+
+    updateProgress();
+
+    updateButtons();
+
+}
+
+
+/* -----------------------------------------
+   ESCAPE HTML
+----------------------------------------- */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+/* -----------------------------------------
+   SAVE CURRENT ANSWER
+----------------------------------------- */
+
+function saveCurrentAnswer() {
+
+    const input =
+        document.getElementById(
+            "answerInput"
+        );
+
+    answers[currentQuestionIndex] =
+        input.value.trim();
+
+}
+
+
+/* -----------------------------------------
+   PROGRESS
+----------------------------------------- */
+
+function updateProgress() {
+
+    const progress =
+        (
+            (currentQuestionIndex + 1)
+            / questions.length
+        ) * 100;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${progress}%`;
+
+}
+
+
+/* -----------------------------------------
+   BUTTON STATE
+----------------------------------------- */
+
+function updateButtons() {
+
+    const previous =
+        document.getElementById(
+            "previousButton"
+        );
+
+    const next =
+        document.getElementById(
+            "nextButton"
+        );
+
+    const submit =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    previous.disabled =
+        currentQuestionIndex === 0;
+
+
+    if (
+        currentQuestionIndex ===
+        questions.length - 1
+    ) {
+
+        next.classList.add("hidden");
+
+        submit.classList.remove("hidden");
+
+    } else {
+
+        next.classList.remove("hidden");
+
+        submit.classList.add("hidden");
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   CURRENT SCORE
+----------------------------------------- */
+
+function calculateCurrentScore() {
+
+    if (!questions.length) {
+        return 0;
+    }
+
+
+    let correct = 0;
+
+
+    for (
+        let i = 0;
+        i < answers.length;
+        i++
+    ) {
+
+        if (
+            isAnswerCorrect(
+                questions[i],
+                answers[i]
+            )
+        ) {
+
+            correct++;
+
+        }
+
+    }
+
+
+    return Math.round(
+        (correct / questions.length) * 100
+    );
+
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   ANSWER CHECKING
+----------------------------------------- */
+
+function isAnswerCorrect(
+    question,
+    answer
+) {
+
+    const text =
+        normalizeText(answer);
+
+
+    if (!text || text.length < 3) {
+        return false;
+    }
+
+
+    const keywords =
+        question.keywords || [];
+
+
+    /*
+       Exact skill phrase match gives
+       stronger confidence.
+    */
+
+    for (
+        const keyword of keywords
+    ) {
+
+        const normalizedKeyword =
+            normalizeText(keyword);
+
+        if (
+            normalizedKeyword &&
+            text.includes(normalizedKeyword)
+        ) {
+
+            return true;
+
+        }
+
+    }
+
+
+    /*
+       Also check meaningful individual words.
+       At least TWO meaningful words must match
+       when the skill has multiple words.
+    */
+
+    const answerWords =
+        new Set(
+            text
+                .split(" ")
+                .filter(word => word.length >= 4)
+        );
+
+
+    const keywordWords =
+        keywords
+            .flatMap(
+                keyword =>
+                    normalizeText(keyword)
+                        .split(" ")
+            )
+            .filter(word => word.length >= 4);
+
+
+    const uniqueKeywordWords =
+        [
+            ...new Set(keywordWords)
+        ];
+
+
+    let matches = 0;
+
+
+    uniqueKeywordWords.forEach(word => {
+
+        if (answerWords.has(word)) {
+            matches++;
+        }
+
+    });
+
+
+    if (
+        uniqueKeywordWords.length >= 2 &&
+        matches >= 2
+    ) {
+
+        return true;
+
+    }
+
+
+    return false;
+}
+
+
+/* -----------------------------------------
+   NEXT QUESTION
+----------------------------------------- */
+
+function nextQuestion() {
+
+    saveCurrentAnswer();
+
+
+    if (
+        currentQuestionIndex <
+        questions.length - 1
+    ) {
+
+        currentQuestionIndex++;
+
+        renderCurrentQuestion();
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   PREVIOUS QUESTION
+----------------------------------------- */
+
+function previousQuestion() {
+
+    saveCurrentAnswer();
+
+
+    if (
+        currentQuestionIndex > 0
+    ) {
+
+        currentQuestionIndex--;
+
+        renderCurrentQuestion();
+
+    }
+
+}
+
+
+/* -----------------------------------------
+   SUBMIT INTERVIEW
+----------------------------------------- */
+
+function submitInterview() {
+
+    saveCurrentAnswer();
+
+
+    let correct = 0;
+
+
+    questions.forEach(
+        (question, index) => {
+
+            if (
+                isAnswerCorrect(
+                    question,
+                    answers[index]
+                )
+            ) {
+
+                correct++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        questions.length;
+
+
+    const percentage =
+        Math.round(
+            (correct / total) * 100
+        );
+
+
+    localStorage.setItem(
+        "interview_score",
+        percentage
+    );
+
+    localStorage.setItem(
+        "interview_correct",
+        correct
+    );
+
+    localStorage.setItem(
+        "interview_total",
+        total
+    );
+
+
+    document.getElementById(
+        "interviewScreen"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "finalScore"
+    ).innerText =
+        `${percentage}%`;
+
+
+    document.getElementById(
+        "correctCount"
+    ).innerText =
+        correct;
+
+
+    document.getElementById(
+        "totalCount"
+    ).innerText =
+        total;
+
+
+    document.getElementById(
+        "finalLevel"
+    ).innerText =
+        selectedLevel;
+
+
+    const t =
+        translations[currentLanguage];
+
+
+    let message =
+        t.improve;
+
+
+    if (percentage >= 80) {
+
+        message =
+            t.excellent;
+
+    } else if (percentage >= 60) {
+
+        message =
+            t.good;
+
+    }
+
+
+    document.getElementById(
+        "resultMessage"
+    ).innerText =
+        message;
+
+}
+
+
+/* -----------------------------------------
+   RETRY
+----------------------------------------- */
+
+function retryInterview() {
+
+    document.getElementById(
+        "resultScreen"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "setupScreen"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "setupStatus"
+    ).innerText =
+        translations[currentLanguage]
+            .ready;
+
+
+    document.getElementById(
+        "careerSelect"
+    ).value =
+        selectedCareer;
+
+
+    document.getElementById(
+        "levelSelect"
+    ).value =
+        selectedLevel;
+
+}
+
+
+/* -----------------------------------------
+   LANGUAGE CHANGE
+----------------------------------------- */
+
+function changeLanguage() {
+
+    currentLanguage =
+        document.getElementById(
+            "languageSelect"
+        ).value;
+
+
+    localStorage.setItem(
+        "selected_language",
+        currentLanguage
+    );
+
+
+    applyLanguage();
+
+}
+
+
+/* -----------------------------------------
+   DASHBOARD
+----------------------------------------- */
+
+function goDashboard() {
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+</script>
+<script>
+
+/* -----------------------------------------
+   EVENT LISTENERS
+----------------------------------------- */
+
+document
+    .getElementById("languageSelect")
+    .addEventListener(
+        "change",
+        changeLanguage
+    );
+
+
+document
+    .getElementById("startButton")
+    .addEventListener(
+        "click",
+        startInterview
+    );
+
+
+document
+    .getElementById("nextButton")
+    .addEventListener(
+        "click",
+        nextQuestion
+    );
+
+
+document
+    .getElementById("previousButton")
+    .addEventListener(
+        "click",
+        previousQuestion
+    );
+
+
+document
+    .getElementById("submitButton")
+    .addEventListener(
+        "click",
+        submitInterview
+    );
+
+
+document
+    .getElementById("retryButton")
+    .addEventListener(
+        "click",
+        retryInterview
+    );
+
+
+document
+    .getElementById("dashboardButton1")
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+
+document
+    .getElementById("dashboardButton2")
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+
+document
+    .getElementById("dashboardButton3")
+    .addEventListener(
+        "click",
+        goDashboard
+    );
+
+
+/* -----------------------------------------
+   SAVE ANSWER WHILE TYPING
+----------------------------------------- */
+
+document
+    .getElementById("answerInput")
+    .addEventListener(
+        "input",
+        saveCurrentAnswer
+    );
+
+
+/* -----------------------------------------
+   PAGE LOAD
+----------------------------------------- */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selected_language"
+            );
+
+
+        if (
+            savedLanguage &&
+            translations[savedLanguage]
+        ) {
+
+            currentLanguage =
+                savedLanguage;
+
+            document.getElementById(
+                "languageSelect"
+            ).value =
+                savedLanguage;
+
+        }
+
+
+        updateCourseDropdown();
+
+        updateLevelDropdown();
+
+        applyLanguage();
+
+
+        const savedCareer =
+            localStorage.getItem(
+                "interview_career"
+            );
+
+
+        const savedLevel =
+            localStorage.getItem(
+                "interview_level"
+            );
+
+
+        if (savedCareer) {
+
+            document.getElementById(
+                "careerSelect"
+            ).value =
+                savedCareer;
+
+        }
+
+
+        if (savedLevel) {
+
+            document.getElementById(
+                "levelSelect"
+            ).value =
+                savedLevel;
+
+        }
+
+    }
+);
+
+</script>
+
+
+<script>
+(function () {
+  function setupCareerDropdown() {
+    const sel = document.getElementById("careerSelect");
+    if (!sel || sel.dataset.customDropdown === "yes") return;
+
+    sel.dataset.customDropdown = "yes";
+
+    const wrap = document.createElement("div");
+    wrap.className = "cs-wrap";
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel);
+
+    /* Keep the real select for existing project JavaScript */
+    sel.style.setProperty("display", "none", "important");
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cs-btn";
+
+    const panel = document.createElement("div");
+    panel.className = "cs-panel";
+
+    const list = document.createElement("ul");
+    list.className = "cs-list";
+    panel.appendChild(list);
+
+    wrap.append(btn, panel);
+
+    function updateLabel() {
+      btn.textContent =
+        sel.options[sel.selectedIndex]?.text || "Select Career";
+    }
+
+    function renderCourses() {
+      list.replaceChildren();
+
+      Array.from(sel.options).forEach((option, index) => {
+        const item = document.createElement("li");
+        item.textContent = option.text;
+        if (index === sel.selectedIndex) item.classList.add("sel");
+
+        item.addEventListener("click", function () {
+          sel.selectedIndex = index;
+          sel.dispatchEvent(new Event("change", { bubbles: true }));
+          updateLabel();
+          wrap.classList.remove("open");
+        });
+
+        list.appendChild(item);
+      });
+
+      updateLabel();
+    }
+
+    btn.addEventListener("click", function () {
+      wrap.classList.toggle("open");
+      if (wrap.classList.contains("open")) renderCourses();
+    });
+
+    sel.addEventListener("change", updateLabel);
+
+    document.addEventListener("click", function (event) {
+      if (!wrap.contains(event.target)) {
+        wrap.classList.remove("open");
+      }
+    });
+
+    /* Handles courses added later by existing JavaScript */
+    const observer = new MutationObserver(renderCourses);
+    observer.observe(sel, { childList: true, subtree: true });
+
+    renderCourses();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCareerDropdown);
+  } else {
+    setupCareerDropdown();
+  }
+})();
+</script>
+
+<script>
+(function () {
+  function installCareerDropdown() {
+    const sel = document.getElementById("careerSelect");
+    if (!sel || sel.dataset.customDropdown === "yes") return;
+
+    sel.dataset.customDropdown = "yes";
+
+    const wrap = document.createElement("div");
+    wrap.className = "cs-wrap";
+    sel.parentNode.insertBefore(wrap, sel);
+    wrap.appendChild(sel);
+
+    /* Keep original select hidden, so existing app logic still uses it */
+    sel.style.display = "none";
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "cs-btn";
+
+    const panel = document.createElement("div");
+    panel.className = "cs-panel";
+
+    const list = document.createElement("ul");
+    list.className = "cs-list";
+    panel.appendChild(list);
+
+    wrap.append(btn, panel);
+
+    function updateLabel() {
+      btn.textContent =
+        sel.options[sel.selectedIndex]?.text || "Select a career";
+    }
+
+    function render() {
+      list.replaceChildren();
+
+      Array.from(sel.options).forEach((opt, index) => {
+        const item = document.createElement("li");
+        item.textContent = opt.text;
+        if (index === sel.selectedIndex) item.classList.add("sel");
+
+        item.addEventListener("click", () => {
+          sel.selectedIndex = index;
+          sel.dispatchEvent(new Event("change", { bubbles: true }));
+          updateLabel();
+          wrap.classList.remove("open");
+        });
+
+        list.appendChild(item);
+      });
+
+      updateLabel();
+    }
+
+    btn.addEventListener("click", () => {
+      wrap.classList.toggle("open");
+      if (wrap.classList.contains("open")) render();
+    });
+
+    sel.addEventListener("change", updateLabel);
+
+    document.addEventListener("click", event => {
+      if (!wrap.contains(event.target)) wrap.classList.remove("open");
+    });
+
+    new MutationObserver(render).observe(sel, {
+      childList: true,
+      subtree: true
+    });
+
+    render();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installCareerDropdown);
+  } else {
+    installCareerDropdown();
+  }
+})();
+</script>
+
+</body>
+</html>

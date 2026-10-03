@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Career Reality Check</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+          <link rel="stylesheet" href="mobile-responsive.css">
+
+    <style>
+
+        .reality-container {
+            max-width: 950px;
+            width: 92%;
+            margin: 40px auto;
+            padding: 30px;
+        }
+
+        .reality-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reality-header h1 {
+            margin-bottom: 10px;
+        }
+
+        .reality-header p {
+            font-size: 17px;
+            color: #64748b;
+        }
+
+        .reality-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(15,23,42,.08);
+        }
+
+        .reality-card h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+
+        .reality-card p {
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .option:hover {
+            background: #eff6ff;
+            border-color: #2563eb;
+        }
+
+        .option input {
+            width: auto;
+            margin: 0;
+        }
+
+        .reality-button {
+            display: block;
+            margin: 30px auto;
+        }
+
+        #result {
+            display: none;
+            text-align: center;
+        }
+
+        #scoreText,
+        #statusText {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+    </style>
+
+</head>
+
+
+<body class="reality-page">
+
+
+<select id="languageSelector">
+
+    <option value="English">
+        English
+    </option>
+
+    <option value="Tamil">
+        தமிழ்
+    </option>
+
+    <option value="Hindi">
+        हिन्दी
+    </option>
+
+    <option value="Thanglish">
+        Thanglish
+    </option>
+
+    <option value="Kannada">
+        ಕನ್ನಡ
+    </option>
+
+    <option value="Malayalam">
+        മലയാളം
+    </option>
+
+</select>
+
+
+<div class="reality-container">
+
+
+    <div class="reality-header">
+
+        <h1 id="pageTitle">
+            Career Reality Check
+        </h1>
+
+        <p id="pageDescription">
+            Understand the real-world requirements and challenges of your selected career.
+        </p>
+
+    </div>
+
+
+    <!-- Career Overview -->
+
+    <div class="reality-card">
+
+        <h3 id="overviewTitle">
+            Career Overview
+        </h3>
+
+        <p id="overviewText">
+            This section helps you understand what the selected career is really like,
+            including responsibilities, skills, work environment and challenges.
+        </p>
+
+    </div>
+
+
+    <!-- Required Skills -->
+
+    <div class="reality-card">
+
+        <h3 id="skillsTitle">
+            Required Skills
+        </h3>
+
+        <p id="skillsText">
+            Strong technical knowledge, problem-solving ability,
+            communication skills and continuous learning are important
+            for building a successful career.
+        </p>
+
+    </div>
+
+
+    <!-- Work Reality -->
+
+    <div class="reality-card">
+
+        <h3 id="workTitle">
+            Work Reality
+        </h3>
+
+        <p id="workText">
+            Real-world jobs may involve deadlines, teamwork,
+            continuous learning, problem solving and adapting to
+            new technologies.
+        </p>
+
+    </div>
+    <!-- Career Challenges -->
+
+    <div class="reality-card">
+
+        <h3 id="challengeTitle">
+            Common Career Challenges
+        </h3>
+
+        <p id="challengeText">
+            You may need to handle difficult projects,
+            changing requirements, deadlines and competition.
+            Continuous improvement is necessary.
+        </p>
+
+    </div>
+
+
+    <!-- Salary Reality -->
+
+    <div class="reality-card">
+
+        <h3 id="salaryTitle">
+            Salary & Growth Reality
+        </h3>
+
+        <p id="salaryText">
+            Salary depends on your skills, experience,
+            company, location and job role. Strong skills
+            and experience can improve career growth.
+        </p>
+
+    </div>
+
+
+    <!-- Reality Questions -->
+
+    <div class="reality-card">
+
+        <h3 id="questionTitle">
+            Reality Check Questions
+        </h3>
+
+
+        <p id="q1">
+            1. Are you comfortable learning new technologies regularly?
+        </p>
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q1"
+                value="yes"
+            >
+
+            <span id="q1yes">
+                Yes
+            </span>
+
+        </label>
+
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q1"
+                value="no"
+            >
+
+            <span id="q1no">
+                No
+            </span>
+
+        </label>
+
+
+
+        <p id="q2">
+            2. Are you comfortable working under deadlines?
+        </p>
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q2"
+                value="yes"
+            >
+
+            <span id="q2yes">
+                Yes
+            </span>
+
+        </label>
+
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q2"
+                value="no"
+            >
+
+            <span id="q2no">
+                No
+            </span>
+
+        </label>
+        <p id="q3">
+            3. Are you ready to continuously improve your skills?
+        </p>
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q3"
+                value="yes"
+            >
+
+            <span id="q3yes">
+                Yes
+            </span>
+
+        </label>
+
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q3"
+                value="no"
+            >
+
+            <span id="q3no">
+                No
+            </span>
+
+        </label>
+
+
+
+        <p id="q4">
+            4. Are you comfortable solving real-world problems?
+        </p>
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q4"
+                value="yes"
+            >
+
+            <span id="q4yes">
+                Yes
+            </span>
+
+        </label>
+
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q4"
+                value="no"
+            >
+
+            <span id="q4no">
+                No
+            </span>
+
+        </label>
+
+
+
+        <p id="q5">
+            5. Are you comfortable working with a team?
+        </p>
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q5"
+                value="yes"
+            >
+
+            <span id="q5yes">
+                Yes
+            </span>
+
+        </label>
+
+
+        <label class="option">
+
+            <input
+                type="radio"
+                name="q5"
+                value="no"
+            >
+
+            <span id="q5no">
+                No
+            </span>
+
+        </label>
+
+    </div>
+
+
+    <button
+        id="checkBtn"
+        class="reality-button"
+        onclick="checkReality()"
+    >
+        Check Reality
+    </button>
+
+
+    <!-- Result -->
+
+    <div
+        id="result"
+        class="reality-card"
+    >
+
+        <h2 id="resultTitle">
+            Reality Check Result
+        </h2>
+
+
+        <p id="scoreText">
+            Score: 0 / 100
+        </p>
+
+
+        <p id="statusText">
+        </p>
+
+
+        <div class="progress">
+
+            <div
+                id="scoreBar"
+                class="progress-bar"
+                style="width:0%"
+            ></div>
+
+        </div>
+
+
+        <p id="messageText">
+        </p>
+
+
+        <button
+            id="continueBtn"
+            onclick="continueToSkillGap()"
+        >
+            Continue
+        </button>
+
+    </div>
+
+</div>
+<script>
+
+const realityTranslations = {
+
+    English: {
+
+        pageTitle: "Career Reality Check",
+
+        pageDescription:
+        "Understand the real-world requirements and challenges of your selected career.",
+
+        overviewTitle: "Career Overview",
+
+        overviewText:
+        "This section helps you understand what the selected career is really like, including responsibilities, skills, work environment and challenges.",
+
+        skillsTitle: "Required Skills",
+
+        skillsText:
+        "Strong technical knowledge, problem-solving ability, communication skills and continuous learning are important for building a successful career.",
+
+        workTitle: "Work Reality",
+
+        workText:
+        "Real-world jobs may involve deadlines, teamwork, continuous learning, problem solving and adapting to new technologies.",
+
+        challengeTitle: "Common Career Challenges",
+
+        challengeText:
+        "You may need to handle difficult projects, changing requirements, deadlines and competition. Continuous improvement is necessary.",
+
+        salaryTitle: "Salary & Growth Reality",
+
+        salaryText:
+        "Salary depends on your skills, experience, company, location and job role. Strong skills and experience can improve career growth.",
+
+        questionTitle: "Reality Check Questions",
+
+        q1: "1. Are you comfortable learning new technologies regularly?",
+
+        q2: "2. Are you comfortable working under deadlines?",
+
+        q3: "3. Are you ready to continuously improve your skills?",
+
+        q4: "4. Are you comfortable solving real-world problems?",
+
+        q5: "5. Are you comfortable working with a team?",
+
+        yes: "Yes",
+
+        no: "No",
+
+        check: "Check Reality",
+
+        resultTitle: "Reality Check Result",
+
+        score: "Score",
+
+        realistic: "Career Reality Match: Strong",
+
+        moderate: "Career Reality Match: Moderate",
+
+        weak: "Career Reality Match: Needs Improvement",
+
+        realisticMessage:
+        "You appear ready to handle the practical demands of this career.",
+
+        moderateMessage:
+        "You can pursue this career, but some areas need improvement.",
+
+        weakMessage:
+        "You should improve your readiness and understand the career requirements better.",
+
+        continue: "Continue"
+
+    },
+
+
+    Tamil: {
+
+        pageTitle: "Career Reality Check",
+
+        pageDescription:
+        "Neenga select panna career-oda real-world requirements matrum challenges-ai purinjukkalam.",
+
+        overviewTitle: "Career Overview",
+
+        overviewText:
+        "Indha section-la career responsibilities, skills, work environment matrum challenges pathi purinjukkalam.",
+
+        skillsTitle: "Required Skills",
+
+        skillsText:
+        "Strong technical knowledge, problem-solving, communication skills matrum continuous learning mukkiyam.",
+
+        workTitle: "Work Reality",
+
+        workText:
+        "Real-world jobs-la deadlines, teamwork, continuous learning, problem solving matrum new technologies adapt pannuradhu irukkum.",
+
+        challengeTitle: "Common Career Challenges",
+
+        challengeText:
+        "Difficult projects, changing requirements, deadlines matrum competition-ai handle panna vendiyirukkum.",
+
+        salaryTitle: "Salary & Growth Reality",
+
+        salaryText:
+        "Salary unga skills, experience, company, location matrum job role-ai depend pannum.",
+
+        questionTitle: "Reality Check Questions",
+
+        q1: "1. Regular-ah new technologies kathukka comfortable-ah irukkeengala?",
+
+        q2: "2. Deadlines-kulla work panna comfortable-ah irukkeengala?",
+
+        q3: "3. Unga skills-ai continuously improve panna ready-ah irukkeengala?",
+
+        q4: "4. Real-world problems solve panna comfortable-ah irukkeengala?",
+
+        q5: "5. Team-oda work panna comfortable-ah irukkeengala?",
+
+        yes: "ஆம்",
+
+        no: "இல்லை",
+
+        check: "Reality Check Pannu",
+
+        resultTitle: "Reality Check Result",
+
+        score: "Score",
+
+        realistic: "Career Reality Match: Strong",
+
+        moderate: "Career Reality Match: Moderate",
+
+        weak: "Career Reality Match: Needs Improvement",
+
+        realisticMessage:
+        "Indha career-oda practical demands-ai handle panna neenga ready-ah irukkeenga.",
+
+        moderateMessage:
+        "Indha career-ai pursue pannalam, aana sila areas improve pannanum.",
+
+        weakMessage:
+        "Career requirements-ai better-ah understand pannitu readiness improve pannanum.",
+
+        continue: "தொடரவும்"
+
+    },
+
+
+    Thanglish: {
+
+        pageTitle: "Career Reality Check",
+
+        pageDescription:
+        "Neenga select panna career-oda real-world requirements and challenges-ai understand pannalam.",
+
+        overviewTitle: "Career Overview",
+
+        overviewText:
+        "Indha section career responsibilities, skills, work environment and challenges pathi explain pannum.",
+
+        skillsTitle: "Required Skills",
+
+        skillsText:
+        "Strong technical knowledge, problem solving, communication and continuous learning romba mukkiyam.",
+
+        workTitle: "Work Reality",
+
+        workText:
+        "Real-world job-la deadlines, teamwork, continuous learning and new technologies adapt pannuradhu irukkum.",
+
+        challengeTitle: "Common Career Challenges",
+
+        challengeText:
+        "Difficult projects, changing requirements, deadlines and competition-ai handle panna vendiyirukkum.",
+
+        salaryTitle: "Salary & Growth Reality",
+
+        salaryText:
+        "Salary unga skills, experience, company, location and job role-ai depend pannum.",
+
+        questionTitle: "Reality Check Questions",
+
+        q1: "1. Regular-ah new technologies kathukka comfortable-ah irukka?",
+
+        q2: "2. Deadlines-kulla work panna comfortable-ah irukka?",
+
+        q3: "3. Unga skills-ai continuously improve panna ready-ah irukka?",
+
+        q4: "4. Real-world problems solve panna comfortable-ah irukka?",
+
+        q5: "5. Team-oda work panna comfortable-ah irukka?",
+
+        yes: "Yes",
+
+        no: "No",
+
+        check: "Reality Check Pannu",
+
+        resultTitle: "Reality Check Result",
+
+        score: "Score",
+
+        realistic: "Career Reality Match: Strong",
+
+        moderate: "Career Reality Match: Moderate",
+
+        weak: "Career Reality Match: Needs Improvement",
+
+        realisticMessage:
+        "Indha career-oda practical demands-ai handle panna neenga ready.",
+
+        moderateMessage:
+        "Career pursue pannalam, aana konjam areas improve pannanum.",
+
+        weakMessage:
+        "Readiness improve pannitu career requirements-ai better-ah understand pannanum.",
+
+        continue: "Continue"
+
+    },
+
+
+    Hindi: {
+
+        pageTitle: "करियर रियलिटी चेक",
+
+        pageDescription:
+        "अपने चुने हुए करियर की वास्तविक आवश्यकताओं और चुनौतियों को समझें।",
+
+        overviewTitle: "करियर का परिचय",
+
+        overviewText:
+        "इस सेक्शन में करियर की जिम्मेदारियों, कौशल, कार्य वातावरण और चुनौतियों को समझ सकते हैं।",
+
+        skillsTitle: "आवश्यक कौशल",
+
+        skillsText:
+        "तकनीकी ज्ञान, समस्या समाधान, संचार कौशल और लगातार सीखना महत्वपूर्ण है।",
+
+        workTitle: "कार्य की वास्तविकता",
+
+        workText:
+        "वास्तविक नौकरी में समय सीमा, टीमवर्क, लगातार सीखना और नई तकनीकों को अपनाना शामिल हो सकता है।",
+
+        challengeTitle: "सामान्य करियर चुनौतियां",
+
+        challengeText:
+        "आपको कठिन प्रोजेक्ट, बदलती आवश्यकताओं, समय सीमा और प्रतियोगिता का सामना करना पड़ सकता है।",
+
+        salaryTitle: "वेतन और विकास की वास्तविकता",
+
+        salaryText:
+        "वेतन आपके कौशल, अनुभव, कंपनी, स्थान और नौकरी की भूमिका पर निर्भर करता है।",
+
+        questionTitle: "रियलिटी चेक प्रश्न",
+
+        q1: "1. क्या आप नियमित रूप से नई तकनीक सीखने में सहज हैं?",
+
+        q2: "2. क्या आप समय सीमा के अंदर काम करने में सहज हैं?",
+
+        q3: "3. क्या आप लगातार अपने कौशल को बेहतर बनाने के लिए तैयार हैं?",
+
+        q4: "4. क्या आप वास्तविक समस्याओं को हल करने में सहज हैं?",
+
+        q5: "5. क्या आप टीम के साथ काम करने में सहज हैं?",
+
+        yes: "हाँ",
+
+        no: "नहीं",
+
+        check: "रियलिटी चेक करें",
+
+        resultTitle: "रियलिटी चेक परिणाम",
+
+        score: "स्कोर",
+
+        realistic: "करियर रियलिटी मैच: मजबूत",
+
+        moderate: "करियर रियलिटी मैच: मध्यम",
+
+        weak: "करियर रियलिटी मैच: सुधार आवश्यक",
+
+        realisticMessage:
+        "आप इस करियर की व्यावहारिक आवश्यकताओं को संभालने के लिए तैयार दिखाई देते हैं।",
+
+        moderateMessage:
+        "आप यह करियर चुन सकते हैं, लेकिन कुछ क्षेत्रों में सुधार आवश्यक है।",
+
+        weakMessage:
+        "आपको अपनी तैयारी और करियर की आवश्यकताओं की समझ को बेहतर करना चाहिए।",
+
+        continue: "जारी रखें"
+
+    },
+
+
+    Kannada: {
+
+        pageTitle: "Career Reality Check",
+
+        pageDescription:
+        "Neevu select maadida career-na real-world requirements mattu challenges bagge tilidukolli.",
+
+        overviewTitle: "Career Overview",
+
+        overviewText:
+        "Career responsibilities, skills, work environment mattu challenges bagge illi tilidukollabahudu.",
+
+        skillsTitle: "Required Skills",
+
+        skillsText:
+        "Technical knowledge, problem solving, communication mattu continuous learning mukhya.",
+
+        workTitle: "Work Reality",
+
+        workText:
+        "Real-world jobs alli deadlines, teamwork, continuous learning mattu new technologies adapt maadodu iruttade.",
+
+        challengeTitle: "Common Career Challenges",
+
+        challengeText:
+        "Difficult projects, changing requirements, deadlines mattu competition handle maadbekagabahudu.",
+
+        salaryTitle: "Salary & Growth Reality",
+
+        salaryText:
+        "Salary nimma skills, experience, company, location mattu job role mele depend aaguttade.",
+
+        questionTitle: "Reality Check Questions",
+
+        q1: "1. Regular-ah hosa technologies kaleyalu comfortable iddira?",
+
+        q2: "2. Deadlines olage work maadalu comfortable iddira?",
+
+        q3: "3. Nimma skills continuously improve maadalu ready iddira?",
+
+        q4: "4. Real-world problems solve maadalu comfortable iddira?",
+
+        q5: "5. Team jothe work maadalu comfortable iddira?",
+
+        yes: "ಹೌದು",
+
+        no: "ಇಲ್ಲ",
+
+        check: "Reality Check Maadi",
+
+        resultTitle: "Reality Check Result",
+
+        score: "Score",
+
+        realistic: "Career Reality Match: Strong",
+
+        moderate: "Career Reality Match: Moderate",
+
+        weak: "Career Reality Match: Needs Improvement",
+
+        realisticMessage:
+        "Ee career-na practical demands handle maadalu neevu ready iddira.",
+
+        moderateMessage:
+        "Ee career pursue maadabahudu, aadare kelavu areas improve maadbeku.",
+
+        weakMessage:
+        "Readiness mattu career requirements bagge inna improve maadbeku.",
+
+        continue: "Mundhuvarisi"
+
+    },
+
+
+    Malayalam: {
+
+        pageTitle: "Career Reality Check",
+
+        pageDescription:
+        "Ningal select cheytha career-inde real-world requirements-um challenges-um manassilakkam.",
+
+        overviewTitle: "Career Overview",
+
+        overviewText:
+        "Career responsibilities, skills, work environment, challenges ennivaye kurichu ivide manassilakkam.",
+
+        skillsTitle: "Required Skills",
+
+        skillsText:
+        "Technical knowledge, problem solving, communication skills, continuous learning enniva pradhanam aanu.",
+
+        workTitle: "Work Reality",
+
+        workText:
+        "Real-world jobs-il deadlines, teamwork, continuous learning, new technologies adapt cheyyal enniva undaakum.",
+
+        challengeTitle: "Common Career Challenges",
+
+        challengeText:
+        "Difficult projects, changing requirements, deadlines, competition enniva handle cheyyendi varum.",
+
+        salaryTitle: "Salary & Growth Reality",
+
+        salaryText:
+        "Salary skills, experience, company, location, job role ennivaye depend cheyyunnu.",
+
+        questionTitle: "Reality Check Questions",
+
+        q1: "1. Regular ayi puthiya technologies padikkan comfortable aano?",
+
+        q2: "2. Deadlines-inullil work cheyyan comfortable aano?",
+
+        q3: "3. Ningalude skills continuously improve cheyyan ready aano?",
+
+        q4: "4. Real-world problems solve cheyyan comfortable aano?",
+
+        q5: "5. Team-odoppam work cheyyan comfortable aano?",
+
+        yes: "അതെ",
+
+        no: "ഇല്ല",
+
+        check: "Reality Check Cheyyuka",
+
+        resultTitle: "Reality Check Result",
+
+        score: "Score",
+
+        realistic: "Career Reality Match: Strong",
+
+        moderate: "Career Reality Match: Moderate",
+
+        weak: "Career Reality Match: Needs Improvement",
+
+        realisticMessage:
+        "Ee career-inde practical demands handle cheyyan ningal ready aanu.",
+
+        moderateMessage:
+        "Ee career pursue cheyyam, pakse chila areas improve cheyyanam.",
+
+        weakMessage:
+        "Readiness improve cheythu career requirements kooduthal manassilakkanam.",
+
+        continue: "Continue"
+
+    }
+
+};
+
+</script>
+<script>
+
+function getRealityLanguage() {
+
+    return localStorage.getItem("selectedLanguage")
+        || "English";
+
+}
+
+
+function translateRealityPage() {
+
+    const language =
+        getRealityLanguage();
+
+    const t =
+        realityTranslations[language]
+        || realityTranslations["English"];
+
+
+    document.getElementById("pageTitle").innerText =
+        t.pageTitle;
+
+    document.getElementById("pageDescription").innerText =
+        t.pageDescription;
+
+
+    document.getElementById("overviewTitle").innerText =
+        t.overviewTitle;
+
+    document.getElementById("overviewText").innerText =
+        t.overviewText;
+
+
+    document.getElementById("skillsTitle").innerText =
+        t.skillsTitle;
+
+    document.getElementById("skillsText").innerText =
+        t.skillsText;
+
+
+    document.getElementById("workTitle").innerText =
+        t.workTitle;
+
+    document.getElementById("workText").innerText =
+        t.workText;
+
+
+    document.getElementById("challengeTitle").innerText =
+        t.challengeTitle;
+
+    document.getElementById("challengeText").innerText =
+        t.challengeText;
+
+
+    document.getElementById("salaryTitle").innerText =
+        t.salaryTitle;
+
+    document.getElementById("salaryText").innerText =
+        t.salaryText;
+
+
+    document.getElementById("questionTitle").innerText =
+        t.questionTitle;
+
+
+    for (let i = 1; i <= 5; i++) {
+
+        document.getElementById("q" + i).innerText =
+            t["q" + i];
+
+    }
+
+
+    for (let i = 1; i <= 5; i++) {
+
+        document.getElementById("q" + i + "yes").innerText =
+            t.yes;
+
+        document.getElementById("q" + i + "no").innerText =
+            t.no;
+
+    }
+
+
+    document.getElementById("checkBtn").innerText =
+        t.check;
+
+
+    document.getElementById("resultTitle").innerText =
+        t.resultTitle;
+
+
+    document.getElementById("continueBtn").innerText =
+        t.continue;
+
+}
+
+
+
+function checkReality() {
+
+    let score = 0;
+
+
+    for (let i = 1; i <= 5; i++) {
+
+        const selected =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+        if (!selected) {
+
+            const language =
+                getRealityLanguage();
+
+            const t =
+                realityTranslations[language]
+                || realityTranslations["English"];
+
+
+            alert(
+                "Please answer question " + i
+            );
+
+            return;
+
+        }
+
+
+        if (selected.value === "yes") {
+
+            score += 20;
+
+        }
+
+    }
+
+
+    const language =
+        getRealityLanguage();
+
+    const t =
+        realityTranslations[language]
+        || realityTranslations["English"];
+
+
+    let status;
+    let message;
+
+
+    if (score >= 80) {
+
+        status = t.realistic;
+
+        message = t.realisticMessage;
+
+    }
+
+    else if (score >= 50) {
+
+        status = t.moderate;
+
+        message = t.moderateMessage;
+
+    }
+
+    else {
+
+        status = t.weak;
+
+        message = t.weakMessage;
+
+    }
+
+
+    // Save result
+
+    localStorage.setItem(
+        "reality_check_score",
+        score
+    );
+
+
+    localStorage.setItem(
+        "reality_check_status",
+        status
+    );
+
+
+    // Show result
+
+    document.getElementById("result")
+        .style.display = "block";
+
+
+    document.getElementById("scoreText")
+        .innerText =
+        t.score + ": " + score + " / 100";
+
+
+    document.getElementById("statusText")
+        .innerText =
+        status;
+
+
+    document.getElementById("messageText")
+        .innerText =
+        message;
+
+
+    document.getElementById("scoreBar")
+        .style.width =
+        score + "%";
+
+
+    document.getElementById("result")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+function continueToSkillGap() {
+
+    window.location.href =
+        "skill-gap.html";
+
+}
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const selector =
+            document.getElementById(
+                "languageSelector"
+            );
+
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selectedLanguage"
+            ) || "English";
+
+
+        if (selector) {
+
+            selector.value =
+                savedLanguage;
+
+
+            selector.addEventListener(
+                "change",
+                function () {
+
+                    localStorage.setItem(
+                        "selectedLanguage",
+                        this.value
+                    );
+
+
+                    translateRealityPage();
+
+                }
+            );
+
+        }
+
+
+        translateRealityPage();
+
+    }
+);
+
+</script>
+<div class="dashboard-back">
+    <button onclick="window.location.href='dashboard.html'">
+        ← Go Back to Dashboard
+    </button>
+</div>
+
+</body>
+
+</html>
