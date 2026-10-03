@@ -5,3 +5,4 @@ psycopg2-binary
 passlib
 bcrypt<4.1
 httpx
+python-dotenv
