@@ -31,7 +31,7 @@ app.add_middleware(
 app.include_router(router)
 
 # Connect frontend
-app.mount("/frontend", StaticFiles(directory="Frontend", html=True), name="frontend")
+app.mount("/frontend", StaticFiles(directory="frontend", html=True), name="frontend")
 
 CAREER_JOB_SEARCH = {
 
