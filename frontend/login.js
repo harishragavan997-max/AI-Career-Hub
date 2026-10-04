@@ -3,7 +3,7 @@ function loginUser() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    fetch("http://127.0.0.1:8000/login", {
+    fetch("/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
